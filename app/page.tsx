@@ -1,5 +1,8 @@
 import { Check, Target, Code, Clock } from "lucide-react"
+import Image from "next/image"
 import type { FC } from "react"
+
+const logo = "/logo.webp"
 
 const ComingSoonPage: FC = () => {
   return (
@@ -7,12 +10,7 @@ const ComingSoonPage: FC = () => {
       {/* Header */}
       <header className="py-4 md:py-6 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="flex items-center gap-2">
-            <div className="text-xl md:text-2xl font-bold">
-              <span className="text-black">n8n</span>
-              <div className="text-pink-500 text-xs md:text-sm font-medium">Developers</div>
-            </div>
-          </div>
+          <Image src={logo} alt="n8n logo" width={109} height={61} />
         </div>
       </header>
 
