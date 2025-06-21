@@ -1,18 +1,12 @@
-import { Check, Target, Code, Clock } from "lucide-react"
-import Image from "next/image"
+import { Check, Target, Clock, Search, Zap, DollarSign } from "lucide-react"
 import type { FC } from "react"
-
-const logo = "/logo.webp"
+import { Header } from "@/components/header"
+import { Footer } from "@/components/footer"
 
 const ComingSoonPage: FC = () => {
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
-      <header className="py-4 md:py-6 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <Image src={logo} alt="n8n logo" width={109} height={61} />
-        </div>
-      </header>
+      <Header />
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8 lg:py-12">
@@ -26,7 +20,7 @@ const ComingSoonPage: FC = () => {
             </div>
 
             {/* For Businesses Section */}
-            <div className="space-y-3 md:space-y-4">
+            <div className="space-y-3 md:space-y-4 leading-7 tracking-wider py-8 my-0">
               <div className="flex flex-col sm:flex-row sm:items-center gap-2">
                 <div className="flex items-center gap-2">
                   <Target className="h-4 w-4 md:h-5 md:w-5 text-pink-500 flex-shrink-0" />
@@ -71,45 +65,19 @@ const ComingSoonPage: FC = () => {
               </div>
             </div>
 
-            {/* For Developers Section */}
-            <div className="space-y-3 md:space-y-4 pt-4 md:pt-6">
-              <div className="flex items-center gap-2">
-                <Code className="h-4 w-4 md:h-5 md:w-5 text-pink-500" />
-                <span className="text-base md:text-lg font-semibold text-black">For Developers</span>
+            {/* Feature Badges */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6">
+              <div className="flex items-center gap-3 p-4 border rounded-lg border-black">
+                <Search className="h-5 w-5 text-gray-600" />
+                <span className="text-sm font-medium text-black">Trusted</span>
               </div>
-
-              <p className="text-base md:text-lg text-black font-semibold">Monetize Your Automation Skills</p>
-
-              <p className="text-sm md:text-base text-black">Are you a pro at building smart workflows with n8n?</p>
-
-              <div className="space-y-2 md:space-y-3">
-                <p className="text-sm md:text-base text-black">
-                  <a
-                    href="https://tally.so/r/w4yWKB"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-pink-500 underline hover:no-underline font-medium"
-                  >
-                    Join our developer network
-                  </a>{" "}
-                  of freelance automation engineers.
-                </p>
-                <p className="text-sm md:text-base text-black">We bring the clients, you build the future.</p>
-
-                <div className="space-y-2">
-                  <div className="flex items-start gap-2">
-                    <Check className="h-4 w-4 md:h-5 md:w-5 text-green-500 flex-shrink-0 mt-0.5" />
-                    <span className="text-sm md:text-base text-black">Work on global projects</span>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <Check className="h-4 w-4 md:h-5 md:w-5 text-green-500 flex-shrink-0 mt-0.5" />
-                    <span className="text-sm md:text-base text-black">Set your own hours</span>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <Check className="h-4 w-4 md:h-5 md:w-5 text-green-500 flex-shrink-0 mt-0.5" />
-                    <span className="text-sm md:text-base text-black">get paid for what you love doing</span>
-                  </div>
-                </div>
+              <div className="flex items-center gap-3 p-4 border rounded-lg border-black">
+                <Zap className="h-5 w-5 text-gray-600" />
+                <span className="text-sm font-medium text-black">Flexible</span>
+              </div>
+              <div className="flex items-center gap-3 p-4 border rounded-lg border-black">
+                <DollarSign className="h-5 w-5 text-gray-600" />
+                <span className="text-sm font-medium text-black">On-demand</span>
               </div>
             </div>
           </div>
@@ -145,14 +113,7 @@ const ComingSoonPage: FC = () => {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="py-6 md:py-8 mt-12 md:mt-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-xs md:text-sm text-gray-500 text-center md:text-left">
-            © 2025 n8n developers. All rights reserved.
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }
