@@ -27,7 +27,7 @@ const ComingSoonPage: FC = () => {
                   <span className="text-base md:text-lg font-semibold text-black">For Businesses - </span>
                 </div>
                 <a
-                  href="https://cal.com/niranjanvenugopal/n8n-developers-discovery-call"
+                  href="https://cal.com/sasha-n8ndevelopers/30min"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-base md:text-lg font-semibold text-pink-500 underline hover:no-underline"
@@ -101,7 +101,7 @@ const ComingSoonPage: FC = () => {
                 {/* Embedded Cal.com */}
                 <div className="h-[500px] sm:h-[550px] md:h-[600px] lg:h-[650px]">
                   <iframe
-                    src="https://cal.com/niranjanvenugopal/n8n-developers-discovery-call"
+                    src="https://cal.com/sasha-n8ndevelopers/30min"
                     className="w-full h-full"
                     frameBorder="0"
                     title="Schedule a meeting with n8n developers"
