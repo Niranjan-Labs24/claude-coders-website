@@ -1,119 +1,107 @@
-import { Check, Target, Clock, Search, Zap, DollarSign } from "lucide-react"
 import type { FC } from "react"
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
+import { Check, Target, Clock, Search, Zap, DollarSign } from "lucide-react"
 
 const ComingSoonPage: FC = () => {
   return (
-    <div className="min-h-screen bg-white">
-      <Header />
+    <div className="grid grid-cols-1 xl:grid-cols-12 gap-6 md:gap-8 lg:gap-12 xl:gap-16">
+      {/* Left Content */}
+      <div className="xl:col-span-7 space-y-6 md:space-y-8">
+        <div className="space-y-4 md:space-y-6">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-black leading-tight">
+            We're UBER for n8n developers
+          </h1>
+        </div>
 
-      {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8 lg:py-12">
-        <div className="grid grid-cols-1 xl:grid-cols-12 gap-6 md:gap-8 lg:gap-12 xl:gap-16">
-          {/* Left Content */}
-          <div className="xl:col-span-7 space-y-6 md:space-y-8">
-            <div className="space-y-4 md:space-y-6">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-black leading-tight">
-                We're UBER for n8n developers
-              </h1>
+        {/* For Businesses Section */}
+        <div className="space-y-3 md:space-y-4 leading-7 tracking-wider py-8 my-0">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+            <div className="flex items-center gap-2">
+              <Target className="h-4 w-4 md:h-5 md:w-5 text-pink-500 flex-shrink-0" />
+              <span className="text-base md:text-lg font-semibold text-black">For Businesses - </span>
             </div>
-
-            {/* For Businesses Section */}
-            <div className="space-y-3 md:space-y-4 leading-7 tracking-wider py-8 my-0">
-              <div className="flex flex-col sm:flex-row sm:items-center gap-2">
-                <div className="flex items-center gap-2">
-                  <Target className="h-4 w-4 md:h-5 md:w-5 text-pink-500 flex-shrink-0" />
-                  <span className="text-base md:text-lg font-semibold text-black">For Businesses - </span>
-                </div>
-                <a
-                  href="https://cal.com/sasha-n8ndevelopers/30min"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-base md:text-lg font-semibold text-pink-500 underline hover:no-underline"
-                >
-                  Book a free call
-                </a>
-              </div>
-
-              <p className="text-base md:text-lg text-black font-semibold">
-                Build, Scale, and Automate Without Hiring Full-Time
-              </p>
-
-              <div className="space-y-2 md:space-y-3">
-                <p className="text-sm md:text-base text-black">Need a custom automation or n8n-powered backend?</p>
-                <p className="text-sm md:text-base text-black">We match you with vetted n8n experts who can:</p>
-
-                <div className="space-y-2">
-                  <div className="flex items-start gap-2">
-                    <Check className="h-4 w-4 md:h-5 md:w-5 text-green-500 flex-shrink-0 mt-0.5" />
-                    <span className="text-sm md:text-base text-black">Design custom workflows</span>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <Check className="h-4 w-4 md:h-5 md:w-5 text-green-500 flex-shrink-0 mt-0.5" />
-                    <span className="text-sm md:text-base text-black">
-                      Connect 100+ tools (CRM, WhatsApp, GSheets, APIs)
-                    </span>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <Check className="h-4 w-4 md:h-5 md:w-5 text-green-500 flex-shrink-0 mt-0.5" />
-                    <span className="text-sm md:text-base text-black">
-                      Automate operations, lead gen, reports & more
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Feature Badges */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6">
-              <div className="flex items-center gap-3 p-4 border rounded-lg border-black">
-                <Search className="h-5 w-5 text-gray-600" />
-                <span className="text-sm font-medium text-black">Trusted</span>
-              </div>
-              <div className="flex items-center gap-3 p-4 border rounded-lg border-black">
-                <Zap className="h-5 w-5 text-gray-600" />
-                <span className="text-sm font-medium text-black">Flexible</span>
-              </div>
-              <div className="flex items-center gap-3 p-4 border rounded-lg border-black">
-                <DollarSign className="h-5 w-5 text-gray-600" />
-                <span className="text-sm font-medium text-black">On-demand</span>
-              </div>
-            </div>
+            <a
+              href="https://cal.com/sasha-n8ndevelopers/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-base md:text-lg font-semibold text-pink-500 underline hover:no-underline"
+            >
+              Book a free call
+            </a>
           </div>
 
-          {/* Right Content - Booking Widget with Embedded Cal.com */}
-          <div className="xl:col-span-5 mt-8 xl:mt-0">
-            <div className="relative max-w-md mx-auto xl:max-w-none">
-              {/* Shadow/Offset Effect */}
-              <div className="absolute top-1 left-1 md:top-2 md:left-2 w-full h-full bg-black rounded-lg"></div>
+          <p className="text-base md:text-lg text-black font-semibold">
+            Build, Scale, and Automate Without Hiring Full-Time
+          </p>
 
-              {/* Main Widget */}
-              <div className="relative bg-white border-2 border-black rounded-lg overflow-hidden">
-                {/* Widget Header */}
-                <div className="bg-white border-b border-black p-3 md:p-4">
-                  <div className="flex items-center justify-between">
-                    <h3 className="text-base md:text-lg font-semibold text-black">Book a Discovery Call</h3>
-                    <Clock className="w-4 h-4 md:w-5 md:h-5 text-black" />
-                  </div>
-                </div>
+          <div className="space-y-2 md:space-y-3">
+            <p className="text-sm md:text-base text-black">Need a custom automation or n8n-powered backend?</p>
+            <p className="text-sm md:text-base text-black">We match you with vetted n8n experts who can:</p>
 
-                {/* Embedded Cal.com */}
-                <div className="h-[500px] sm:h-[550px] md:h-[600px] lg:h-[650px]">
-                  <iframe
-                    src="https://cal.com/sasha-n8ndevelopers/30min"
-                    className="w-full h-full"
-                    frameBorder="0"
-                    title="Schedule a meeting with n8n developers"
-                  ></iframe>
-                </div>
+            <div className="space-y-2">
+              <div className="flex items-start gap-2">
+                <Check className="h-4 w-4 md:h-5 md:w-5 text-green-500 flex-shrink-0 mt-0.5" />
+                <span className="text-sm md:text-base text-black">Design custom workflows</span>
+              </div>
+              <div className="flex items-start gap-2">
+                <Check className="h-4 w-4 md:h-5 md:w-5 text-green-500 flex-shrink-0 mt-0.5" />
+                <span className="text-sm md:text-base text-black">
+                  Connect 100+ tools (CRM, WhatsApp, GSheets, APIs)
+                </span>
+              </div>
+              <div className="flex items-start gap-2">
+                <Check className="h-4 w-4 md:h-5 md:w-5 text-green-500 flex-shrink-0 mt-0.5" />
+                <span className="text-sm md:text-base text-black">
+                  Automate operations, lead gen, reports & more
+                </span>
               </div>
             </div>
           </div>
         </div>
-      </main>
 
-      <Footer />
+        {/* Feature Badges */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="flex items-center gap-3 p-4 border rounded-lg border-black">
+            <Search className="h-5 w-5 text-gray-600" />
+            <span className="text-sm font-medium text-black">Trusted</span>
+          </div>
+          <div className="flex items-center gap-3 p-4 border rounded-lg border-black">
+            <Zap className="h-5 w-5 text-gray-600" />
+            <span className="text-sm font-medium text-black">Flexible</span>
+          </div>
+          <div className="flex items-center gap-3 p-4 border rounded-lg border-black">
+            <DollarSign className="h-5 w-5 text-gray-600" />
+            <span className="text-sm font-medium text-black">On-demand</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Right Content - Booking Widget with Embedded Cal.com */}
+      <div className="xl:col-span-5 mt-8 xl:mt-0">
+        <div className="relative max-w-md mx-auto xl:max-w-none">
+          {/* Shadow/Offset Effect */}
+          <div className="absolute top-1 left-1 md:top-2 md:left-2 w-full h-full bg-black rounded-lg"></div>
+
+          {/* Main Widget */}
+          <div className="relative bg-white border-2 border-black rounded-lg overflow-hidden">
+            {/* Widget Header */}
+            <div className="bg-white border-b border-black p-3 md:p-4">
+              <div className="flex items-center justify-between">
+                <h3 className="text-base md:text-lg font-semibold text-black">Book a Discovery Call</h3>
+                <Clock className="w-4 h-4 md:w-5 md:h-5 text-black" />
+              </div>
+            </div>
+
+            {/* Embedded Cal.com */}
+            <div className="h-[calc(100vh-300px)]">
+              <iframe
+                src="https://cal.com/sasha-n8ndevelopers/30min"
+                className="w-full h-full"
+                title="Schedule a meeting with n8n developers"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
