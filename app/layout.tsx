@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import "@/app/globals.css"
+import ChatbaseScript from "@/components/chatbase"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -31,6 +32,7 @@ export default function RootLayout({
           <main className="lg:max-h-[calc(100vh-196px)] lg:overflow-auto max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">{children}</main>
           <Footer />
         </ThemeProvider>
+        <ChatbaseScript />
       </body>
       <Script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="875d1f20-cdec-45f8-b918-0665e17654b0" type="text/javascript" async />
     </html>
