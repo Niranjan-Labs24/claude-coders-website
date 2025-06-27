@@ -10,7 +10,7 @@ export const Header: FC = () => {
     <header className="py-4 md:py-6 px-4 sm:px-6 lg:px-8 border-b border-gray-100">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <Link href="/">
-          <Image src={logo || "/placeholder.svg"} alt="n8n logo" width={109} height={61} className="w-full h-11 xl:w-[109px] xl:h-[61px]" />
+          <Image src={logo || "/placeholder.svg"} alt="n8n logo" width={109} height={61} className="object-contain object-left w-full h-11 xl:w-[109px] xl:h-[61px]" />
         </Link>
 
         <div className="flex items-center gap-6">
