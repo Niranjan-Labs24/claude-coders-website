@@ -1,7 +1,14 @@
 import { Button } from "@/components/ui/button"
+import { Menu } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import type { FC } from "react"
+import {
+  Sheet,
+  SheetTrigger,
+  SheetContent,
+  SheetClose,
+} from "@/components/ui/sheet"
 
 const logo = "/logo.webp"
 
@@ -13,12 +20,27 @@ export const Header: FC = () => {
           <Image src={logo || "/placeholder.svg"} alt="n8n logo" width={109} height={61} className="object-contain object-left w-full h-11 xl:w-[109px] xl:h-[61px]" />
         </Link>
 
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-2 xl:gap-6">
           <nav className="hidden md:flex items-center gap-6">
             <Link href="/pricing" className="text-gray-600 hover:text-black transition-colors">
               Pricing
             </Link>
           </nav>
+          <div className="md:hidden">
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button variant='outline' size='icon' className="border-0 [&_svg]:size-6"><Menu /></Button>
+              </SheetTrigger>
+              <SheetContent side="top" className="flex flex-col items-center gap-6 pt-12">
+                <SheetClose asChild>
+                  <Link href="/about" className="text-lg font-medium text-gray-700 hover:text-black transition-colors">About Us</Link>
+                </SheetClose>
+                <SheetClose asChild>
+                  <Link href="/pricing" className="text-lg font-medium text-gray-700 hover:text-black transition-colors">Pricing</Link>
+                </SheetClose>
+              </SheetContent>
+            </Sheet>
+          </div>
           <Button
             asChild
             variant="outline"
