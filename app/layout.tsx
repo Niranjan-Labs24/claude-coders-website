@@ -12,9 +12,9 @@ import ChatbaseScript from "@/components/chatbase"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "n8n developers | We are UBER for n8n developers",
+  title: "Hire n8n Developers in 48 Hours | UBER for n8n Developers | AI Workflow Specialists | Free Consultation | Top 3% n8n developers",
   description:
-    "Connect with vetted n8n experts for custom automation solutions. Join our elite network of freelance automation engineers.",
+    "Hire expert n8n developers instantly. Like UBER for n8n experts - get matched in 48 hours, pay only for what you need. 25+ successful projects. Book free consultation today.",
     generator: 'v0.dev'
 }
 

@@ -1,7 +1,11 @@
 import type { FC } from "react"
 import { Check } from "lucide-react"
+import Benefit from "./components/benefit"
+import benefitItems from "./constants"
 
 const PricingPage: FC = () => {
+  const [starter, plus, pro] = benefitItems
+
   return (
     <>
       {/* Page Title */}
@@ -26,18 +30,9 @@ const PricingPage: FC = () => {
           <div className="space-y-4">
             <h3 className="text-lg md:text-xl font-semibold text-black">Ideal for</h3>
             <div className="space-y-3">
-              <div className="flex items-center gap-3">
-                <Check className="h-5 w-5 text-green-500 flex-shrink-0" />
-                <span className="text-base md:text-lg text-black">Quick fixes</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <Check className="h-5 w-5 text-green-500 flex-shrink-0" />
-                <span className="text-base md:text-lg text-black">Exploratory work</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <Check className="h-5 w-5 text-green-500 flex-shrink-0" />
-                <span className="text-base md:text-lg text-black">New clients</span>
-              </div>
+              {starter.labels.map((label) => (
+                <Benefit key={label} label={label} />
+              ))}
             </div>
           </div>
         </div>
@@ -55,14 +50,9 @@ const PricingPage: FC = () => {
           <div className="space-y-4">
             <h3 className="text-lg md:text-xl font-semibold text-black">Great for</h3>
             <div className="space-y-3">
-              <div className="flex items-center gap-3">
-                <Check className="h-5 w-5 text-green-500 flex-shrink-0" />
-                <span className="text-base md:text-lg text-black">Medium Sized builds</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <Check className="h-5 w-5 text-green-500 flex-shrink-0" />
-                <span className="text-base md:text-lg text-black">Batch Tasking</span>
-              </div>
+              {plus.labels.map((label) => (
+                <Benefit key={label} label={label} />
+              ))}
             </div>
           </div>
         </div>
@@ -80,14 +70,9 @@ const PricingPage: FC = () => {
           <div className="space-y-4">
             <h3 className="text-lg md:text-xl font-semibold text-black">Perfect for</h3>
             <div className="space-y-3">
-              <div className="flex items-center gap-3">
-                <Check className="h-5 w-5 text-green-500 flex-shrink-0" />
-                <span className="text-base md:text-lg text-black">Ongoing Support</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <Check className="h-5 w-5 text-green-500 flex-shrink-0" />
-                <span className="text-base md:text-lg text-black">Updates & Priority access</span>
-              </div>
+              {pro.labels.map((label) => (
+                <Benefit key={label} label={label} />
+              ))}
             </div>
           </div>
         </div>
