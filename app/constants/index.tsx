@@ -1,0 +1,1 @@
+export const CADLENLY_URL = "https://cal.com/sasha-n8ndevelopers/30min"
