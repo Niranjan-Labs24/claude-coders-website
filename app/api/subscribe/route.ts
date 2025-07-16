@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { validateField } from './service';
+import { welcomeEmailTemplate } from '@/components/welcome-email';
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY
 const RESEND_AUDIENCE_ID = process.env.RESEND_AUDIENCE_ID || ''
-const RESEND_BROADCAST_ID = process.env.RESEND_BROADCAST_ID || ''
 
 const resend = new Resend(RESEND_API_KEY);
 
@@ -22,19 +22,21 @@ export async function POST(req: NextRequest) {
     });
   }
 
-  // Add new subscribers to list
   try {
-    const contact = await resend.contacts.create({
+    // Add user to audience list
+    await resend.contacts.create({
       email,
       unsubscribed: false,
       audienceId: RESEND_AUDIENCE_ID,
     });
-    if (!contact.data?.id) {
-      throw new Error("Contact not created");
-    }
 
-    // Send "Welcome email"
-    await resend.broadcasts.send(RESEND_BROADCAST_ID);
+    // Send welcome email
+    await resend.emails.send({
+      from: 'Sasha Ray <sasha.ray@n8ndevelopers.com>',
+      to: email,
+      subject: 'You\'ve Earned 10 Free Hours — Let\'s Get You Started 🚀',
+      html: welcomeEmailTemplate(),
+    });
 
     // Success added to audience list
     return NextResponse.json(
