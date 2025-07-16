@@ -1,7 +1,9 @@
 import type { FC } from "react"
 import { Check, Target, Search, Zap, DollarSign } from "lucide-react"
-import Cadlenly from "./components/cadlenly/page"
+import Cadlenly from "./components/cadlenly"
 import { CADLENLY_URL } from "./constants"
+import Link from "next/link"
+import EmailForm from "./components/email-form"
 
 const ComingSoonPage: FC = () => {
   return (
@@ -21,14 +23,14 @@ const ComingSoonPage: FC = () => {
               <Target className="h-4 w-4 md:h-5 md:w-5 text-pink-500 flex-shrink-0" />
               <span className="text-base md:text-lg font-semibold text-black">For Businesses - </span>
             </div>
-            <a
+            <Link
               href={CADLENLY_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="text-base md:text-lg font-semibold text-pink-500 underline hover:no-underline"
             >
               Book a free call
-            </a>
+            </Link>
           </div>
 
           <p className="text-base md:text-lg text-black font-semibold">
@@ -75,6 +77,8 @@ const ComingSoonPage: FC = () => {
             <span className="text-sm font-medium text-black">On-demand</span>
           </div>
         </div>
+        {/* Collect email form */}
+        <EmailForm />
       </div>
       {/* Embedded Cal.com */}
       <Cadlenly />
