@@ -1,6 +1,6 @@
 import type { FC } from "react"
 import Link from "next/link"
-import Cadlenly from "../components/cadlenly/page"
+import Cadlenly from "../components/cadlenly"
 
 const AutomationTestdrivePage: FC = () => {
   return (
