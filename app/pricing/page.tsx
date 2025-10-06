@@ -26,9 +26,9 @@ const PricingPage: FC = () => {
         let userCurrency = "USD"
         let userSymbol = "$"
 
-        if (country === "IN") {
-          userCurrency = "INR"
-          userSymbol = "₹"
+        if (country === "AU" || country === "AUS") {
+          userCurrency = "AUD"
+          userSymbol = "A$"
         } else if (country === "US") {
           userCurrency = "USD"
           userSymbol = "$"
