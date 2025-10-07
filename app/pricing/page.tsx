@@ -1,10 +1,64 @@
-import type { FC } from "react"
+"use client";
+
+import { FC, useEffect, useState } from "react"
 import { Check } from "lucide-react"
 import Benefit from "./components/benefit"
 import benefitItems from "./constants"
 
 const PricingPage: FC = () => {
   const [starter, plus, pro] = benefitItems
+  const [currency, setCurrency] = useState("USD")
+  const [symbol, setSymbol] = useState("$")
+  const [loading, setLoading] = useState(true)
+  const [convertedPrices, setConvertedPrices] = useState([50, 30, 25])
+
+  const originalPrices = [50, 30, 25]
+
+  useEffect(() => {
+    // Step 1: Detect user region
+    fetch("https://ipapi.co/json/")
+      .then((res) => res.json())
+      .then(async (data) => {
+       let country = data.country // "IN", "US", "DE", etc.
+
+        // For testing: uncomment the line below and set to "DE" for EUR, "IN" for INR, etc.
+        //let country = "DE";
+        let userCurrency = "USD"
+        let userSymbol = "$"
+
+        if (country === "AU" || country === "AUS") {
+          userCurrency = "AUD"
+          userSymbol = "A$"
+        } else if (country === "US") {
+          userCurrency = "USD"
+          userSymbol = "$"
+        } else if (["DE", "FR", "ES", "IT", "GB", "NL", "BE", "AT", "CH", "SE", "NO", "DK", "FI", "PT", "IE", "GR", "CZ", "PL", "HU", "SK", "SI", "HR", "BA", "ME", "MK", "AL", "RS", "BG", "RO", "MD", "UA", "BY", "RU", "LT", "LV", "EE", "GE", "AM", "AZ"].includes(country)) {
+          userCurrency = "EUR"
+          userSymbol = "€"
+        }
+
+        setCurrency(userCurrency)
+        setSymbol(userSymbol)
+
+        // Step 2: Fetch exchange rate & convert
+        if (userCurrency !== "USD") {
+          const rateRes = await fetch(
+            `https://api.exchangerate.host/live?access_key=afe686e60effa99aeec17bafaa86a824&base=USD&symbols=${userCurrency}`
+          )
+          const rateData = await rateRes.json()
+          const rate = rateData.quotes[`USD${userCurrency}`]
+          setConvertedPrices(originalPrices.map(p => p * rate))
+        } else {
+          setConvertedPrices(originalPrices)
+        }
+        setLoading(false)
+      })
+      .catch((err) => {
+        console.error("Error:", err)
+        setConvertedPrices(originalPrices)
+        setLoading(false)
+      })
+  }, [])
 
   return (
     <>
@@ -22,7 +76,12 @@ const PricingPage: FC = () => {
           <div className="space-y-4">
             <h2 className="text-xl md:text-2xl font-semibold text-black">Hourly Model</h2>
             <div className="space-y-2">
-              <div className="text-4xl md:text-5xl font-bold text-black">$50/hour</div>
+              {/* Price OVERFLOW HANDEL CODE HERE  */}
+              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-black break-words">
+                {loading
+                ? "Loading..."
+                : `${new Intl.NumberFormat("en-US", { style: "currency", currency }).format(convertedPrices[0])}/hour`}
+              </div>
               <div className="text-lg text-pink-500 font-medium">billed in 10-hour blocks</div>
             </div>
           </div>
@@ -42,7 +101,12 @@ const PricingPage: FC = () => {
           <div className="space-y-4">
             <h2 className="text-xl md:text-2xl font-semibold text-black">Volume Package</h2>
             <div className="space-y-2">
-              <div className="text-4xl md:text-5xl font-bold text-black">$30/hour</div>
+              {/* Price OVERFLOW HANDEL CODE HERE  */}
+              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-black break-words">
+                {loading
+                ? "Loading..."
+                : `${new Intl.NumberFormat("en-US", { style: "currency", currency }).format(convertedPrices[1])}/hour`}
+              </div>
               <div className="text-lg text-pink-500 font-medium">billed in 50-hour blocks</div>
             </div>
           </div>
@@ -62,7 +126,12 @@ const PricingPage: FC = () => {
           <div className="space-y-4">
             <h2 className="text-xl md:text-2xl font-semibold text-black">Monthly Retainer</h2>
             <div className="space-y-2">
-              <div className="text-4xl md:text-5xl font-bold text-black">$25/hour</div>
+              {/* Price OVERFLOW HANDEL CODE HERE  */}
+              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-black break-words">
+                {loading
+                ? "Loading..."
+                : `${new Intl.NumberFormat("en-US", { style: "currency", currency }).format(convertedPrices[2])}/hour`}
+              </div>
               <div className="text-lg text-pink-500 font-medium">billed in 100-hour blocks</div>
             </div>
           </div>
