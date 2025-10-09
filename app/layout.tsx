@@ -15,7 +15,10 @@ export const metadata: Metadata = {
   title: "Hire n8n Developers in 48 Hours | UBER for n8n Developers | AI Workflow Specialists | Free Consultation | Top 3% n8n developers",
   description:
     "Hire expert n8n developers instantly. Like UBER for n8n experts - get matched in 48 hours, pay only for what you need. 25+ successful projects. Book free consultation today.",
-    generator: 'v0.dev'
+    generator: 'v0.dev',
+     verification: {
+    google: 'dvHTOSJR4zdlxAgVgmxbghvshaT34Zee1oA0hg_3Qc0'
+  }
 }
 
 export default function RootLayout({

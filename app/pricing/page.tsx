@@ -47,9 +47,10 @@ const PricingPage: FC = () => {
           )
           const rateData = await rateRes.json()
           const rate = rateData.quotes[`USD${userCurrency}`]
-          setConvertedPrices(originalPrices.map(p => p * rate))
+          //setConvertedPrices(originalPrices.map(p => p * rate))
+          setConvertedPrices(originalPrices.map(p => Math.round(p * rate)))
         } else {
-          setConvertedPrices(originalPrices)
+          setConvertedPrices(originalPrices.map(p =>Math.round(p)));
         }
         setLoading(false)
       })
@@ -72,7 +73,7 @@ const PricingPage: FC = () => {
       {/* Pricing Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 max-w-6xl mx-auto">
         {/* Hourly Model */}
-        <div className="bg-white border-2 border-black rounded-3xl p-8 md:p-10 space-y-6">
+        <div className="bg-white border-2 border-black rounded-3xl p-8 md:p-10 space-y-6 shadow-[6px_6px_0px_0px_rgba(128,128,128,1)]">
           <div className="space-y-4">
             <h2 className="text-xl md:text-2xl font-semibold text-black">Hourly Model</h2>
             <div className="space-y-2">
@@ -80,7 +81,7 @@ const PricingPage: FC = () => {
               <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-black break-words">
                 {loading
                 ? "Loading..."
-                : `${new Intl.NumberFormat("en-US", { style: "currency", currency }).format(convertedPrices[0])}/hour`}
+                : `${new Intl.NumberFormat("en-US", { style: "currency", currency, minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(convertedPrices[0])}/hour`}
               </div>
               <div className="text-lg text-pink-500 font-medium">billed in 10-hour blocks</div>
             </div>
@@ -97,7 +98,7 @@ const PricingPage: FC = () => {
         </div>
 
         {/* Volume Package */}
-        <div className="bg-white border-2 border-black rounded-3xl p-8 md:p-10 space-y-6">
+        <div className="bg-white border-2 border-black rounded-3xl p-8 md:p-10 space-y-6 shadow-[6px_6px_0px_0px_rgba(128,128,128,1)]">
           <div className="space-y-4">
             <h2 className="text-xl md:text-2xl font-semibold text-black">Volume Package</h2>
             <div className="space-y-2">
@@ -105,7 +106,7 @@ const PricingPage: FC = () => {
               <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-black break-words">
                 {loading
                 ? "Loading..."
-                : `${new Intl.NumberFormat("en-US", { style: "currency", currency }).format(convertedPrices[1])}/hour`}
+                : `${new Intl.NumberFormat("en-US", { style: "currency", currency, minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(convertedPrices[1])}/hour`}
               </div>
               <div className="text-lg text-pink-500 font-medium">billed in 50-hour blocks</div>
             </div>
@@ -122,7 +123,7 @@ const PricingPage: FC = () => {
         </div>
 
         {/* Monthly Retainer */}
-        <div className="bg-white border-2 border-black rounded-3xl p-8 md:p-10 space-y-6 md:col-span-2 lg:col-span-1">
+        <div className="bg-white border-2 border-black rounded-3xl p-8 md:p-10 space-y-6 md:col-span-2 lg:col-span-1 shadow-[6px_6px_0px_0px_rgba(128,128,128,1)]">
           <div className="space-y-4">
             <h2 className="text-xl md:text-2xl font-semibold text-black">Monthly Retainer</h2>
             <div className="space-y-2">
@@ -130,7 +131,7 @@ const PricingPage: FC = () => {
               <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-black break-words">
                 {loading
                 ? "Loading..."
-                : `${new Intl.NumberFormat("en-US", { style: "currency", currency }).format(convertedPrices[2])}/hour`}
+                : `${new Intl.NumberFormat("en-US", { style: "currency", currency, minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(convertedPrices[2])}/hour`}
               </div>
               <div className="text-lg text-pink-500 font-medium">billed in 100-hour blocks</div>
             </div>
