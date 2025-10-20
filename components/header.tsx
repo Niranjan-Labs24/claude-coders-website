@@ -25,6 +25,9 @@ export const Header: FC = () => {
             <Link href="/pricing" className="text-gray-600 hover:text-black transition-colors">
               Pricing
             </Link>
+            <Link href="/blogs" className="text-gray-600 hover:text-black transition-colors">
+              Blog
+            </Link>
           </nav>
           <div className="md:hidden">
             <Sheet>
@@ -37,6 +40,9 @@ export const Header: FC = () => {
                 </SheetClose>
                 <SheetClose asChild>
                   <Link href="/pricing" className="text-lg font-medium text-gray-700 hover:text-black transition-colors">Pricing</Link>
+                </SheetClose>
+                <SheetClose asChild>
+                  <Link href="/blogs" className="text-lg font-medium text-gray-700 hover:text-black transition-colors">Blog</Link>
                 </SheetClose>
               </SheetContent>
             </Sheet>
