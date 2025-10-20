@@ -1,15 +1,20 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
   images: {
-    unoptimized: true,
+    domains: [
+      'blog-admin.n8ndevelopers.com',
+      'images.unsplash.com',
+      'secure.gravatar.com'
+    ],
   },
-  allowedDevOrigins: ['local-origin.dev', '*.local-origin.dev'],
+  async rewrites() {
+    return [
+      {
+        source: '/blogs/sitemap.xml',
+        destination: 'https://blog-admin.n8ndevelopers.com/sitemap.xml',
+      },
+    ];
+  },
 }
 
 export default nextConfig
