@@ -11,11 +11,11 @@ import ChatbaseScript from "@/components/chatbase"
 
 const inter = Inter({ subsets: ["latin"] })
 
+// Metadata for SEO and other purposes
 export const metadata: Metadata = {
-  title: "Hire n8n Developers in 48 Hours | UBER for n8n Developers | AI Workflow Specialists | Free Consultation | Top 3% n8n developers",
-  description:
-    "Hire expert n8n developers instantly. Like UBER for n8n experts - get matched in 48 hours, pay only for what you need. 25+ successful projects. Book free consultation today.",
-    generator: 'v0.dev',
+  title: "n8n Developers | Custom Workflow & Automation Solutions",
+  description: "Hire expert n8n developers for workflow automation, integration, and custom solutions. Boost efficiency with tailored n8n services today.",
+  keywords: "n8n Developers, n8n Workflow Automation, Hire n8n Experts",
      verification: {
     google: 'dvHTOSJR4zdlxAgVgmxbghvshaT34Zee1oA0hg_3Qc0'
   }
