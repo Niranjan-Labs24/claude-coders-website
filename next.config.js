@@ -1,5 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'standalone',
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
   images: {
     domains: [
       'localhost',
@@ -12,6 +16,6 @@ const nextConfig = {
       },
     ],
   },
-};
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig
