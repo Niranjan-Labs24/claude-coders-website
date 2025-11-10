@@ -18,7 +18,10 @@ export const metadata: Metadata = {
   keywords: "n8n Developers, n8n Workflow Automation, Hire n8n Experts",
      verification: {
     google: 'dvHTOSJR4zdlxAgVgmxbghvshaT34Zee1oA0hg_3Qc0'
-  }
+  },
+   alternates: {
+    canonical: "https://n8ndevelopers.com/",
+  },
 }
 
 export default function RootLayout({
