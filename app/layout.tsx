@@ -29,7 +29,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      {/* ✅ Google Analytics */}
+     
       <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS || ""} />
 
       <head>
@@ -60,7 +60,6 @@ export default function RootLayout({
         <link rel="canonical" href="https://www.n8ndevelopers.com/" />
         <link rel="preconnect" href="https://www.n8ndevelopers.com/" />
 
-        {/* ✅ Schema.org markup */}
         <meta
           itemProp="title"
           content="n8n Developers | Custom Workflow & Automation Solutions"
@@ -74,7 +73,7 @@ export default function RootLayout({
           content="https://www.n8ndevelopers.com/"
         />
 
-        {/* ✅ Open Graph data */}
+  
         <meta
           property="og:title"
           content="n8n Developers | Custom Workflow & Automation Solutions"
@@ -94,7 +93,7 @@ export default function RootLayout({
         <meta property="og:Country" content="USA" />
         <link rel="publisher" href="https://www.n8ndevelopers.com/" />
 
-        {/* ✅ Twitter Card data */}
+        
         <meta name="twitter:card" content="summary" />
         <meta
           name="twitter:title"
@@ -124,10 +123,10 @@ export default function RootLayout({
           <Footer />
         </ThemeProvider>
 
-        {/* 💬 Chatbase integration */}
+     
         <ChatbaseScript />
 
-        {/* 🍪 Cookie Consent */}
+      
         <Script
           id="Cookiebot"
           src="https://consent.cookiebot.com/uc.js"
