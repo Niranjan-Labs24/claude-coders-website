@@ -6,16 +6,16 @@ const nextConfig = {
   },
   images: {
     domains: [
-      'localhost',
+      'mintcream-goldfish-996398.hostingersite.com',
     ],
     remotePatterns: [
       {
-        protocol: 'http',
-        hostname: 'localhost',
-        pathname: '/myblog/wp-content/uploads/**',
+        protocol: 'https',
+        hostname: 'mintcream-goldfish-996398.hostingersite.com',
+        pathname: '/wp-content/uploads/**',
       },
     ],
   },
 }
 
-module.exports = nextConfig
+module.exports = nextConfig;
