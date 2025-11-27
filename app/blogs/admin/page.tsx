@@ -12,16 +12,27 @@ export default function AdminLoginPage() {
     // Get credentials from environment variables
     const adminUsername = process.env.ADMIN_USERNAME;
     const adminPassword = process.env.ADMIN_PASSWORD;
+    
+    const adminUsername2 = process.env.ADMIN_USERNAME_2;
+    const adminPassword2 = process.env.ADMIN_PASSWORD_2;
+    
+    const adminUsername3 = process.env.ADMIN_USERNAME_3;
+    const adminPassword3 = process.env.ADMIN_PASSWORD_3;
+    
     const wordpressAdminUrl = process.env.WORDPRESS_ADMIN_URL;
     
-    // Single user authentication
-    if (username === adminUsername && password === adminPassword) {
+    // Check against all 3 possible admin users
+    const isValidUser1 = username === adminUsername && password === adminPassword;
+    const isValidUser2 = adminUsername2 && username === adminUsername2 && password === adminPassword2;
+    const isValidUser3 = adminUsername3 && username === adminUsername3 && password === adminPassword3;
+    
+    if (isValidUser1 || isValidUser2 || isValidUser3) {
       // Successful login - redirect to WordPress admin with auth parameter
       const redirectUrl = `${wordpressAdminUrl}?authenticated=true`;
       redirect(redirectUrl);
     } else {
       // Failed login - show error
-      redirect('/admin?error=Invalid credentials');
+      redirect('/blogs/admin?error=Invalid credentials');
     }
   }
 

@@ -83,13 +83,53 @@ export class WordPressService {
     }
   }
 
+  async getPostById(id: number, status: 'publish' | 'draft' | 'any' = 'any'): Promise<BlogPost | null> {
+    try {
+      const { posts } = await this.getAllPosts(1, 100, status);
+      return posts.find(p => p.id === id) || null;
+    } catch (error: any) {
+      console.error('Error fetching post by ID:', error.message);
+      return null;
+    }
+  }
+
   async getPostBySlug(slug: string, status: 'publish' | 'draft' | 'any' = 'publish'): Promise<BlogPost | null> {
     try {
-      // For drafts, search in all posts since they might not have slugs
+      // Optimization: Always try to fetch by slug first, even for drafts
+      // WordPress might find it if the slug matches exactly
+      const url = new URL(`${this.baseURL}/posts`);
+      url.searchParams.append('slug', slug);
+      url.searchParams.append('_embed', 'true');
+      url.searchParams.append('status', status);
+
+      const username = process.env.ADMIN_USERNAME;
+      const password = process.env.ADMIN_PASSWORD;
+      const headers: any = {};
+
+      if (username && password && status !== 'publish') {
+        const token = Buffer.from(`${username}:${password}`).toString('base64');
+        headers['Authorization'] = `Basic ${token}`;
+      }
+
+      try {
+        const response = await axios.get(url.toString(), { headers });
+        if (response.data && response.data.length > 0) {
+          return response.data[0];
+        }
+      } catch (e) {
+        // Ignore error and fall back to manual search
+        console.log('Direct slug fetch failed, falling back to manual search');
+      }
+
+      // Fallback: If direct fetch failed (e.g. slug mismatch), search in all posts
+      // This is slower but necessary for drafts with auto-generated slugs
       if (status === 'draft' || status === 'any') {
+        console.log('Searching for post by generated slug...');
         const { posts } = await this.getAllPosts(1, 100, status);
-        // Try to find by slug first
+
+        // Try to find by slug first (in case it wasn't found by API for some reason)
         let post = posts.find(p => p.slug === slug);
+
         // If not found, try to match by generated slug from title
         if (!post) {
           post = posts.find(p => {
@@ -100,14 +140,7 @@ export class WordPressService {
         return post || null;
       }
 
-      // For published posts, use the API endpoint
-      const url = new URL(`${this.baseURL}/posts`);
-      url.searchParams.append('slug', slug);
-      url.searchParams.append('_embed', 'true');
-      url.searchParams.append('status', status);
-
-      const response = await axios.get(url.toString());
-      return response.data[0] || null;
+      return null;
     } catch (error: any) {
       console.error('Error fetching post:', error.message);
       return null;
