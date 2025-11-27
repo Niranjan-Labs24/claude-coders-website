@@ -102,8 +102,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         {parse(post.content.rendered)}
       </div>
 
-      {/* Related Posts */}
-      {filteredRelatedPosts.length > 0 && (
+      {/* Related Posts - Hide in preview mode */}
+      {!isEnabled && filteredRelatedPosts.length > 0 && (
         <section className="mt-16">
           <h2 className="text-2xl font-bold text-black mb-8">Related Posts</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
