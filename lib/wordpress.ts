@@ -6,6 +6,7 @@ const WORDPRESS_API_URL = process.env.WORDPRESS_API_URL || 'http://localhost/myB
 export interface BlogPost {
   id: number;
   slug: string;
+  status: string;
   title: {
     rendered: string;
   };
