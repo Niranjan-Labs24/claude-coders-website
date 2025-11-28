@@ -78,7 +78,7 @@ const ComingSoonPage: FC = () => {
           </div>
         </div>
         {/* Collect email form */}
-        <EmailForm />
+       
       </div>
       {/* Embedded Cal.com */}
       <Cadlenly />
