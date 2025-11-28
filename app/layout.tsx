@@ -19,9 +19,7 @@ export const metadata: Metadata = {
   verification: {
     google: "dvHTOSJR4zdlxAgVgmxbghvshaT34Zee1oA0hg_3Qc0",
   },
-  alternates: {
-    canonical: "https://n8ndevelopers.com/",
-  },
+
 }
 
 export default function RootLayout({
@@ -57,7 +55,7 @@ export default function RootLayout({
         <meta name="City" content="USA" />
         <meta name="Language" content="english" />
 
-        <link rel="canonical" href="https://www.n8ndevelopers.com/" />
+
         <link rel="preconnect" href="https://www.n8ndevelopers.com/" />
 
         <meta
