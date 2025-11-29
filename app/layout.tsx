@@ -19,6 +19,9 @@ export const metadata: Metadata = {
   verification: {
     google: "dvHTOSJR4zdlxAgVgmxbghvshaT34Zee1oA0hg_3Qc0",
   },
+  alternates: {
+    canonical: "https://www.n8ndevelopers.com",
+  },
 
 }
 
