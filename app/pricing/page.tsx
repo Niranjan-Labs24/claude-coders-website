@@ -10,9 +10,9 @@ const PricingPage: FC = () => {
   const [currency, setCurrency] = useState("USD")
   const [symbol, setSymbol] = useState("$")
   const [loading, setLoading] = useState(true)
-  const [convertedPrices, setConvertedPrices] = useState([50, 30, 30])
+  const [convertedPrices, setConvertedPrices] = useState([50, 40, 30])
 
-  const originalPrices = [50, 30, 30]
+  const originalPrices = [50, 40, 30]
 
   useEffect(() => {
     // Step 1: Detect user region
