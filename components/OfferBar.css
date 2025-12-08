@@ -1,0 +1,98 @@
+.offer-bar {
+  position: relative;
+  width: 100%;
+  background: linear-gradient(135deg, #c41e3a 0%, #165b33 100%);
+  color: #ffffff;
+  padding: 12px 0;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.offer-bar-content {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.offer-bar-scroll {
+  display: flex;
+  white-space: nowrap;
+  animation: scroll-left 20s linear infinite;
+}
+
+.offer-bar-text {
+  display: inline-block;
+  padding: 0 50px;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.offer-bar-cta {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  background: #ffffff;
+  color: #c41e3a;
+  padding: 8px 20px;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  white-space: nowrap;
+  z-index: 10;
+}
+
+.offer-bar-cta:hover {
+  background: #f0f0f0;
+  transform: translateY(-50%) scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.offer-bar-cta:active {
+  transform: translateY(-50%) scale(0.98);
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-33.333%);
+  }
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .offer-bar {
+    padding: 10px 0;
+  }
+
+  .offer-bar-text {
+    font-size: 14px;
+    padding: 0 30px;
+  }
+
+  .offer-bar-cta {
+    right: 16px;
+    padding: 6px 16px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .offer-bar-text {
+    font-size: 13px;
+    padding: 0 20px;
+  }
+
+  .offer-bar-cta {
+    right: 12px;
+    padding: 5px 12px;
+    font-size: 11px;
+  }
+}
