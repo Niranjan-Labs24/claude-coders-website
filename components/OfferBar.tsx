@@ -8,13 +8,13 @@ export default function OfferBar() {
       <div className="offer-bar-content">
         <div className="offer-bar-scroll">
           <span className="offer-bar-text">
-            🎄 Christmas Sale Live! Flat 20% OFF – Limited Time Offer! 🎁
+            Year-end drop: 20% off on all services till Dec 31st 🎁
           </span>
           <span className="offer-bar-text">
-            🎄 Christmas Sale Live! Flat 20% OFF – Limited Time Offer! 🎁
+            Year-end drop: 20% off on all services till Dec 31st 🎁
           </span>
           <span className="offer-bar-text">
-            🎄 Christmas Sale Live! Flat 20% OFF – Limited Time Offer! 🎁
+            Year-end drop: 20% off on all services till Dec 31st 🎁
           </span>
         </div>
       </div>
