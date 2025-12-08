@@ -24,7 +24,7 @@ export default function OfferBar() {
         rel="noopener noreferrer"
         className="offer-bar-cta"
       >
-        Claim It Now
+        Grab now
       </a>
     </div>
   );
