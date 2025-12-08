@@ -8,13 +8,13 @@ export default function OfferBar() {
       <div className="offer-bar-content">
         <div className="offer-bar-scroll">
           <span className="offer-bar-text">
-            🎄 Christmas Sale Live! Flat 50% OFF – Limited Time Offer! 🎁
+            🎄 Christmas Sale Live! Flat 20% OFF – Limited Time Offer! 🎁
           </span>
           <span className="offer-bar-text">
-            🎄 Christmas Sale Live! Flat 50% OFF – Limited Time Offer! 🎁
+            🎄 Christmas Sale Live! Flat 20% OFF – Limited Time Offer! 🎁
           </span>
           <span className="offer-bar-text">
-            🎄 Christmas Sale Live! Flat 50% OFF – Limited Time Offer! 🎁
+            🎄 Christmas Sale Live! Flat 20% OFF – Limited Time Offer! 🎁
           </span>
         </div>
       </div>
@@ -24,7 +24,7 @@ export default function OfferBar() {
         rel="noopener noreferrer"
         className="offer-bar-cta"
       >
-        Claim It Now
+        Grab now
       </a>
     </div>
   );
