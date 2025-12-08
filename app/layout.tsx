@@ -8,6 +8,7 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import "@/app/globals.css"
 import ChatbaseScript from "@/components/chatbase"
+import OfferBar from "@/components/OfferBar"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -118,7 +119,8 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
-          <main className="lg:max-h-[calc(100vh-196px)] lg:overflow-auto max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <OfferBar />
+          <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 pb-24 xl:pb-32">
             {children}
           </main>
           <Footer />
