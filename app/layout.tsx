@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     google: "dvHTOSJR4zdlxAgVgmxbghvshaT34Zee1oA0hg_3Qc0",
   },
   alternates: {
-    canonical: "https://www.n8ndevelopers.com",
+    canonical: "https://www.n8ndevelopers.com/",
   },
 
 }
