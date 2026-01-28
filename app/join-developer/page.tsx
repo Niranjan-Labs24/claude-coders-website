@@ -1,6 +1,8 @@
 import type { FC } from "react"
 import { Check } from "lucide-react"
 import Image from "next/image"
+import FAQSection from "@/components/blog/FAQSection"
+import PromotionBanner from "@/components/blog/PromotionBanner"
 
 const JoinDeveloperPage: FC = () => {
   return (
@@ -77,6 +79,11 @@ const JoinDeveloperPage: FC = () => {
             className="h-auto"
           />
         </div>
+      </div>
+      
+      <div className="lg:col-span-12 mt-20">
+        <FAQSection />
+        <PromotionBanner />
       </div>
     </div>
   )
