@@ -1,5 +1,7 @@
 import type { FC } from "react"
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel"
+import FAQSection from "@/components/blog/FAQSection"
+import PromotionBanner from "@/components/blog/PromotionBanner"
 
 const AboutPage: FC = () => {
   return (
@@ -64,6 +66,11 @@ const AboutPage: FC = () => {
           <strong>Note:</strong> We are not part of n8n GmbH, the creators of the n8n workflow automation tool.
           n8nDevelopers.com is an independent network of expert developers who specialize in building with n8n.
         </p>
+      </div>
+
+      <div className="mt-16">
+        <FAQSection />
+        <PromotionBanner />
       </div>
     </>
   )

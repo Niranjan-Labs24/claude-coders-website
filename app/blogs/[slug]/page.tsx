@@ -6,6 +6,8 @@ import { formatDate } from 'date-fns';
 import parse from 'html-react-parser';
 import BlogCard from '@/components/blog/BlogCard';
 import FeaturedImage from '@/components/blog/FeaturedImage';
+import FAQSection from '@/components/blog/FAQSection';
+import PromotionBanner from '@/components/blog/PromotionBanner';
 import { draftMode } from 'next/headers';
 
 export const revalidate = 3600; // Revalidate every hour
@@ -101,6 +103,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       <div className="prose prose-lg max-w-none prose-headings:text-black prose-a:text-pink-500 prose-a:no-underline hover:prose-a:underline prose-img:rounded-xl prose-img:border-2 prose-img:border-black prose-img:shadow-[6px_6px_0px_0px_rgba(128,128,128,1)] prose-pre:bg-gray-100 prose-pre:border-2 prose-pre:border-black prose-pre:rounded-xl prose-pre:shadow-[4px_4px_0px_0px_rgba(128,128,128,1)] prose-code:bg-gray-100 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-sm">
         {parse(post.content.rendered)}
       </div>
+
+      <FAQSection customFAQs={post.acf?.faqs} />
+      
+      <PromotionBanner />
 
       {/* Related Posts - Hide in preview mode */}
       {!isEnabled && filteredRelatedPosts.length > 0 && (
