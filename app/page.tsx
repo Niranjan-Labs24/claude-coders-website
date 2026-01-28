@@ -4,6 +4,8 @@ import Cadlenly from "./components/cadlenly"
 import { CADLENLY_URL } from "./constants"
 import Link from "next/link"
 import EmailForm from "./components/email-form"
+import FAQSection from "@/components/blog/FAQSection"
+import PromotionBanner from "@/components/blog/PromotionBanner"
 
 const ComingSoonPage: FC = () => {
   return (
@@ -62,7 +64,7 @@ const ComingSoonPage: FC = () => {
           </div>
         </div>
 
-        {/* Feature Badges */}
+      {/* Featured Badges */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <div className="flex items-center gap-3 p-4 border rounded-lg border-black">
             <Search className="h-5 w-5 text-gray-600" />
@@ -82,6 +84,11 @@ const ComingSoonPage: FC = () => {
       </div>
       {/* Embedded Cal.com */}
       <Cadlenly />
+
+      <div className="xl:col-span-12 mt-12">
+        <FAQSection />
+        <PromotionBanner />
+      </div>
     </div>
   )
 }

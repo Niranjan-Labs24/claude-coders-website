@@ -4,6 +4,8 @@ import { FC, useEffect, useState } from "react"
 import { Check } from "lucide-react"
 import Benefit from "./components/benefit"
 import benefitItems from "./constants"
+import FAQSection from "@/components/blog/FAQSection"
+import PromotionBanner from "@/components/blog/PromotionBanner"
 
 const PricingPage: FC = () => {
   const [starter, plus, pro] = benefitItems
@@ -15,14 +17,10 @@ const PricingPage: FC = () => {
   const originalPrices = [50, 40, 30]
 
   useEffect(() => {
-    // Step 1: Detect user region
     fetch("https://ipapi.co/json/")
       .then((res) => res.json())
       .then(async (data) => {
-       let country = data.country // "IN", "US", "DE", etc.
-
-        // For testing: uncomment the line below and set to "DE" for EUR, "IN" for INR, etc.
-        //let country = "DE";
+        let country = data.country 
         let userCurrency = "USD"
         let userSymbol = "$"
 
@@ -40,22 +38,19 @@ const PricingPage: FC = () => {
         setCurrency(userCurrency)
         setSymbol(userSymbol)
 
-        // Step 2: Fetch exchange rate & convert
         if (userCurrency !== "USD") {
           const rateRes = await fetch(
             `https://api.exchangerate.host/live?access_key=afe686e60effa99aeec17bafaa86a824&base=USD&symbols=${userCurrency}`
           )
           const rateData = await rateRes.json()
           const rate = rateData.quotes[`USD${userCurrency}`]
-          //setConvertedPrices(originalPrices.map(p => p * rate))
           setConvertedPrices(originalPrices.map(p => Math.round(p * rate)))
         } else {
-          setConvertedPrices(originalPrices.map(p =>Math.round(p)));
+          setConvertedPrices(originalPrices.map(p => Math.round(p)));
         }
         setLoading(false)
       })
       .catch((err) => {
-        console.error("Error:", err)
         setConvertedPrices(originalPrices)
         setLoading(false)
       })
@@ -146,6 +141,11 @@ const PricingPage: FC = () => {
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="mt-20">
+        <FAQSection />
+        <PromotionBanner />
       </div>
     </>
   )
