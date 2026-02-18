@@ -1,11 +1,12 @@
 "use client";
 
 import { FC, useEffect, useState } from "react"
-import { Check } from "lucide-react"
+import Link from "next/link"
 import Benefit from "./components/benefit"
-import benefitItems from "./constants"
-import FAQSection from "@/components/blog/FAQSection"
+import { benefitItems } from "./constants"
+import PricingFAQ from "./components/PricingFAQ"
 import PromotionBanner from "@/components/blog/PromotionBanner"
+import { CADLENLY_URL } from "@/app/constants"
 
 const PricingPage: FC = () => {
   const [starter, plus, pro] = benefitItems
@@ -57,97 +58,124 @@ const PricingPage: FC = () => {
   }, [])
 
   return (
-    <>
-      {/* Page Title */}
-      <div className="text-center mb-8">
-        <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-black leading-tight">
-          Pricing <span className="font-normal">that works for every need</span>
+    <div className="flex flex-col pt-12">
+      {/* Page Header */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center mb-16 md:mb-24">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-black leading-tight mb-6">
+          <span className="text-[#FF7A59]">Pricing</span> that works for <br /> every need
         </h1>
       </div>
 
-      {/* Pricing Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 max-w-6xl mx-auto">
-        {/* Hourly Model */}
-        <div className="bg-white border-2 border-black rounded-3xl p-8 md:p-10 space-y-6 shadow-[6px_6px_0px_0px_rgba(128,128,128,1)]">
-          <div className="space-y-4">
-            <h2 className="text-xl md:text-2xl font-semibold text-black">Hourly Model</h2>
-            <div className="space-y-2">
-              {/* Price OVERFLOW HANDEL CODE HERE  */}
-              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-black break-words">
-                {loading
-                ? "Loading..."
-                : `${new Intl.NumberFormat("en-US", { style: "currency", currency, minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(convertedPrices[0])}/hour`}
+      {/* Pricing Cards Grid */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
+          {/* Hourly Model */}
+          <div className="bg-white border border-gray-100 rounded-[2.5rem] p-8 md:p-10 space-y-10 flex flex-col justify-between hover:shadow-xl transition-all duration-300">
+            <div className="space-y-8">
+              <div className="space-y-2">
+                <h3 className="text-xl font-bold text-black">Hourly model</h3>
+                <div className="flex items-baseline gap-1">
+                  <span className="text-5xl font-extrabold text-black">
+                    {loading ? "$50" : `${symbol}${convertedPrices[0]}`}
+                  </span>
+                  <span className="text-sm font-bold text-[#FF7A59] uppercase tracking-wider">/hour</span>
+                </div>
+                <p className="text-sm font-bold text-gray-500">billed in 10-hour blocks</p>
               </div>
-              <div className="text-lg text-pink-500 font-medium">billed in 10-hour blocks</div>
-            </div>
-          </div>
 
-          <div className="space-y-4">
-            <h3 className="text-lg md:text-xl font-semibold text-black">Ideal for</h3>
-            <div className="space-y-3">
-              {starter.labels.map((label) => (
-                <Benefit key={label} label={label} />
-              ))}
-            </div>
-          </div>
-        </div>
+              <Link 
+                href={CADLENLY_URL || "/book-call"}
+                target="_blank"
+                className="block w-full text-center py-4 bg-white border-2 border-black rounded-xl font-bold text-black hover:bg-gray-50 transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:scale-95"
+              >
+                Get started
+              </Link>
 
-        {/* Volume Package */}
-        <div className="bg-white border-2 border-black rounded-3xl p-8 md:p-10 space-y-6 shadow-[6px_6px_0px_0px_rgba(128,128,128,1)]">
-          <div className="space-y-4">
-            <h2 className="text-xl md:text-2xl font-semibold text-black">Volume Package</h2>
-            <div className="space-y-2">
-              {/* Price OVERFLOW HANDEL CODE HERE  */}
-              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-black break-words">
-                {loading
-                ? "Loading..."
-                : `${new Intl.NumberFormat("en-US", { style: "currency", currency, minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(convertedPrices[1])}/hour`}
+              <div className="space-y-5">
+                <h4 className="text-sm font-bold text-black uppercase tracking-wider">Ideal for</h4>
+                <div className="space-y-4">
+                  {starter.labels.map((label) => (
+                    <Benefit key={label} label={label} />
+                  ))}
+                </div>
               </div>
-              <div className="text-lg text-pink-500 font-medium">billed in 50-hour blocks</div>
             </div>
           </div>
 
-          <div className="space-y-4">
-            <h3 className="text-lg md:text-xl font-semibold text-black">Great for</h3>
-            <div className="space-y-3">
-              {plus.labels.map((label) => (
-                <Benefit key={label} label={label} />
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Monthly Retainer */}
-        <div className="bg-white border-2 border-black rounded-3xl p-8 md:p-10 space-y-6 md:col-span-2 lg:col-span-1 shadow-[6px_6px_0px_0px_rgba(128,128,128,1)]">
-          <div className="space-y-4">
-            <h2 className="text-xl md:text-2xl font-semibold text-black">Monthly Retainer</h2>
-            <div className="space-y-2">
-              {/* Price OVERFLOW HANDEL CODE HERE  */}
-              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-black break-words">
-                {loading
-                ? "Loading..."
-                : `${new Intl.NumberFormat("en-US", { style: "currency", currency, minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(convertedPrices[2])}/hour`}
+          {/* Volume Packaging */}
+          <div className="bg-[#FFF5F2] border border-[#FFE7E0] rounded-[2.5rem] p-8 md:p-10 space-y-10 flex flex-col justify-between shadow-sm transform lg:-translate-y-4 hover:shadow-xl transition-all duration-300">
+            <div className="space-y-8">
+              <div className="space-y-2">
+                <h3 className="text-xl font-bold text-black">Volume packaging</h3>
+                <div className="flex items-baseline gap-1">
+                  <span className="text-5xl font-extrabold text-black">
+                    {loading ? "$40" : `${symbol}${convertedPrices[1]}`}
+                  </span>
+                  <span className="text-sm font-bold text-[#FF7A59] uppercase tracking-wider">/hour</span>
+                </div>
+                <p className="text-sm font-bold text-gray-400">billed in 50-hour blocks</p>
               </div>
-              <div className="text-lg text-pink-500 font-medium">billed in 100-hour blocks</div>
+
+              <Link 
+                href={CADLENLY_URL || "/book-call"}
+                target="_blank"
+                className="block w-full text-center py-4 bg-[#FF7A59] border-2 border-black rounded-xl font-bold text-white hover:bg-[#ff6a42] transition-all shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] active:scale-95"
+              >
+                First choice
+              </Link>
+
+              <div className="space-y-5">
+                <h4 className="text-sm font-bold text-black uppercase tracking-wider">Best for</h4>
+                <div className="space-y-4">
+                  {plus.labels.map((label) => (
+                    <Benefit key={label} label={label} />
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
 
-          <div className="space-y-4">
-            <h3 className="text-lg md:text-xl font-semibold text-black">Perfect for</h3>
-            <div className="space-y-3">
-              {pro.labels.map((label) => (
-                <Benefit key={label} label={label} />
-              ))}
+          {/* Monthly Retainer */}
+          <div className="bg-white border border-gray-100 rounded-[2.5rem] p-8 md:p-10 space-y-10 flex flex-col justify-between hover:shadow-xl transition-all duration-300">
+            <div className="space-y-8">
+              <div className="space-y-2">
+                <h3 className="text-xl font-bold text-black">Monthly Retainer</h3>
+                <div className="flex items-baseline gap-1">
+                  <span className="text-5xl font-extrabold text-black">
+                    {loading ? "$30" : `${symbol}${convertedPrices[2]}`}
+                  </span>
+                  <span className="text-sm font-bold text-[#FF7A59] uppercase tracking-wider">/hour</span>
+                </div>
+                <p className="text-sm font-bold text-gray-500">billed in 100-hour blocks</p>
+              </div>
+
+              <Link 
+                href={CADLENLY_URL || "/book-call"}
+                target="_blank"
+                className="block w-full text-center py-4 bg-white border-2 border-black rounded-xl font-bold text-black hover:bg-gray-50 transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:scale-95"
+              >
+                Get started
+              </Link>
+
+              <div className="space-y-5">
+                <h4 className="text-sm font-bold text-black uppercase tracking-wider">Ideal for</h4>
+                <div className="space-y-4">
+                  {pro.labels.map((label) => (
+                    <Benefit key={label} label={label} />
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="mt-20">
-        <FAQSection />
-        <PromotionBanner />
-      </div>
-    </>
+      {/* FAQ Section */}
+      <PricingFAQ />
+
+      {/* Promotion Banner */}
+      <PromotionBanner />
+    </div>
   )
 }
 
