@@ -85,10 +85,10 @@ const ComingSoonPage: FC = () => {
       {/* Embedded Cal.com */}
       <Cadlenly />
 
-      {/* <div className="xl:col-span-12 mt-12">
+      <div className="xl:col-span-12 mt-12">
         <FAQSection />
         <PromotionBanner />
-      </div> */}
+      </div>
     </div>
   )
 }
