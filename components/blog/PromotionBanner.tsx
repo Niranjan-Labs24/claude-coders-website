@@ -1,39 +1,48 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { CADLENLY_URL } from '@/app/constants';
+import { Activity } from 'lucide-react';
 
 export default function PromotionBanner() {
   return (
-    <div className="my-12 p-5 sm:p-8 bg-white border-[3px] border-black rounded-[2.5rem] flex flex-col md:flex-row items-center gap-6 overflow-hidden max-w-4xl mx-auto shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-      <div className="flex-1 space-y-4 px-2">
-        <h3 className="text-xl sm:text-2xl font-bold text-black leading-tight">
-          You know what's the smartest move?
-        </h3>
-        <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
-          Hire n8n experts at <span className="underline font-semibold text-black">n8ndevelopers</span> to build, 
-          manage and scale your automation pipeline.
-        </p>
-        <div className="flex flex-wrap items-center gap-6 pt-2">
-          <span className="text-base sm:text-lg font-bold text-black whitespace-nowrap">
-            starts at $30 per hour
-          </span>
-          <Link 
-            href={CADLENLY_URL || "#"}
-            target="_blank"
-            className="bg-black text-white px-6 py-2 rounded-full text-sm font-bold hover:bg-gray-800 transition-all border-2 border-black active:scale-95"
-          >
-            Discovery Call →
-          </Link>
+    <section className="bg-[#FFF5F2] w-full border-t border-[#FFE7E0] py-8 md:py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col md:flex-row items-center gap-12 lg:gap-24">
+          {/* Left Content */}
+          <div className="flex-1 space-y-8 text-center md:text-left">
+            <h3 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-black leading-tight">
+              You know what's the <br />
+              <span className="text-[#FF7A59]">smartest move?</span>
+            </h3>
+            <p className="text-lg text-gray-600 max-w-lg">
+              Hire n8n experts at n8ndevelopers to build, manage and scale your automation pipeline.
+            </p>
+            
+            <div className="space-y-4">
+              <Link 
+                href={CADLENLY_URL || "/book-call"}
+                target="_blank"
+                className="inline-block bg-[#FF7A59] hover:bg-[#ff6a42] text-white font-bold py-4 px-10 rounded-xl transition-all shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] border-2 border-black text-lg"
+              >
+                Book free automation call
+              </Link>
+              <p className="text-sm text-gray-500 flex items-center justify-center md:justify-start gap-2">
+                <Activity className="h-4 w-4" /> 15-min discovery call
+              </p>
+            </div>
+          </div>
+
+          {/* Right Image */}
+          <div className="flex-1 relative w-full h-[300px] md:h-[400px]">
+            <Image
+              src="/team-photo.webp"
+              alt="n8n Developers Team"
+              fill
+              className="object-contain"
+            />
+          </div>
         </div>
       </div>
-      <div className="relative w-full md:w-[220px] aspect-[4/3] md:aspect-square flex-shrink-0">
-        <Image
-          src="/team-photo.png"
-          alt="n8n Developers Team"
-          fill
-          className="object-cover rounded-3xl"
-        />
-      </div>
-    </div>
+    </section>
   );
 }

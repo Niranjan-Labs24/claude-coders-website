@@ -1,99 +1,95 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { wordpressService } from '@/lib/wordpress';
 import { formatDate } from 'date-fns';
-import parse from 'html-react-parser';
 import PromotionBanner from '@/components/blog/PromotionBanner';
-import { draftMode } from 'next/headers';
 import { ArrowLeft, ArrowRight, Instagram, Linkedin, Twitter, Facebook } from 'lucide-react';
 import Image from 'next/image';
+import { FC } from 'react';
 
-export const revalidate = 3600;
+export const metadata: Metadata = {
+  title: 'Case Study Detail | n8n developers',
+  description: 'Deep dive into our n8n automation and MVP solutions.',
+};
 
-interface BlogPostPageProps {
+const mockKeywords = ["Automation", "Workflow", "Tasks", "Performance", "Evolution"];
+
+interface CaseStudyDetailPageProps {
   params: Promise<{
     slug: string;
   }>;
 }
 
-export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
+const CaseStudyDetailPage: FC<CaseStudyDetailPageProps> = async ({ params }) => {
   const resolvedParams = await params;
-  const post = await wordpressService.getPostBySlug(resolvedParams.slug);
-  if (!post) return { title: 'Post Not Found' };
-
-  return {
-    title: `${post.title.rendered} | n8n developers`,
-    description: post.excerpt.rendered.replace(/<[^>]*>/g, '').substring(0, 160),
-  };
-}
-
-const mockKeywords = ["Automation", "Workflow", "Tasks", "Performance", "Evolution"];
-
-export default async function BlogPostPage({ params }: BlogPostPageProps) {
-  const resolvedParams = await params;
-  const { isEnabled } = await draftMode();
   
-  const post = await wordpressService.getPostBySlug(
-    resolvedParams.slug, 
-    isEnabled ? 'any' : 'publish'
-  );
-
-  if (!post) notFound();
-
-  const featuredImage = post._embedded?.['wp:featuredmedia']?.[0];
-  const author = post._embedded?.author?.[0];
+  // Mock data for the specific case study
+  const caseStudy = {
+    title: "n8n 2.0 marks a major evolution in workflow automation, bringing performance, scalability",
+    client: "CloudZero",
+    duration: "04 months",
+    date: new Date("2023-12-12"),
+    content: `
+      <p>"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. It was popularised"</p>
+      
+      <h3>Section Title here</h3>
+      <p>"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged"</p>
+      
+      <h3>Section Title here</h3>
+      <p>It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. It was popularised"</p>
+      
+      <h3>Section Title here</h3>
+      <p>"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged"</p>
+    `,
+    image: "/placeholder.svg"
+  };
 
   return (
     <div className="flex flex-col min-h-screen">
       <article className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
         {/* Breadcrumb / Back Link */}
         <Link 
-          href="/blogs" 
+          href="/casestudies" 
           className="inline-flex items-center gap-2 text-sm font-bold text-black mb-8 hover:gap-3 transition-all"
         >
           <div className="bg-black rounded-full p-1">
             <ArrowLeft className="h-3 w-3 text-white" />
           </div>
-          Back to all blog posts
+          Back to all case studies
         </Link>
 
         {/* Hero Section: Title and Image */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16 items-start">
           <div className="space-y-8">
             <h1 className="text-4xl sm:text-5xl font-extrabold text-black leading-tight">
-              {post.title.rendered}
+              {caseStudy.title}
             </h1>
 
             {/* Meta Labels */}
             <div className="flex flex-wrap items-center gap-x-12 gap-y-4 pt-4 border-t border-gray-100">
               <div className="space-y-1">
                 <span className="text-[#FF7A59] text-sm font-bold uppercase tracking-wider">Client</span>
-                <p className="text-black font-extrabold text-lg">CloudZero</p>
+                <p className="text-black font-extrabold text-lg">{caseStudy.client}</p>
               </div>
               <div className="space-y-1">
                 <span className="text-[#FF7A59] text-sm font-bold uppercase tracking-wider">Duration</span>
-                <p className="text-black font-extrabold text-lg">04 months</p>
+                <p className="text-black font-extrabold text-lg">{caseStudy.duration}</p>
               </div>
               <div className="space-y-1">
                 <span className="text-[#FF7A59] text-sm font-bold uppercase tracking-wider">Time</span>
-                <p className="text-black font-extrabold text-lg">{formatDate(new Date(post.date), "do MMM,, yyyy")}</p>
+                <p className="text-black font-extrabold text-lg">{formatDate(caseStudy.date, "do MMM, yyyy")}</p>
               </div>
             </div>
           </div>
 
-          <div className="relative aspect-video rounded-[2.5rem] overflow-hidden bg-gray-100 border-none shadow-none">
-            {featuredImage?.source_url ? (
-              <Image
-                src={featuredImage.source_url}
-                alt={post.title.rendered}
-                fill
-                className="object-cover"
-                priority
-              />
-            ) : (
-              <div className="w-full h-full flex items-center justify-center text-gray-400">No Image</div>
-            )}
+          <div className="relative aspect-video rounded-[2.5rem] overflow-hidden bg-gray-100 shadow-none border-none">
+            <Image
+              src={caseStudy.image}
+              alt={caseStudy.title}
+              fill
+              className="object-cover"
+              priority
+            />
           </div>
         </div>
 
@@ -106,12 +102,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               prose-p:text-gray-600 prose-p:leading-relaxed
               prose-strong:text-black prose-strong:font-bold
               prose-a:text-[#FF7A59] prose-a:font-bold prose-a:no-underline hover:prose-a:underline
-              prose-img:rounded-[2rem] prose-img:border-none prose-img:shadow-none
-            ">
-              {parse(post.content.rendered)}
-            </div>
+              prose-img:rounded-[2rem] prose-img:border-none
+            "
+              dangerouslySetInnerHTML={{ __html: caseStudy.content }}
+            />
 
-            {/* Article Navigation */}
+            {/* Navigation */}
             <div className="flex items-center justify-between py-12 border-t border-gray-100 mt-16">
               <Link href="#" className="inline-flex items-center gap-3 text-base font-bold text-gray-400 hover:text-black transition-colors">
                 <ArrowLeft className="h-5 w-5" />
@@ -158,4 +154,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       <PromotionBanner />
     </div>
   );
-}
+};
+
+export default CaseStudyDetailPage;
