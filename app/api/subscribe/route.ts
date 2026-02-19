@@ -3,12 +3,12 @@ import { Resend } from 'resend';
 import { validateField } from './service';
 import { welcomeEmailTemplate } from '@/components/welcome-email';
 
-const RESEND_API_KEY = process.env.RESEND_API_KEY
-const RESEND_AUDIENCE_ID = process.env.RESEND_AUDIENCE_ID || ''
-
-const resend = new Resend(RESEND_API_KEY);
-
 export async function POST(req: NextRequest) {
+  const RESEND_API_KEY = process.env.RESEND_API_KEY;
+  const RESEND_AUDIENCE_ID = process.env.RESEND_AUDIENCE_ID || '';
+
+  const resend = new Resend(RESEND_API_KEY);
+
   const { email } = await req.json();
   const hasEmail = validateField(email, "Email");
   const hasAudienceId = validateField(RESEND_AUDIENCE_ID, "Audience Id");
