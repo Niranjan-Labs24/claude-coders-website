@@ -46,7 +46,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <article className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
+      <article className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8 w-full">
         {/* Breadcrumb / Back Link */}
         <Link 
           href="/blogs" 
@@ -59,7 +59,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </Link>
 
         {/* Hero Section: Title and Image */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-8 md:mb-10 items-start">
           <div className="space-y-8">
             <h1 className="text-4xl sm:text-5xl font-extrabold text-black leading-tight">
               {post.title.rendered}

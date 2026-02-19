@@ -70,8 +70,8 @@ export default function PricingFAQ() {
   const rightColumn = pricingFAQs.slice(2);
 
   return (
-    <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 className="text-4xl md:text-5xl font-extrabold text-black text-center mb-16">
+    <section className="py-10 md:py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 className="text-4xl md:text-5xl font-extrabold text-black text-center mb-8 md:mb-10">
         Frequently asked questions
       </h2>
 
