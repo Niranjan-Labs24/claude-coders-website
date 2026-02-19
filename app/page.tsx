@@ -14,7 +14,7 @@ const LandingPage: FC = () => {
           {/* Left Content */}
           <div className="space-y-8 md:space-y-12">
             <div className="space-y-4 md:space-y-6">
-              <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight text-black leading-tight">
+              <h1 className="text-4xl md:text-5xl lg:text-[56px] font-semibold tracking-[-0.03em] text-black leading-tight lg:leading-[63px]">
                 Stop <span className="text-[#FF7A59]">wrestling workflows.</span><br />
                 Let a dedicated n8n team handle it.
               </h1>
@@ -90,8 +90,8 @@ const LandingPage: FC = () => {
       </section>
 
       {/* Feature Grid */}
-      <section className="bg-[#FFF5F2] w-full border-y border-[#FFE7E0] py-8 md:py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="bg-[#FFF5F2] w-full border-t border-[#FFE7E0] py-8 md:py-16 min-h-[257px]">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10 md:gap-8">
             {[
               {

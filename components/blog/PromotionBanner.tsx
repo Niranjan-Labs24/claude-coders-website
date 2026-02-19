@@ -5,11 +5,11 @@ import { Activity } from 'lucide-react';
 
 export default function PromotionBanner() {
   return (
-    <section className="bg-[#FFF5F2] w-full border-t border-[#FFE7E0] py-8 md:py-12">
+    <section className="bg-[#FFF5F2] w-full border-t border-[#FFE7E0] py-4 md:py-6">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row items-center gap-12 lg:gap-24">
           {/* Left Content */}
-          <div className="flex-1 space-y-8 text-center md:text-left">
+          <div className="flex-1 space-y-4 text-center md:text-left">
             <h3 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-black leading-tight">
               You know what's the <br />
               <span className="text-[#FF7A59]">smartest move?</span>
@@ -33,7 +33,7 @@ export default function PromotionBanner() {
           </div>
 
           {/* Right Image */}
-          <div className="flex-1 relative w-full h-[300px] md:h-[400px]">
+          <div className="flex-1 relative w-full h-[200px] md:h-[280px]">
             <Image
               src="/team-photo.webp"
               alt="n8n Developers Team"
