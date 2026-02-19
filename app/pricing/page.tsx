@@ -58,9 +58,9 @@ const PricingPage: FC = () => {
   }, [])
 
   return (
-    <div className="flex flex-col pt-12">
+    <div className="flex flex-col pt-4 md:pt-6">
       {/* Page Header */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center mb-16 md:mb-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center mb-8 md:mb-12">
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-black leading-tight mb-6">
           <span className="text-[#FF7A59]">Pricing</span> that works for <br /> every need
         </h1>
@@ -68,7 +68,7 @@ const PricingPage: FC = () => {
 
       {/* Pricing Cards Grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {/* Hourly Model */}
           <div className="bg-white border border-gray-100 rounded-[2.5rem] p-8 md:p-10 space-y-10 flex flex-col justify-between hover:shadow-xl transition-all duration-300">
             <div className="space-y-8">
