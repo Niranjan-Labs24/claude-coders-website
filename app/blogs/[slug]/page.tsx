@@ -71,10 +71,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 <span className="text-[#FF7A59] text-sm font-bold uppercase tracking-wider">Client</span>
                 <p className="text-black font-extrabold text-lg">CloudZero</p>
               </div>
-              <div className="space-y-1">
+              {/* <div className="space-y-1">
                 <span className="text-[#FF7A59] text-sm font-bold uppercase tracking-wider">Duration</span>
                 <p className="text-black font-extrabold text-lg">04 months</p>
-              </div>
+              </div> */}
               <div className="space-y-1">
                 <span className="text-[#FF7A59] text-sm font-bold uppercase tracking-wider">Time</span>
                 <p className="text-black font-extrabold text-lg">{formatDate(new Date(post.date), "do MMM,, yyyy")}</p>
