@@ -66,8 +66,8 @@ export default function PricingFAQ() {
     setOpenIndex(prev => (prev === index ? null : index));
   };
 
-  const leftColumn = pricingFAQs.slice(0, 4);
-  const rightColumn = pricingFAQs.slice(4);
+  const leftColumn = pricingFAQs.slice(0, 2);
+  const rightColumn = pricingFAQs.slice(2);
 
   return (
     <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -92,7 +92,7 @@ export default function PricingFAQ() {
         {/* Right Column */}
         <div>
           {rightColumn.map((faq, index) => {
-            const actualIndex = index + 4;
+            const actualIndex = index + 2;
             return (
               <FAQItem
                 key={actualIndex}

@@ -19,6 +19,9 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["Gilroy", "sans-serif"],
+      },
       screens: {
         xs: "375px",
         sm: "640px",

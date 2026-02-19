@@ -1,5 +1,4 @@
 import type React from "react"
-import { Inter } from "next/font/google"
 import type { Metadata } from "next"
 import { GoogleAnalytics } from "@next/third-parties/google"
 import Script from "next/script"
@@ -11,8 +10,6 @@ import ChatbaseScript from "@/components/chatbase"
 import OfferBar from "@/components/OfferBar"
 import NavigationProgress from "@/components/NavigationProgress"
 import { Suspense } from "react"
-
-const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "n8n Developers | Custom Workflow & Automation Solutions",
@@ -41,7 +38,7 @@ export default function RootLayout({
       <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS || ""} />
 
       <head>
-       
+        <link href="https://fonts.cdnfonts.com/css/gilroy-bold" rel="stylesheet" />
         <title>n8n Developers | Custom Workflow & Automation Solutions</title>
         <meta
           name="title"
@@ -117,7 +114,7 @@ export default function RootLayout({
         />
       </head>
 
-      <body className={inter.className}>
+      <body style={{ fontFamily: 'Gilroy, sans-serif' }}>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"

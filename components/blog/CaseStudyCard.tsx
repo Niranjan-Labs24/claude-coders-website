@@ -46,10 +46,10 @@ export default function CaseStudyCard({
             <span className="text-[#FF7A59]">Client:</span>
             <span className="text-black">{client}</span>
           </div>
-          <div className="flex items-center gap-2">
+          {/* <div className="flex items-center gap-2">
             <span className="text-[#FF7A59]">Duration:</span>
             <span className="text-black">{duration}</span>
-          </div>
+          </div> */}
           <div className="flex items-center gap-2">
             <span className="text-[#FF7A59]">Task:</span>
             <span className="text-black">{task}</span>
