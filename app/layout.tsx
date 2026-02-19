@@ -9,6 +9,8 @@ import { Footer } from "@/components/footer"
 import "@/app/globals.css"
 import ChatbaseScript from "@/components/chatbase"
 import OfferBar from "@/components/OfferBar"
+import NavigationProgress from "@/components/NavigationProgress"
+import { Suspense } from "react"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -23,7 +25,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.n8ndevelopers.com/",
   },
-
+  icons: {
+    icon: "/logo.webp",
+    shortcut: "/logo.webp",
+    apple: "/logo.webp",
+  },
 }
 
 export default function RootLayout({
@@ -118,9 +124,12 @@ export default function RootLayout({
           enableSystem={false}
           disableTransitionOnChange
         >
+          <Suspense fallback={null}>
+            <NavigationProgress />
+          </Suspense>
           <Header />
           {/* <OfferBar /> */}
-          <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 pb-24 xl:pb-32">
+          <main className="px-0 py-0">
             {children}
           </main>
           <Footer />

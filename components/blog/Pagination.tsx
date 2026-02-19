@@ -10,31 +10,26 @@ interface PaginationProps {
 export default function Pagination({ currentPage, totalPages, baseUrl }: PaginationProps) {
   const getPageNumbers = () => {
     const pages: (number | string)[] = [];
-    const showPages = 5; // Number of page buttons to show
+    const showPages = 5;
     
     if (totalPages <= showPages) {
-      // Show all pages if total pages is less than showPages
       for (let i = 1; i <= totalPages; i++) {
         pages.push(i);
       }
     } else {
-      // Complex pagination logic
       if (currentPage <= 3) {
-        // Show first few pages
         for (let i = 1; i <= 4; i++) {
           pages.push(i);
         }
         pages.push('...');
         pages.push(totalPages);
       } else if (currentPage >= totalPages - 2) {
-        // Show last few pages
         pages.push(1);
         pages.push('...');
         for (let i = totalPages - 3; i <= totalPages; i++) {
           pages.push(i);
         }
       } else {
-        // Show pages around current page
         pages.push(1);
         pages.push('...');
         for (let i = currentPage - 1; i <= currentPage + 1; i++) {
@@ -51,26 +46,30 @@ export default function Pagination({ currentPage, totalPages, baseUrl }: Paginat
   const pageNumbers = getPageNumbers();
 
   return (
-    <nav className="flex justify-center items-center space-x-2">
+    <nav className="flex justify-center items-center gap-4 py-8">
       {/* Previous Button */}
-      {currentPage > 1 && (
+      {currentPage > 1 ? (
         <Link
           href={currentPage === 2 ? baseUrl : `${baseUrl}?page=${currentPage - 1}`}
-          className="flex items-center px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 hover:text-gray-700 transition-colors"
+          className="p-2 text-gray-400 hover:text-black transition-colors"
+          aria-label="Previous page"
         >
-          <ChevronLeft className="w-4 h-4 mr-1" />
-          Previous
+          <ChevronLeft className="w-6 h-6" />
         </Link>
+      ) : (
+        <div className="p-2 text-gray-200 cursor-not-allowed">
+          <ChevronLeft className="w-6 h-6" />
+        </div>
       )}
 
       {/* Page Numbers */}
-      <div className="flex items-center space-x-1">
+      <div className="flex items-center gap-2">
         {pageNumbers.map((page, index) => {
           if (page === '...') {
             return (
               <span
                 key={`ellipsis-${index}`}
-                className="px-3 py-2 text-sm font-medium text-gray-500"
+                className="px-2 text-sm font-semibold text-gray-300"
               >
                 ...
               </span>
@@ -84,10 +83,10 @@ export default function Pagination({ currentPage, totalPages, baseUrl }: Paginat
             <Link
               key={pageNumber}
               href={pageNumber === 1 ? baseUrl : `${baseUrl}?page=${pageNumber}`}
-              className={`px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
+              className={`min-w-[40px] h-[40px] flex items-center justify-center text-sm font-bold rounded-lg transition-all ${
                 isCurrentPage
-                  ? 'bg-black text-white'
-                  : 'text-gray-700 bg-white border border-gray-300 hover:bg-gray-50 hover:text-black'
+                  ? 'text-[#FF7A59] bg-transparent'
+                  : 'text-gray-400 hover:text-black hover:bg-gray-50'
               }`}
             >
               {pageNumber}
@@ -97,14 +96,18 @@ export default function Pagination({ currentPage, totalPages, baseUrl }: Paginat
       </div>
 
       {/* Next Button */}
-      {currentPage < totalPages && (
+      {currentPage < totalPages ? (
         <Link
           href={`${baseUrl}?page=${currentPage + 1}`}
-          className="flex items-center px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 hover:text-gray-700 transition-colors"
+          className="p-2 text-gray-400 hover:text-black transition-colors"
+          aria-label="Next page"
         >
-          Next
-          <ChevronRight className="w-4 h-4 ml-1" />
+          <ChevronRight className="w-6 h-6" />
         </Link>
+      ) : (
+        <div className="p-2 text-gray-200 cursor-not-allowed">
+          <ChevronRight className="w-6 h-6" />
+        </div>
       )}
     </nav>
   );
