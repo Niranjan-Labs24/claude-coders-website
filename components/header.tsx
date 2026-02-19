@@ -12,6 +12,7 @@ import {
   SheetContent,
   SheetClose,
 } from "@/components/ui/sheet"
+import { CADLENLY_URL } from "@/app/constants"
 
 const logo = "/logo.webp"
 
@@ -88,7 +89,7 @@ export const Header: FC = () => {
             asChild
             className="bg-[#FF7A59] hover:bg-[#ff6a42] text-white font-bold py-6 px-8 rounded-xl transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] border-2 border-black text-lg"
           >
-            <Link href="/book-call">Book free automation call</Link>
+            <Link href={CADLENLY_URL} target="_blank">Book free automation call</Link>
           </Button>
         </div>
       </div>

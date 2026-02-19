@@ -3,6 +3,7 @@ import { Check, Activity, Star } from "lucide-react"
 import Cadlenly from "./components/cadlenly"
 import Image from "next/image"
 import Link from "next/link"
+import { CADLENLY_URL } from "./constants"
 
 const LandingPage: FC = () => {
   return (
@@ -43,9 +44,13 @@ const LandingPage: FC = () => {
             {/* CTA and Trust Bar */}
             <div className="flex flex-col sm:flex-row items-center gap-8 pt-4">
               <div className="space-y-2 text-center sm:text-left">
-                <button className="bg-[#FF7A59] hover:bg-[#ff6a42] text-white font-bold py-4 px-10 rounded-xl transition-all shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] border-2 border-black text-lg">
+                <Link 
+                  href={CADLENLY_URL}
+                  target="_blank"
+                  className="inline-block bg-[#FF7A59] hover:bg-[#ff6a42] text-white font-bold py-4 px-10 rounded-xl transition-all shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] border-2 border-black text-lg"
+                >
                   Book free automation call
-                </button>
+                </Link>
                 <p className="text-sm text-gray-500 flex items-center justify-center sm:justify-start gap-2">
                   <Activity className="h-4 w-4" /> 15-min discovery call
                 </p>
