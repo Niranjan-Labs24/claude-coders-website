@@ -20,7 +20,7 @@ export default function PromotionBanner() {
             
             <div className="space-y-4">
               <Link 
-                href={CADLENLY_URL || "/book-call"}
+                href={CADLENLY_URL}
                 target="_blank"
                 className="inline-block bg-[#FF7A59] hover:bg-[#ff6a42] text-white font-bold py-4 px-10 rounded-xl transition-all shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] border-2 border-black text-lg"
               >

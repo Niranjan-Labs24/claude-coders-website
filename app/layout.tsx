@@ -25,7 +25,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.n8ndevelopers.com/",
   },
-
+  icons: {
+    icon: "/logo.webp",
+    shortcut: "/logo.webp",
+    apple: "/logo.webp",
+  },
 }
 
 export default function RootLayout({

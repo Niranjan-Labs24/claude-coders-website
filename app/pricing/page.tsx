@@ -84,7 +84,7 @@ const PricingPage: FC = () => {
               </div>
 
               <Link 
-                href={CADLENLY_URL || "/book-call"}
+                href={CADLENLY_URL}
                 target="_blank"
                 className="block w-full text-center py-4 bg-white border-2 border-black rounded-xl font-bold text-black hover:bg-gray-50 transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:scale-95"
               >
@@ -117,7 +117,7 @@ const PricingPage: FC = () => {
               </div>
 
               <Link 
-                href={CADLENLY_URL || "/book-call"}
+                href={CADLENLY_URL}
                 target="_blank"
                 className="block w-full text-center py-4 bg-[#FF7A59] border-2 border-black rounded-xl font-bold text-white hover:bg-[#ff6a42] transition-all shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] active:scale-95"
               >
@@ -150,7 +150,7 @@ const PricingPage: FC = () => {
               </div>
 
               <Link 
-                href={CADLENLY_URL || "/book-call"}
+                href={CADLENLY_URL}
                 target="_blank"
                 className="block w-full text-center py-4 bg-white border-2 border-black rounded-xl font-bold text-black hover:bg-gray-50 transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:scale-95"
               >
