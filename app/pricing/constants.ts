@@ -46,36 +46,20 @@ export interface FAQItem {
 
 export const pricingFAQs: FAQItem[] = [
   {
-    question: "How fast is deployment ready?",
-    answer: "Most deployments are ready within 24-48 hours after the initial discovery call and requirements gathering."
+    question: "Is N8N more flexible than Zapier and Make?",
+    answer: "Yes, N8N allows full code-level control, custom logic, and self-hosting options, making it significantly more flexible for complex workflows."
   },
   {
-    question: "What about Team Monthly?",
-    answer: "Our team monthly package provides dedicated support for larger operations requiring constant monitoring and scaling."
+    question: "Do N8N developers help reduce automation costs?",
+    answer: "Yes, using N8N can cut recurring subscription fees because it's open-source or self-hosted, and our developers optimize workflows to minimize resource usage."
   },
   {
-    question: "How fast is deployment ready?",
-    answer: "Most deployments are ready within 24-48 hours after the initial discovery call and requirements gathering."
+    question: "Can N8N handle complex enterprise workflows better?",
+    answer: "Absolutely. N8N supports advanced integrations, direct database connections, and large-scale automations that traditional no-code tools often struggle with."
   },
   {
-    question: "What about development quality?",
-    answer: "We follow strict n8n best practices, ensuring all workflows are optimized, secure, and fully documented."
-  },
-  {
-    question: "How fast is deployment ready?",
-    answer: "Most deployments are ready within 24-48 hours after the initial discovery call and requirements gathering."
-  },
-  {
-    question: "What about team monthly?",
-    answer: "Teams-based we normally deploy next level of developing and processing velocity keeps in your fast paced and latest development trends and your priority our priority we always push on priorities list and you can easily with us."
-  },
-  {
-    question: "Can we handle custom API?",
-    answer: "Yes, our experts specialize in complex API integrations and custom node development for unique use cases."
-  },
-  {
-    question: "Do you supply sub-agent?",
-    answer: "Yes, we can provide sub-agents for specialized tasks within your automation pipeline."
+    question: "Is hiring an N8N developer good for long-term automation growth?",
+    answer: "Yes, N8N developers build workflows that are easy to expand, maintain, and adapt as your business grows, ensuring your automation stack remains robust."
   }
 ];
 
