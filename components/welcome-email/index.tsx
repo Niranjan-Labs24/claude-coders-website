@@ -14,9 +14,9 @@ export const welcomeEmailTemplate = () => {
     <meta content="light dark" name="supported-color-schemes" />
 </head>
 
-<body style="font-family:-apple-system, BlinkMacSystemFont, &#x27;Segoe UI&#x27;, &#x27;Roboto&#x27;, &#x27;Oxygen&#x27;, &#x27;Ubuntu&#x27;, &#x27;Cantarell&#x27;, &#x27;Fira Sans&#x27;, &#x27;Droid Sans&#x27;, &#x27;Helvetica Neue&#x27;, sans-serif;font-size:1.0769230769230769em;min-height:100%;line-height:155%">
+<body style="font-family: Gilroy;font-size:1.0769230769230769em;min-height:100%;line-height:155%">
     <!--$-->
-    <table align="left" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="align:left;padding-left:0px;padding-right:0px;h-padding:0px;width:auto;max-width:600px;font-family:-apple-system, BlinkMacSystemFont, &#x27;Segoe UI&#x27;, &#x27;Roboto&#x27;, &#x27;Oxygen&#x27;, &#x27;Ubuntu&#x27;, &#x27;Cantarell&#x27;, &#x27;Fira Sans&#x27;, &#x27;Droid Sans&#x27;, &#x27;Helvetica Neue&#x27;, sans-serif">
+    <table align="left" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="align:left;padding-left:0px;padding-right:0px;h-padding:0px;width:auto;max-width:600px;font-family: Gilroy">
         <tbody>
             <tr>
                 <td>
