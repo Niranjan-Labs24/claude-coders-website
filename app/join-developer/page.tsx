@@ -61,7 +61,7 @@ const JoinDeveloperPage: FC = () => {
       <div className="lg:col-span-6 flex flex-col items-center justify-center space-y-8">
         <div className="relative w-full max-w-lg">
           <Image
-            src="/team-photo.png"
+            src="/team-photo.webp"
             alt="n8n Developers Team - Diverse group of developers from around the world"
             width={600}
             height={400}

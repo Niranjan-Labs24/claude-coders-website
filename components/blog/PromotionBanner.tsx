@@ -33,12 +33,14 @@ export default function PromotionBanner() {
           </div>
 
           {/* Right Image */}
-          <div className="flex-1 relative w-full h-[200px] md:h-[280px]">
+          <div className="w-full aspect-video md:aspect-none md:h-[280px] md:flex-1 relative mb-8 md:mb-0">
             <Image
               src="/team-photo.webp"
               alt="n8n Developers Team"
               fill
               className="object-contain"
+              priority
+              unoptimized
             />
           </div>
         </div>
