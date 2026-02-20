@@ -78,9 +78,9 @@ const PricingPage: FC = () => {
                   <span className="text-5xl font-extrabold text-black">
                     {loading ? "$50" : `${symbol}${convertedPrices[0]}`}
                   </span>
-                  <span className="text-sm font-bold text-[#FF7A59] uppercase tracking-wider">/hour</span>
+                  <span className="text-sm font-bold text-[#FF7A59] lowercase tracking-wider">per hour</span>
                 </div>
-                <p className="text-sm font-bold text-gray-500">billed in 10-hour blocks</p>
+                <p className="text-lg font-bold text-gray-500">Billed in 10-hour blocks</p>
               </div>
 
               <Link 
@@ -102,18 +102,18 @@ const PricingPage: FC = () => {
             </div>
           </div>
 
-          {/* Volume Packaging */}
-          <div className="bg-[#FFF5F2] border border-[#FFE7E0] rounded-[2.5rem] p-8 md:p-10 space-y-10 flex flex-col justify-between shadow-sm transform lg:-translate-y-4 hover:shadow-xl transition-all duration-300">
-            <div className="space-y-8">
+          {/* Volume package */}
+          <div className="bg-white border border-gray-100 rounded-[2.5rem] flex flex-col justify-between shadow-sm hover:shadow-xl transition-all duration-300 relative overflow-hidden">
+            <div className="bg-[#FFFAF8] p-8 md:p-10 space-y-8">
               <div className="space-y-2">
-                <h3 className="text-xl font-bold text-black">Volume packaging</h3>
+                <h3 className="text-xl font-bold text-black">Volume package</h3>
                 <div className="flex items-baseline gap-1">
                   <span className="text-5xl font-extrabold text-black">
                     {loading ? "$40" : `${symbol}${convertedPrices[1]}`}
                   </span>
-                  <span className="text-sm font-bold text-[#FF7A59] uppercase tracking-wider">/hour</span>
+                  <span className="text-sm font-bold text-[#FF7A59] lowercase tracking-wider">per hour</span>
                 </div>
-                <p className="text-sm font-bold text-gray-400">billed in 50-hour blocks</p>
+                <p className="text-lg font-bold text-gray-400">Billed in 50-hour blocks</p>
               </div>
 
               <Link 
@@ -121,16 +121,16 @@ const PricingPage: FC = () => {
                 target="_blank"
                 className="block w-full text-center py-4 bg-[#FF7A59] border-2 border-black rounded-xl font-bold text-white hover:bg-[#ff6a42] transition-all shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] active:scale-95"
               >
-                First choice
+                Get started
               </Link>
+            </div>
 
-              <div className="space-y-5">
-                <h4 className="text-sm font-bold text-black uppercase tracking-wider">Best for</h4>
-                <div className="space-y-4">
-                  {plus.labels.map((label) => (
-                    <Benefit key={label} label={label} />
-                  ))}
-                </div>
+            <div className="p-8 md:p-10 pt-0 space-y-5">
+              <h4 className="text-sm font-bold text-black uppercase tracking-wider mt-5">Ideal for</h4>
+              <div className="space-y-4">
+                {plus.labels.map((label) => (
+                  <Benefit key={label} label={label} />
+                ))}
               </div>
             </div>
           </div>
@@ -144,9 +144,9 @@ const PricingPage: FC = () => {
                   <span className="text-5xl font-extrabold text-black">
                     {loading ? "$30" : `${symbol}${convertedPrices[2]}`}
                   </span>
-                  <span className="text-sm font-bold text-[#FF7A59] uppercase tracking-wider">/hour</span>
+                  <span className="text-sm font-bold text-[#FF7A59] lowercase tracking-wider">per hour</span>
                 </div>
-                <p className="text-sm font-bold text-gray-500">billed in 100-hour blocks</p>
+                <p className="text-lg font-bold text-gray-500">Billed in 100-hour blocks</p>
               </div>
 
               <Link 

@@ -114,7 +114,7 @@ export default function RootLayout({
         />
       </head>
 
-      <body style={{ fontFamily: 'Gilroy, sans-serif' }}>
+      <body style={{ fontFamily: 'Gilroy' }}>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
