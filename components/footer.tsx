@@ -8,7 +8,7 @@ export const Footer: FC = () => {
       <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           
-          <div className="flex-1 text-left w-full md:w-auto">
+          <div className="flex-1 text-left w-full md:w-auto order-last md:order-none">
             <p className="text-sm md:text-base text-gray-500 font-medium">© 2025 n8n developers. All rights reserved.</p>
           </div>
 

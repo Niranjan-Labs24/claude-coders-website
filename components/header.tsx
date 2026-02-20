@@ -17,9 +17,9 @@ import { CADLENLY_URL } from "@/app/constants"
 const logo = "/logo.webp"
 
 const CustomMenuIcon = () => (
-  <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="8" y="14" width="24" height="3" fill="black" rx="1.5" />
-    <rect x="8" y="23" width="14" height="3" fill="black" rx="1.5" />
+  <svg width="60" height="60" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="16" width="32" height="4" fill="black" rx="2" />
+    <rect x="8" y="28" width="18" height="4" fill="black" rx="2" />
   </svg>
 )
 
@@ -104,7 +104,7 @@ export const Header: FC = () => {
           <div className="md:hidden">
             <Sheet>
               <SheetTrigger asChild>
-                <Button variant='ghost' size='icon' className="p-0 h-auto w-auto hover:bg-transparent -mr-2">
+                <Button variant='ghost' size='icon' className="p-0 h-auto w-auto hover:bg-transparent -mr-2 [&_svg]:size-10">
                   <CustomMenuIcon />
                 </Button>
               </SheetTrigger>
