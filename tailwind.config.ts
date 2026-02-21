@@ -20,7 +20,7 @@ const config = {
     },
     extend: {
       fontFamily: {
-        sans: ["Gilroy", "sans-serif"],
+        sans: ["Gilroy"],
       },
       screens: {
         xs: "375px",

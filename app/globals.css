@@ -70,9 +70,25 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
-    font-family: 'Gilroy', sans-serif;
+    font-family: 'Gilroy';
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/texture.png');
+    background-repeat: repeat;
+    opacity: 0.03;
+    /* Even more subtle dotted texture */
+    pointer-events: none;
+    z-index: 9999;
   }
 }
 
@@ -122,11 +138,11 @@ body {
 
 /* Ensure proper spacing on all devices */
 @media (max-width: 640px) {
-  .space-y-6 > :not([hidden]) ~ :not([hidden]) {
+  .space-y-6> :not([hidden])~ :not([hidden]) {
     margin-top: 1rem;
   }
 
-  .space-y-8 > :not([hidden]) ~ :not([hidden]) {
+  .space-y-8> :not([hidden])~ :not([hidden]) {
     margin-top: 1.5rem;
   }
 }

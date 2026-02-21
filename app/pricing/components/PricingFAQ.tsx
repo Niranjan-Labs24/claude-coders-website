@@ -27,30 +27,33 @@ function FAQItem({
 
   return (
     <div
-      className={`rounded-2xl transition-colors duration-300 ${
-        isOpen ? 'bg-[#FFF5F2]' : 'bg-transparent'
+      className={`border border-gray-100 rounded-[2rem] transition-all duration-300 bg-white ${
+        isOpen ? 'shadow-sm' : 'hover:shadow-md'
       }`}
     >
       <button
         onClick={() => onToggle(index)}
-        className="w-full flex items-center justify-between px-6 py-5 text-left"
+        className="w-full flex items-center justify-between px-8 py-7 text-left group"
       >
-        <span className="font-bold text-gray-900 pr-8 leading-snug">{faq.question}</span>
+        <span className="text-lg font-bold text-black pr-8 leading-snug group-hover:text-[#FF7A59] transition-colors">
+          {faq.question}
+        </span>
         <span className="flex-shrink-0 transition-transform duration-300">
           {isOpen ? (
-            <Minus className="h-5 w-5 text-black" />
+            <Minus className="h-6 w-6 text-black" />
           ) : (
-            <Plus className="h-5 w-5 text-black" />
+            <Plus className="h-6 w-6 text-black" />
           )}
         </span>
       </button>
 
-      {/* Smooth height animation — no layout shift */}
       <div
         style={{ height, overflow: 'hidden', transition: 'height 0.3s ease' }}
       >
-        <div ref={contentRef} className="px-6 pb-5">
-          <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
+        <div ref={contentRef} className="px-8 pb-7">
+          <p className="text-gray-600 leading-relaxed text-base italic">
+            "{faq.answer}"
+          </p>
         </div>
       </div>
     </div>
@@ -58,31 +61,29 @@ function FAQItem({
 }
 
 export default function PricingFAQ() {
-  // All closed by default
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-  // Accordion: close previous when a new one opens
   const toggle = (index: number) => {
     setOpenIndex(prev => (prev === index ? null : index));
   };
 
-  const leftColumn = pricingFAQs.slice(0, 2);
-  const rightColumn = pricingFAQs.slice(2);
+  const leftColumn = pricingFAQs.filter((_, i) => i % 2 === 0);
+  const rightColumn = pricingFAQs.filter((_, i) => i % 2 !== 0);
 
   return (
-    <section className="py-10 md:py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 className="text-4xl md:text-5xl font-extrabold text-black text-center mb-8 md:mb-10">
+    <section className="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 className="text-4xl md:text-5xl font-extrabold text-black text-center mb-12 md:mb-16">
         Frequently asked questions
       </h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-0 items-start">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
         {/* Left Column */}
-        <div>
+        <div className="space-y-6">
           {leftColumn.map((faq, index) => (
             <FAQItem
-              key={index}
+              key={`left-${index}`}
               faq={faq}
-              index={index}
+              index={index * 2}
               openIndex={openIndex}
               onToggle={toggle}
             />
@@ -90,19 +91,16 @@ export default function PricingFAQ() {
         </div>
 
         {/* Right Column */}
-        <div>
-          {rightColumn.map((faq, index) => {
-            const actualIndex = index + 2;
-            return (
-              <FAQItem
-                key={actualIndex}
-                faq={faq}
-                index={actualIndex}
-                openIndex={openIndex}
-                onToggle={toggle}
-              />
-            );
-          })}
+        <div className="space-y-6">
+          {rightColumn.map((faq, index) => (
+            <FAQItem
+              key={`right-${index}`}
+              faq={faq}
+              index={index * 2 + 1}
+              openIndex={openIndex}
+              onToggle={toggle}
+            />
+          ))}
         </div>
       </div>
     </section>

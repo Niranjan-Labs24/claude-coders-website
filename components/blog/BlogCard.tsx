@@ -53,8 +53,8 @@ export default function BlogCard({ post }: BlogCardProps) {
           className="inline-flex items-center gap-2 text-sm font-bold text-black border-none bg-transparent p-0 hover:gap-3 transition-all"
         >
           Read more
-          <div className="bg-black rounded-full p-1 group-hover:translate-x-1 transition-transform">
-            <ArrowRight className="h-3 w-3 text-white" />
+          <div className="bg-black rounded-full p-1.5 group-hover:translate-x-1 transition-transform">
+            <ArrowRight className="h-6 w-6 text-white -rotate-[60deg]" />
           </div>
         </Link>
       </div>

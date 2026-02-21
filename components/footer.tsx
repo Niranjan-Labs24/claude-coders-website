@@ -8,16 +8,16 @@ export const Footer: FC = () => {
       <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           
-          <div className="flex-1 text-left w-full md:w-auto">
+          <div className="flex-1 text-left w-full md:w-auto order-last md:order-none">
             <p className="text-sm md:text-base text-gray-500 font-medium">© 2025 n8n developers. All rights reserved.</p>
           </div>
 
        
           <div className="flex items-center gap-10 justify-center flex-1">
-            <Link href="/about" className="text-base md:text-lg font-semibold text-gray-700 hover:text-black transition-colors">
+            <Link href="/about" className="text-base md:text-lg font-medium text-gray-700 hover:text-black transition-colors">
               About us
             </Link>
-            <Link href="/privacy" className="text-base md:text-lg font-semibold text-gray-700 hover:text-black transition-colors">
+            <Link href="/privacy" className="text-base md:text-lg font-medium text-gray-700 hover:text-black transition-colors">
               PrivacyPolicy
             </Link>
           </div>
