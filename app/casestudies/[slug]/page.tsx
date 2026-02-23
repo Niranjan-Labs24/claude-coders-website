@@ -5,14 +5,8 @@ import { formatDate } from 'date-fns';
 import PromotionBanner from '@/components/blog/PromotionBanner';
 import { ArrowLeft, ArrowRight, Instagram, Linkedin, Twitter, Facebook } from 'lucide-react';
 import Image from 'next/image';
-import { FC } from 'react';
-
-export const metadata: Metadata = {
-  title: 'Case Study Detail | n8n developers',
-  description: 'Deep dive into our n8n automation and MVP solutions.',
-};
-
-const mockKeywords = ["Automation", "Workflow", "Tasks", "Performance", "Evolution"];
+import { contentfulService } from '@/lib/contentful';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
 interface CaseStudyDetailPageProps {
   params: Promise<{
@@ -20,29 +14,33 @@ interface CaseStudyDetailPageProps {
   }>;
 }
 
-const CaseStudyDetailPage: FC<CaseStudyDetailPageProps> = async ({ params }) => {
+export async function generateMetadata({ params }: CaseStudyDetailPageProps): Promise<Metadata> {
   const resolvedParams = await params;
-  
-  // Mock data for the specific case study
-  const caseStudy = {
-    title: "n8n 2.0 marks a major evolution in workflow automation, bringing performance, scalability",
-    client: "CloudZero",
-    duration: "04 months",
-    date: new Date("2023-12-12"),
-    content: `
-      <p>"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. It was popularised"</p>
-      
-      <h3>Section Title here</h3>
-      <p>"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged"</p>
-      
-      <h3>Section Title here</h3>
-      <p>It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. It was popularised"</p>
-      
-      <h3>Section Title here</h3>
-      <p>"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged"</p>
-    `,
-    image: "/placeholder.svg"
+  const caseStudy = await contentfulService.getCaseStudyBySlug(resolvedParams.slug);
+
+  if (!caseStudy) {
+    return {
+      title: 'Case Study Not Found | n8n developers',
+    };
+  }
+
+  return {
+    title: `${caseStudy.fields.title} | n8n developers`,
+    description: caseStudy.fields.description,
   };
+}
+
+export default async function CaseStudyDetailPage({ params }: CaseStudyDetailPageProps) {
+  const resolvedParams = await params;
+  const caseStudy = await contentfulService.getCaseStudyBySlug(resolvedParams.slug);
+
+  if (!caseStudy) {
+    notFound();
+  }
+
+  const { title, client, description, image } = caseStudy.fields;
+  const imageUrl = image?.fields?.file?.url ? `https:${image.fields.file.url}` : '/placeholder.svg';
+  const date = new Date(caseStudy.sys.createdAt);
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -62,30 +60,26 @@ const CaseStudyDetailPage: FC<CaseStudyDetailPageProps> = async ({ params }) => 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-8 md:mb-10 items-start">
           <div className="space-y-8">
             <h1 className="text-4xl sm:text-5xl font-extrabold text-black leading-tight">
-              {caseStudy.title}
+              {title}
             </h1>
 
             {/* Meta Labels */}
             <div className="flex flex-wrap items-center gap-x-12 gap-y-4 pt-4 border-t border-gray-100">
               <div className="space-y-1">
                 <span className="text-[#FF7A59] text-sm font-bold uppercase tracking-wider">Client</span>
-                <p className="text-black font-extrabold text-lg">{caseStudy.client}</p>
+                <p className="text-black font-extrabold text-lg">{client}</p>
               </div>
-              {/* <div className="space-y-1">
-                <span className="text-[#FF7A59] text-sm font-bold uppercase tracking-wider">Duration</span>
-                <p className="text-black font-extrabold text-lg">{caseStudy.duration}</p>
-              </div> */}
               <div className="space-y-1">
                 <span className="text-[#FF7A59] text-sm font-bold uppercase tracking-wider">Time</span>
-                <p className="text-black font-extrabold text-lg">{formatDate(caseStudy.date, "do MMM, yyyy")}</p>
+                <p className="text-black font-extrabold text-lg">{formatDate(date, "do MMM, yyyy")}</p>
               </div>
             </div>
           </div>
 
           <div className="relative aspect-video rounded-[2.5rem] overflow-hidden bg-gray-100 shadow-none border-none">
             <Image
-              src={caseStudy.image}
-              alt={caseStudy.title}
+              src={imageUrl}
+              alt={title}
               fill
               className="object-cover"
               priority
@@ -103,17 +97,22 @@ const CaseStudyDetailPage: FC<CaseStudyDetailPageProps> = async ({ params }) => 
               prose-strong:text-black prose-strong:font-bold
               prose-a:text-[#FF7A59] prose-a:font-bold prose-a:no-underline hover:prose-a:underline
               prose-img:rounded-[2rem] prose-img:border-none
-            "
-              dangerouslySetInnerHTML={{ __html: caseStudy.content }}
-            />
+            ">
+              {/* Assuming description might be rich text or string. If it's a string, we just render it. */}
+              {typeof description === 'string' ? (
+                <p>{description}</p>
+              ) : (
+                documentToReactComponents(description as any)
+              )}
+            </div>
 
             {/* Navigation */}
             <div className="flex items-center justify-between py-12 border-t border-gray-100 mt-16">
-              <Link href="#" className="inline-flex items-center gap-3 text-base font-bold text-gray-400 hover:text-black transition-colors">
+              <Link href="/casestudies" className="inline-flex items-center gap-3 text-base font-bold text-gray-400 hover:text-black transition-colors">
                 <ArrowLeft className="h-5 w-5" />
                 Previous
               </Link>
-              <Link href="#" className="inline-flex items-center gap-3 text-base font-bold text-black hover:gap-4 transition-all">
+              <Link href="/casestudies" className="inline-flex items-center gap-3 text-base font-bold text-black hover:gap-4 transition-all">
                 Next Article
                 <ArrowRight className="h-5 w-5" />
               </Link>
@@ -125,7 +124,7 @@ const CaseStudyDetailPage: FC<CaseStudyDetailPageProps> = async ({ params }) => 
             <div className="space-y-4">
               <h4 className="text-[#FF7A59] text-sm font-bold uppercase tracking-wider">Keywords</h4>
               <div className="flex flex-wrap gap-2">
-                {mockKeywords.map((keyword) => (
+                {["Automation", "Workflow", "Tasks", "Performance", "Evolution"].map((keyword) => (
                   <span 
                     key={keyword} 
                     className="px-4 py-1.5 rounded-full border border-gray-200 text-sm font-bold text-gray-600 hover:border-black hover:text-black transition-all cursor-default"
@@ -154,6 +153,4 @@ const CaseStudyDetailPage: FC<CaseStudyDetailPageProps> = async ({ params }) => 
       <PromotionBanner />
     </div>
   );
-};
-
-export default CaseStudyDetailPage;
+}
