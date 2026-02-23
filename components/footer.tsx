@@ -9,15 +9,15 @@ export const Footer: FC = () => {
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           
           <div className="flex-1 text-left w-full md:w-auto order-last md:order-none">
-            <p className="text-sm md:text-base text-gray-500 font-medium">© 2025 n8n developers. All rights reserved.</p>
+            <p className="text-base md:text-lg text-gray-500 font-medium">© {new Date().getFullYear()} n8n developers. All rights reserved.</p>
           </div>
 
        
           <div className="flex items-center gap-10 justify-center flex-1">
-            <Link href="/about" className="text-[14px] font-semibold leading-[20px] tracking-[-0.02em] text-gray-700 hover:text-black transition-colors">
+            <Link href="/about" className="text-[18px] font-semibold leading-[20px] tracking-[-0.02em] text-gray-700 hover:text-black transition-colors">
               About us
             </Link>
-            <Link href="/privacy" className="text-[14px] font-semibold leading-[20px] tracking-[-0.02em] text-gray-700 hover:text-black transition-colors">
+            <Link href="/privacy" className="text-[18px] font-semibold leading-[20px] tracking-[-0.02em] text-gray-700 hover:text-black transition-colors">
               Privacy Policy
             </Link>
           </div>
