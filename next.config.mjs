@@ -5,17 +5,23 @@ const nextConfig = {
     removeConsole: process.env.NODE_ENV === 'production',
   },
   images: {
-    domains: [
-      'blog-admin.n8ndevelopers.com',
-      'blog.n8ndevelopers.com',
-      'images.unsplash.com',
-      'secure.gravatar.com'
-    ],
     remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'blog-admin.n8ndevelopers.com',
+      },
       {
         protocol: 'https',
         hostname: 'blog.n8ndevelopers.com',
         pathname: '/wp-content/uploads/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'secure.gravatar.com',
       },
     ],
   },

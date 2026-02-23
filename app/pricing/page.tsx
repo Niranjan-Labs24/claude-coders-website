@@ -18,6 +18,8 @@ const PricingPage: FC = () => {
   const originalPrices = [50, 40, 30]
 
   useEffect(() => {
+    document.body.classList.add("no-texture")
+    
     fetch("https://ipapi.co/json/")
       .then((res) => res.json())
       .then(async (data) => {
@@ -55,6 +57,10 @@ const PricingPage: FC = () => {
         setConvertedPrices(originalPrices)
         setLoading(false)
       })
+
+    return () => {
+      document.body.classList.remove("no-texture")
+    }
   }, [])
 
   return (
@@ -86,7 +92,7 @@ const PricingPage: FC = () => {
               <Link 
                 href={CADLENLY_URL}
                 target="_blank"
-                className="block w-full text-center py-4 bg-white border-2 border-black rounded-xl font-bold text-black hover:bg-gray-50 transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:scale-95"
+                className="block w-full text-center py-4 bg-white border-2 border-black rounded-xl font-bold text-black hover:bg-gray-50 transition-colors shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:scale-95"
               >
                 Get started
               </Link>
@@ -104,7 +110,7 @@ const PricingPage: FC = () => {
 
           {/* Volume package */}
           <div className="bg-white border border-gray-100 rounded-[2.5rem] flex flex-col justify-between shadow-sm hover:shadow-xl transition-all duration-300 relative overflow-hidden">
-            <div className="bg-[#FFFAF8] p-8 md:p-10 space-y-8">
+            <div className="bg-[#FFFAF8] p-8 md:p-10 pb-4 md:pb-4 space-y-8">
               <div className="space-y-2">
                 <h3 className="text-xl font-bold text-black">Volume package</h3>
                 <div className="flex items-baseline gap-1">
@@ -119,14 +125,14 @@ const PricingPage: FC = () => {
               <Link 
                 href={CADLENLY_URL}
                 target="_blank"
-                className="block w-full text-center py-4 bg-[#FF7A59] border-2 border-black rounded-xl font-bold text-white hover:bg-[#ff6a42] transition-all shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] active:scale-95"
+                className="block w-full text-center py-4 bg-[#FF7A59] border-2 border-black rounded-xl font-bold text-white hover:bg-[#ff6a42] transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:scale-95"
               >
                 Get started
               </Link>
             </div>
 
-            <div className="p-8 md:p-10 pt-0 space-y-5">
-              <h4 className="text-sm font-bold text-black uppercase tracking-wider mt-5">Ideal for</h4>
+            <div className="p-8 md:p-10 pt-6 space-y-5">
+              <h4 className="text-sm font-bold text-black uppercase tracking-wider">Ideal for</h4>
               <div className="space-y-4">
                 {plus.labels.map((label) => (
                   <Benefit key={label} label={label} />
@@ -152,7 +158,7 @@ const PricingPage: FC = () => {
               <Link 
                 href={CADLENLY_URL}
                 target="_blank"
-                className="block w-full text-center py-4 bg-white border-2 border-black rounded-xl font-bold text-black hover:bg-gray-50 transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:scale-95"
+                className="block w-full text-center py-4 bg-white border-2 border-black rounded-xl font-bold text-black hover:bg-gray-50 transition-colors shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:scale-95"
               >
                 Get started
               </Link>

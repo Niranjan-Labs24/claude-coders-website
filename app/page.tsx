@@ -9,8 +9,8 @@ const LandingPage: FC = () => {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-4 md:pt-6 pb-12 md:pb-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+      <section className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-4 md:pt-6 pb-12 md:pb-16 overflow-hidden">
+        <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-40 items-start">
           {/* Left Content */}
           <div className="space-y-8 md:space-y-12">
             <div className="space-y-4 md:space-y-6">
@@ -37,31 +37,49 @@ const LandingPage: FC = () => {
                   <div className="mt-1 bg-green-500 rounded-full p-0.5 flex-shrink-0">
                     <Check className="h-4 w-4 text-white font-bold" />
                   </div>
-                  <span className="text-base md:text-xl font-medium text-black">{benefit}</span>
+                  <span className="text-base md:text-xl font-bold text-black">{benefit}</span>
                 </li>
               ))}
             </ul>
 
             {/* CTA and Trust Bar */}
             <div className="flex flex-col sm:flex-row items-center gap-12 pt-4">
-              <div className="space-y-2 text-center sm:text-left w-full sm:w-auto">
+              <div className="space-y-3 flex flex-col items-center sm:items-start w-full sm:w-auto">
                 <Link 
                   href={CADLENLY_URL}
                   target="_blank"
-                  className="inline-block w-full sm:w-auto bg-[#FF7A59] hover:bg-[#ff6a42] text-white font-bold py-4 px-8 md:px-10 rounded-xl transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] border-2 border-black text-base text-center"
+                  className="inline-flex items-center justify-center bg-[#FF7442] hover:bg-[#ff6a42] text-white transition-all text-base text-center whitespace-nowrap border-[1px] border-black"
+                  style={{
+                    width: '280px',
+                    height: '72px',
+                    borderRadius: '12px',
+                    padding: '20px 52px',
+                    gap: '8px',
+                    opacity: 1,
+                    boxShadow: '2px 2px 0px 0px rgba(0,0,0,1)',
+                  }}
                 >
                   Book free automation call
                 </Link>
-                <p className="text-sm text-gray-500 flex items-center justify-center sm:justify-start gap-2">
-                  <Activity className="h-4 w-4" /> 15-min discovery call
-                </p>
+                <div className="w-full max-w-[280px] flex justify-center">
+                  <p className="text-sm text-gray-500 font-bold flex items-center gap-2">
+                    <Image
+                      src="/icons/15 min.png"
+                      alt="15 min"
+                      width={16}
+                      height={16}
+                      className="h-4 w-4 object-contain"
+                    />
+                    15-min discovery call
+                  </p>
+                </div>
               </div>
 
               {/* Rating Section */}
-              <div className="flex flex-col items-center sm:items-start gap-2">
+              <div className="flex items-center gap-6">
                 <div className="flex -space-x-3">
                   {[1, 2, 3, 4].map((i) => (
-                    <div key={i} className="relative w-10 h-10 rounded-full border-2 border-white overflow-hidden bg-gray-200">
+                    <div key={i} className="relative w-12 h-12 rounded-full border-2 border-white overflow-hidden bg-gray-200">
                       <Image
                         src={`/Rating/Frame 214722566${i+3 > 7 ? 4 : i+3}.png`}
                         alt="User avatar"
@@ -71,20 +89,20 @@ const LandingPage: FC = () => {
                     </div>
                   ))}
                 </div>
-                <div className="flex flex-col gap-1 items-center sm:items-start">
+                <div className="flex flex-col gap-1 items-start">
                   <div className="flex text-yellow-400">
                     {[1, 2, 3, 4, 5].map((s) => (
                       <Star key={s} className="h-4 w-4 fill-current" />
                     ))}
                   </div>
-                  <p className="text-xs font-semibold text-black">Trusted by founders and CMO's</p>
+                  <p className="text-base font-normal text-black whitespace-nowrap leading-tight">Trusted by founders and CXO's</p>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Right: Booking Widget */}
-          <div className="w-full">
+          <div className="w-full flex lg:justify-end">
             <Cadlenly />
           </div>
         </div>
