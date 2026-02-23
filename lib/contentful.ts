@@ -1,3 +1,4 @@
+/// <reference types="node" />
 import { createClient, type Entry, type Asset } from 'contentful';
 
 const SPACE_ID = process.env.CONTENTFUL_SPACE_ID;
