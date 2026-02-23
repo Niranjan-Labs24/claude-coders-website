@@ -14,11 +14,11 @@ export const Footer: FC = () => {
 
        
           <div className="flex items-center gap-10 justify-center flex-1">
-            <Link href="/about" className="text-base md:text-lg font-medium text-gray-700 hover:text-black transition-colors">
+            <Link href="/about" className="text-[14px] font-semibold leading-[20px] tracking-[-0.02em] text-gray-700 hover:text-black transition-colors">
               About us
             </Link>
-            <Link href="/privacy" className="text-base md:text-lg font-medium text-gray-700 hover:text-black transition-colors">
-              PrivacyPolicy
+            <Link href="/privacy" className="text-[14px] font-semibold leading-[20px] tracking-[-0.02em] text-gray-700 hover:text-black transition-colors">
+              Privacy Policy
             </Link>
           </div>
 

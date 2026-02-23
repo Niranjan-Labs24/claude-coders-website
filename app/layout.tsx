@@ -9,6 +9,7 @@ import "@/app/globals.css"
 import ChatbaseScript from "@/components/chatbase"
 import OfferBar from "@/components/OfferBar"
 import NavigationProgress from "@/components/NavigationProgress"
+import GlobalDotAccent from "@/components/GlobalDotAccent"
 import { Suspense } from "react"
 
 export const metadata: Metadata = {
@@ -38,7 +39,7 @@ export default function RootLayout({
       <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS || ""} />
 
       <head>
-        <link href="https://fonts.cdnfonts.com/css/gilroy-bold" rel="stylesheet" />
+        
         <title>n8n Developers | Custom Workflow & Automation Solutions</title>
         <meta
           name="title"
@@ -114,7 +115,7 @@ export default function RootLayout({
         />
       </head>
 
-      <body style={{ fontFamily: 'Gilroy' }}>
+      <body>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
@@ -124,6 +125,7 @@ export default function RootLayout({
           <Suspense fallback={null}>
             <NavigationProgress />
           </Suspense>
+          <GlobalDotAccent />
           <Header />
           {/* <OfferBar /> */}
           <main className="px-0 py-0">

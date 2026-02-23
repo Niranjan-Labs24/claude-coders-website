@@ -14,7 +14,7 @@ export default function BlogCardImage({ src, alt }: BlogCardImageProps) {
     return (
       <div className="mb-4 aspect-video relative overflow-hidden rounded-xl bg-gray-100 flex items-center justify-center">
         <img
-          src="/icon0.svg"
+          src="/placeholder.svg"
           alt={alt}
           width={64}
           height={64}
