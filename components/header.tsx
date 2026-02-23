@@ -46,7 +46,7 @@ export const Header: FC = () => {
               <Link
                 key={href}
                 href={href}
-                className={`text-[14px] font-semibold leading-[20px] tracking-[-0.02em] transition-colors relative pb-1 ${
+                className={`text-[18px] font-semibold leading-[20px] tracking-[-0.02em] transition-colors relative pb-1 ${
                   isActive(href)
                     ? 'text-black after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-[#FF7A59] after:rounded-full'
                     : 'text-gray-700 hover:text-black'
@@ -134,7 +134,7 @@ export const Header: FC = () => {
                     <SheetClose key={href} asChild>
                       <Link
                         href={href}
-                        className={`text-[14px] font-semibold leading-[20px] tracking-[-0.02em] transition-colors ${
+                        className={`text-[18px] font-semibold leading-[20px] tracking-[-0.02em] transition-colors ${
                           isActive(href) ? 'text-black' : 'text-black hover:text-[#FF7A59]'
                         }`}
                       >
