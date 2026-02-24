@@ -30,21 +30,6 @@ export interface BlogPost {
     };
 }
 
-export interface CaseStudy {
-    sys: {
-        id: string;
-        createdAt: string;
-    };
-    fields: {
-        title: string;
-        client: string;
-        duration?: string;
-        task: string;
-        description: string;
-        image: Asset;
-        slug: string;
-    };
-}
 
 export class ContentfulService {
     async getAllPosts(page = 1, perPage = 10): Promise<{
@@ -96,37 +81,6 @@ export class ContentfulService {
         }
     }
 
-    async getAllCaseStudies(): Promise<CaseStudy[]> {
-        try {
-            const response = await contentfulClient.getEntries<any>({
-                content_type: 'caseStudy',
-                order: ['-sys.createdAt'],
-            });
-
-            return response.items as unknown as CaseStudy[];
-        } catch (error) {
-            console.error('Error fetching Contentful case studies:', error);
-            return [];
-        }
-    }
-
-    async getCaseStudyBySlug(slug: string): Promise<CaseStudy | null> {
-        try {
-            const response = await contentfulClient.getEntries<any>({
-                content_type: 'caseStudy',
-                'fields.slug': slug,
-                limit: 1,
-            });
-
-            if (response.items && response.items.length > 0) {
-                return response.items[0] as unknown as CaseStudy;
-            }
-            return null;
-        } catch (error) {
-            console.error(`Error fetching Contentful case study with slug ${slug}:`, error);
-            return null;
-        }
-    }
 }
 
 export const contentfulService = new ContentfulService();
