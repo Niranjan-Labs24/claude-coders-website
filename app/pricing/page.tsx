@@ -67,7 +67,7 @@ const PricingPage: FC = () => {
     <div className="flex flex-col pt-4 md:pt-6">
       {/* Page Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center mb-8 md:mb-12">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-black leading-tight mb-6">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-black leading-tight mb-6">
           <span className="text-[#FF7A59]">Pricing</span> that works for <br /> every need
         </h1>
       </div>

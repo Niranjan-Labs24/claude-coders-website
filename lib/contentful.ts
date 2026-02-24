@@ -43,19 +43,25 @@ export class ContentfulService {
         return preview ? previewClient : contentfulClient;
     }
 
-    async getAllPosts(page = 1, perPage = 10, preview = false): Promise<{
+    async getAllPosts(page = 1, perPage = 10, tag?: string, preview = false): Promise<{
         posts: BlogPost[];
         totalPages: number;
         total: number;
     }> {
         try {
             const client = this.getClient(preview);
-            const response = await client.getEntries<any>({
+            const query: any = {
                 content_type: 'blogPost',
                 skip: (page - 1) * perPage,
                 limit: perPage,
                 order: ['-fields.date'],
-            });
+            };
+
+            if (tag && tag !== 'All') {
+                query['fields.tags[in]'] = tag;
+            }
+
+            const response = await client.getEntries<any>(query);
 
             const total = response.total;
             const totalPages = Math.ceil(total / perPage);
@@ -82,6 +88,7 @@ export class ContentfulService {
                 content_type: 'blogPost',
                 'fields.slug': slug,
                 limit: 1,
+                include: 10,
             });
 
             if (response.items && response.items.length > 0) {

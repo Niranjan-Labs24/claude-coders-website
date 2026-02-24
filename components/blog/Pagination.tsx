@@ -8,6 +8,21 @@ interface PaginationProps {
 }
 
 export default function Pagination({ currentPage, totalPages, baseUrl }: PaginationProps) {
+  const getPageUrl = (pageNumber: number) => {
+    const isFirstPage = pageNumber === 1;
+    const hasQuery = baseUrl.includes('?');
+    
+    if (isFirstPage) {
+      return baseUrl;
+    }
+    
+    if (hasQuery) {
+      return `${baseUrl}&page=${pageNumber}`;
+    }
+    
+    return `${baseUrl}?page=${pageNumber}`;
+  };
+
   const getPageNumbers = () => {
     const pages: (number | string)[] = [];
     const showPages = 5;
@@ -50,7 +65,7 @@ export default function Pagination({ currentPage, totalPages, baseUrl }: Paginat
       {/* Previous Button */}
       {currentPage > 1 ? (
         <Link
-          href={currentPage === 2 ? baseUrl : `${baseUrl}?page=${currentPage - 1}`}
+          href={getPageUrl(currentPage - 1)}
           className="p-2 text-gray-400 hover:text-black transition-colors"
           aria-label="Previous page"
         >
@@ -64,7 +79,7 @@ export default function Pagination({ currentPage, totalPages, baseUrl }: Paginat
 
       {/* Page Numbers */}
       <div className="flex items-center gap-2">
-        {pageNumbers.map((page, index) => {
+        {pageNumbers.map((page: number | string, index: number) => {
           if (page === '...') {
             return (
               <span
@@ -82,7 +97,7 @@ export default function Pagination({ currentPage, totalPages, baseUrl }: Paginat
           return (
             <Link
               key={pageNumber}
-              href={pageNumber === 1 ? baseUrl : `${baseUrl}?page=${pageNumber}`}
+              href={getPageUrl(pageNumber)}
               className={`min-w-[40px] h-[40px] flex items-center justify-center text-sm font-bold rounded-lg transition-all ${
                 isCurrentPage
                   ? 'text-[#FF7A59] bg-transparent'
@@ -98,7 +113,7 @@ export default function Pagination({ currentPage, totalPages, baseUrl }: Paginat
       {/* Next Button */}
       {currentPage < totalPages ? (
         <Link
-          href={`${baseUrl}?page=${currentPage + 1}`}
+          href={getPageUrl(currentPage + 1)}
           className="p-2 text-gray-400 hover:text-black transition-colors"
           aria-label="Next page"
         >
