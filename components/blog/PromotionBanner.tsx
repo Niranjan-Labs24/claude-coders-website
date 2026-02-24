@@ -10,11 +10,11 @@ export default function PromotionBanner() {
         <div className="flex flex-col md:flex-row items-center gap-12 lg:gap-24">
           {/* Left Content */}
           <div className="flex-1 space-y-4 text-center md:text-left">
-            <h3 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-black leading-tight">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black leading-tight">
               You know what's the <br />
               <span className="text-[#FF7A59]">smartest move?</span>
             </h3>
-            <p className="text-lg text-gray-600 max-w-lg">
+            <p className="text-base text-gray-600 max-w-md">
               Hire n8n experts at n8ndevelopers to build, manage and scale your automation pipeline.
             </p>
             
@@ -24,10 +24,10 @@ export default function PromotionBanner() {
                 target="_blank"
                 className="inline-flex items-center justify-center bg-[#FF7442] hover:bg-[#ff6a42] text-white transition-all text-base text-center whitespace-nowrap border-[1px] border-black"
                 style={{
-                  width: '280px',
-                  height: '72px',
+                  width: '240px',
+                  height: '60px',
                   borderRadius: '12px',
-                  padding: '20px 52px',
+                  padding: '12px 32px',
                   gap: '8px',
                   opacity: 1,
                   boxShadow: '2px 2px 0px 0px rgba(0,0,0,1)',
@@ -51,7 +51,7 @@ export default function PromotionBanner() {
           </div>
 
           {/* Right Image */}
-          <div className="w-full aspect-video md:aspect-none md:h-[350px] md:flex-1 relative mb-8 md:mb-0">
+          <div className="w-full aspect-video md:aspect-none md:h-[280px] md:flex-1 relative mb-8 md:mb-0">
             <Image
               src="/team-photo.webp"
               alt="n8n Developers Team"

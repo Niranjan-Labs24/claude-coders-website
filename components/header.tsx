@@ -37,24 +37,21 @@ export const Header: FC = () => {
   return (
     <header className="py-4 md:py-6 px-2 sm:px-4 lg:px-6 border-b border-gray-100 bg-white sticky top-0 z-50">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        {/* Left: Desktop Nav OR Mobile Logo */}
+        {/* Left: Desktop Logo OR Mobile Logo */}
         <div className="flex-1 flex items-center">
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-10">
-            {navLinks.map(({ href, label }) => (
-              <Link
-                key={href}
-                href={href}
-                className={`text-[18px] font-semibold leading-[20px] tracking-[-0.02em] transition-colors relative pb-1 ${
-                  isActive(href)
-                    ? 'text-black after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-[#FF7A59] after:rounded-full'
-                    : 'text-gray-700 hover:text-black'
-                }`}
-              >
-                {label}
-              </Link>
-            ))}
-          </nav>
+          {/* Desktop Logo */}
+          <div className="hidden md:block">
+            <Link href="/">
+              <Image 
+                src={logo}
+                alt="n8n developers logo" 
+                width={140} 
+                height={50}
+                unoptimized
+                className="object-contain h-12 w-auto" 
+              />
+            </Link>
+          </div>
 
           {/* Mobile Logo */}
           <div className="md:hidden">
@@ -71,18 +68,23 @@ export const Header: FC = () => {
           </div>
         </div>
 
-        {/* Center: Desktop Logo ONLY */}
+        {/* Center: Desktop Navigation ONLY */}
         <div className="hidden md:flex flex-1 justify-center items-center px-8">
-          <Link href="/">
-            <Image 
-              src={logo}
-              alt="n8n developers logo" 
-              width={140} 
-              height={50}
-              unoptimized
-              className="object-contain h-12 w-auto" 
-            />
-          </Link>
+          <nav className="flex items-center gap-10">
+            {navLinks.map(({ href, label }) => (
+              <Link
+                key={href}
+                href={href}
+                className={`text-[18px] font-semibold leading-[20px] tracking-[-0.02em] transition-colors relative pb-1 ${
+                  isActive(href)
+                    ? 'text-black after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-[#FF7A59] after:rounded-full'
+                    : 'text-gray-700 hover:text-black'
+                }`}
+              >
+                {label}
+              </Link>
+            ))}
+          </nav>
         </div>
 
         {/* Right: Desktop CTA OR Mobile Hamburger */}
