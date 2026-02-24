@@ -32,7 +32,6 @@ export const Header: FC = () => {
   const navLinks = [
     { href: "/pricing", label: "Pricing" },
     { href: "/blogs", label: "Blog" },
-    // { href: "/case-studies", label: "Case studies" },
   ]
 
   return (
@@ -46,7 +45,7 @@ export const Header: FC = () => {
               <Link
                 key={href}
                 href={href}
-                className={`text-lg font-medium transition-colors relative pb-1 ${
+                className={`text-[18px] font-semibold leading-[20px] tracking-[-0.02em] transition-colors relative pb-1 ${
                   isActive(href)
                     ? 'text-black after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-[#FF7A59] after:rounded-full'
                     : 'text-gray-700 hover:text-black'
@@ -92,7 +91,14 @@ export const Header: FC = () => {
           <div className="hidden md:block">
             <Button
               asChild
-              className="bg-[#FF7A59] hover:bg-[#ff6a42] text-white font-bold py-6 px-8 rounded-xl transition-all shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] border-2 border-black text-lg"
+              className="bg-[#FF7442] hover:bg-[#ff6a42] text-white rounded-xl transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] border-[1px] border-black text-lg"
+              style={{
+                width: '253px',
+                height: '60px',
+                padding: '14px 35px',
+                gap: '8px',
+                opacity: 1,
+              }}
             >
               <Link href={CADLENLY_URL} target="_blank">
                 Book free automation call
@@ -127,7 +133,7 @@ export const Header: FC = () => {
                     <SheetClose key={href} asChild>
                       <Link
                         href={href}
-                        className={`text-xl font-bold transition-colors ${
+                        className={`text-[18px] font-semibold leading-[20px] tracking-[-0.02em] transition-colors ${
                           isActive(href) ? 'text-black' : 'text-black hover:text-[#FF7A59]'
                         }`}
                       >
@@ -137,12 +143,19 @@ export const Header: FC = () => {
                   ))}
                 </div>
 
-                <div className="flex-none px-6 pb-6 pt-2">
+                <div className="flex-none px-6 pb-6 pt-2 h-auto flex flex-col items-center">
                   <SheetClose asChild>
                     <Link 
                       href={CADLENLY_URL} 
                       target="_blank"
-                      className="block w-full bg-[#FF7A59] hover:bg-[#ff6a42] text-white font-bold py-4 px-6 rounded-2xl text-center transition-all shadow-[0px_4px_0px_0px_rgba(0,0,0,1)] border-2 border-black text-base"
+                      className="inline-flex items-center justify-center bg-[#FF7442] hover:bg-[#ff6a42] text-white rounded-xl text-center transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] border-[1px] border-black text-base"
+                      style={{
+                        width: '253px',
+                        height: '60px',
+                        padding: '14px 35px',
+                        gap: '8px',
+                        opacity: 1,
+                      }}
                     >
                       Book free automation call
                     </Link>

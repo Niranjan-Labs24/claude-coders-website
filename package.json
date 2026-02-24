@@ -9,6 +9,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@contentful/rich-text-react-renderer": "^16.1.6",
     "@hookform/resolvers": "^3.9.1",
     "@next/third-parties": "latest",
     "@radix-ui/react-accordion": "latest",
@@ -41,10 +42,11 @@
     "@tailwindcss/line-clamp": "^0.4.4",
     "@tailwindcss/typography": "^0.5.19",
     "autoprefixer": "^10.4.20",
-    "axios": "^1.12.2",
+    "axios": "^1.7.9",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "latest",
+    "contentful": "^11.10.4",
     "date-fns": "4.1.0",
     "embla-carousel-react": "latest",
     "html-react-parser": "^5.2.6",

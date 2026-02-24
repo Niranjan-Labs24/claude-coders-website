@@ -50,11 +50,14 @@ export default function BlogCard({ post }: BlogCardProps) {
         {/* Read More */}
         <Link 
           href={`/blogs/${post.slug}`}
-          className="inline-flex items-center gap-2 text-sm font-bold text-black border-none bg-transparent p-0 hover:gap-3 transition-all"
+          className="inline-flex items-center gap-2 text-lg font-bold text-black border-none bg-transparent p-0 transition-all"
         >
-          Read more
-          <div className="bg-black rounded-full p-1.5 group-hover:translate-x-1 transition-transform">
-            <ArrowRight className="h-6 w-6 text-white -rotate-[60deg]" />
+          <span className="border-b-2 border-black leading-tight">Read more</span>
+          <div className="relative transition-transform">
+            <div className="absolute inset-0 bg-[#FF7A59] rounded-full translate-x-[1.5px] translate-y-[1.5px]" />
+            <div className="relative bg-black rounded-full p-1.5">
+              <ArrowRight className="h-6 w-6 text-white -rotate-[60deg]" />
+            </div>
           </div>
         </Link>
       </div>

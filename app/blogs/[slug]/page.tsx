@@ -41,6 +41,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   if (!post) notFound();
 
+  const adjacentPosts = await wordpressService.getAdjacentPosts(post.date);
+
   const featuredImage = post._embedded?.['wp:featuredmedia']?.[0];
   const author = post._embedded?.author?.[0];
 
@@ -113,14 +115,28 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
             {/* Article Navigation */}
             <div className="flex items-center justify-between py-12 border-t border-gray-100 mt-16">
-              <Link href="#" className="inline-flex items-center gap-3 text-base font-bold text-gray-400 hover:text-black transition-colors">
-                <ArrowLeft className="h-5 w-5" />
-                Previous
-              </Link>
-              <Link href="#" className="inline-flex items-center gap-3 text-base font-bold text-black hover:gap-4 transition-all">
-                Next Article
-                <ArrowRight className="h-5 w-5" />
-              </Link>
+              {adjacentPosts.prev ? (
+                <Link 
+                  href={`/blogs/${adjacentPosts.prev.slug}`} 
+                  className="inline-flex items-center gap-3 text-base font-bold text-gray-400 hover:text-black transition-colors"
+                >
+                  <ArrowLeft className="h-5 w-5" />
+                  Previous
+                </Link>
+              ) : (
+                <div /> // Spacer
+              )}
+              {adjacentPosts.next ? (
+                <Link 
+                  href={`/blogs/${adjacentPosts.next.slug}`} 
+                  className="inline-flex items-center gap-3 text-base font-bold text-black hover:gap-4 transition-all"
+                >
+                  Next Article
+                  <ArrowRight className="h-5 w-5" />
+                </Link>
+              ) : (
+                <div /> // Spacer
+              )}
             </div>
           </div>
 
