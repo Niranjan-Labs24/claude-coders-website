@@ -1,17 +1,17 @@
 import Link from 'next/link';
-import { wordpressService } from '@/lib/wordpress';
+import { contentfulService } from '@/lib/contentful';
 import BlogCard from '@/components/blog/BlogCard';
 
 export const revalidate = 0; // Disable cache for this page
 
 export default async function PreviewDashboard() {
-  // Fetch all posts with status 'draft'
-  const { posts } = await wordpressService.getAllPosts(1, 10, 'draft');
+  
+  const { posts } = await contentfulService.getAllPosts(1, 10, true);
 
-  // Debug: Log the actual slugs from WordPress
+  // Debug: Log the actual slugs from Contentful
   console.log('Preview Dashboard - Posts found:', posts.length);
   posts.forEach(post => {
-    console.log(`Post ID: ${post.id}, Title: "${post.title.rendered}", Slug: "${post.slug}"`);
+    console.log(`Post ID: ${post.sys.id}, Title: "${post.fields.title}", Slug: "${post.fields.slug}"`);
   });
 
   return (
@@ -30,47 +30,38 @@ export default async function PreviewDashboard() {
 
       {posts.length === 0 ? (
         <div className="text-center py-12">
-          <p className="text-xl text-gray-500">No drafts found.</p>
+          <p className="text-xl text-gray-500">No posts found in preview.</p>
           <p className="text-sm text-gray-400 mt-2">
-            Make sure you have posts saved as "Draft" in WordPress.
+            Make sure you have posts in Contentful.
           </p>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {posts.map((post) => (
-            // We manually create a card-like structure or reuse BlogCard if possible.
-            // Since BlogCard links to /blogs/[slug], we need to override that behavior.
-            // We'll create a wrapper that looks like a card but links to the preview URL.
-            <div key={post.id} className="relative group">
+            <div key={post.sys.id} className="relative group">
                 <Link 
-                    href={`/api/preview?secret=${process.env.WP_PREVIEW_SECRET}&slug=${post.slug || post.title.rendered.toLowerCase().replace(/\s+/g, '-')}&id=${post.id}`}
+                    href={`/api/preview?secret=${process.env.CONTENTFUL_PREVIEW_SECRET}&slug=${post.fields.slug}`}
                     className="block h-full"
                 >
-                    {/* We reuse the visual part of BlogCard by wrapping it, 
-                        but the internal Link of BlogCard might conflict. 
-                        Ideally, we should extract the card UI. 
-                        For now, let's build a simple card to ensure functionality. 
-                    */}
                     <div className="border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow h-full bg-white">
-                        {post._embedded?.['wp:featuredmedia']?.[0]?.source_url && (
+                        {post.fields.featuredImage?.fields?.file?.url && (
                             <div className="aspect-video relative overflow-hidden bg-gray-100">
                                 <img 
-                                    src={post._embedded['wp:featuredmedia'][0].source_url} 
-                                    alt={post.title.rendered}
+                                    src={`https:${post.fields.featuredImage.fields.file.url}`} 
+                                    alt={post.fields.title}
                                     className="object-cover w-full h-full"
                                 />
                             </div>
                         )}
                         <div className="p-6">
                             <h2 className="text-xl font-bold mb-2 group-hover:text-blue-600 transition-colors">
-                                {post.title.rendered}
+                                {post.fields.title}
                             </h2>
-                            <div 
-                                className="text-gray-600 line-clamp-3 text-sm"
-                                dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }}
-                            />
+                            <div className="text-gray-600 line-clamp-3 text-sm">
+                                {post.fields.excerpt}
+                            </div>
                             <div className="mt-4 text-xs text-gray-400 uppercase tracking-wide font-semibold">
-                                Status: Draft
+                                Status: Contentful Preview
                             </div>
                         </div>
                     </div>

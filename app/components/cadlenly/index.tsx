@@ -3,9 +3,9 @@ import { CADLENLY_URL } from "@/app/constants"
 
 const Cadlenly = () => {
   return (
-    <div className="xl:col-span-5 w-full">
-      <div className="relative mx-auto xl:mx-0 w-full max-w-[546px]" style={{ 
-        height: '724px',
+    <div className="xl:col-span-1 w-full flex justify-center lg:justify-end">
+      <div className="relative w-full max-w-[480px]" style={{ 
+        height: '620px',
         opacity: 1,
       }}>
         {/* Shadow/Offset Effect */}

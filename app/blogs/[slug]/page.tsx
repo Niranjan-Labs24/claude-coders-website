@@ -1,13 +1,14 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { wordpressService } from '@/lib/wordpress';
+import { contentfulService } from '@/lib/contentful';
 import { formatDate } from 'date-fns';
-import parse from 'html-react-parser';
 import PromotionBanner from '@/components/blog/PromotionBanner';
 import { draftMode } from 'next/headers';
 import { ArrowLeft, ArrowRight, Instagram, Linkedin, Twitter, Facebook } from 'lucide-react';
 import Image from 'next/image';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { BLOCKS, INLINES, MARKS } from '@contentful/rich-text-types';
 
 export const revalidate = 3600;
 
@@ -19,32 +20,75 @@ interface BlogPostPageProps {
 
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
   const resolvedParams = await params;
-  const post = await wordpressService.getPostBySlug(resolvedParams.slug);
+  const post = await contentfulService.getPostBySlug(resolvedParams.slug);
   if (!post) return { title: 'Post Not Found' };
 
   return {
-    title: `${post.title.rendered} | n8n developers`,
-    description: post.excerpt.rendered.replace(/<[^>]*>/g, '').substring(0, 160),
+    title: `${post.fields.title} | n8n developers`,
+    description: post.fields.excerpt?.substring(0, 160),
   };
 }
 
 const mockKeywords = ["Automation", "Workflow", "Tasks", "Performance", "Evolution"];
 
+// Options for rendering Contentful Rich Text
+const richTextOptions = {
+  renderBlock: {
+    [BLOCKS.EMBEDDED_ASSET]: (node: any) => {
+      const { file, title } = node.data.target.fields;
+      return (
+        <div className="my-8 relative aspect-video rounded-[2rem] overflow-hidden">
+          <Image
+            src={`https:${file.url}`}
+            alt={title || 'Blog image'}
+            fill
+            className="object-cover"
+          />
+        </div>
+      );
+    },
+    [BLOCKS.HEADING_1]: (node: any, children: any) => <h1 className="text-5xl font-extrabold mb-8 text-black">{children}</h1>,
+    [BLOCKS.HEADING_2]: (node: any, children: any) => <h2 className="text-4xl font-bold mt-16 mb-8 text-black">{children}</h2>,
+    [BLOCKS.HEADING_3]: (node: any, children: any) => <h3 className="text-3xl font-bold mt-12 mb-6 text-black">{children}</h3>,
+    [BLOCKS.PARAGRAPH]: (node: any, children: any) => <p className="mb-8 leading-relaxed text-gray-600 text-lg md:text-xl font-medium">{children}</p>,
+    [BLOCKS.UL_LIST]: (node: any, children: any) => <ul className="list-disc pl-8 mb-8 space-y-4">{children}</ul>,
+    [BLOCKS.OL_LIST]: (node: any, children: any) => <ol className="list-decimal pl-8 mb-8 space-y-4">{children}</ol>,
+    [BLOCKS.LIST_ITEM]: (node: any, children: any) => <li className="text-gray-600 text-lg md:text-xl font-medium">{children}</li>,
+    [BLOCKS.QUOTE]: (node: any, children: any) => (
+      <blockquote className="border-l-6 border-[#FF7A59] pl-8 py-4 my-10 bg-gray-50 italic text-2xl text-gray-700 rounded-r-2xl font-medium">
+        {children}
+      </blockquote>
+    ),
+  },
+  renderMark: {
+    [MARKS.BOLD]: (text: any) => <strong className="font-bold text-black">{text}</strong>,
+    [MARKS.ITALIC]: (text: any) => <em className="italic">{text}</em>,
+    [MARKS.CODE]: (text: any) => <code className="bg-gray-100 rounded px-1.5 py-0.5 font-mono text-sm">{text}</code>,
+  },
+  renderInlines: {
+    [INLINES.HYPERLINK]: (node: any, children: any) => (
+      <a href={node.data.uri} target="_blank" rel="noopener noreferrer" className="text-[#FF7A59] font-bold hover:underline">
+        {children}
+      </a>
+    ),
+  },
+};
+
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const resolvedParams = await params;
   const { isEnabled } = await draftMode();
   
-  const post = await wordpressService.getPostBySlug(
+  const post = await contentfulService.getPostBySlug(
     resolvedParams.slug, 
-    isEnabled ? 'any' : 'publish'
+    isEnabled
   );
 
   if (!post) notFound();
 
-  const adjacentPosts = await wordpressService.getAdjacentPosts(post.date);
+  const adjacentPosts = await contentfulService.getAdjacentPosts(post.fields.date);
 
-  const featuredImage = post._embedded?.['wp:featuredmedia']?.[0];
-  const author = post._embedded?.author?.[0];
+  const featuredImage = post.fields.featuredImage;
+  const author = post.fields.author;
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -64,31 +108,29 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-8 md:mb-10 items-start">
           <div className="space-y-8">
             <h1 className="text-4xl sm:text-5xl font-extrabold text-black leading-tight">
-              {post.title.rendered}
+              {post.fields.title}
             </h1>
 
             {/* Meta Labels */}
             <div className="flex flex-wrap items-center gap-x-12 gap-y-4 pt-4 border-t border-gray-100">
               <div className="space-y-1">
-                <span className="text-[#FF7A59] text-sm font-bold uppercase tracking-wider">Client</span>
-                <p className="text-black font-extrabold text-lg">CloudZero</p>
-              </div>
-              {/* <div className="space-y-1">
-                <span className="text-[#FF7A59] text-sm font-bold uppercase tracking-wider">Duration</span>
-                <p className="text-black font-extrabold text-lg">04 months</p>
-              </div> */}
-              <div className="space-y-1">
                 <span className="text-[#FF7A59] text-sm font-bold uppercase tracking-wider">Time</span>
-                <p className="text-black font-extrabold text-lg">{formatDate(new Date(post.date), "do MMM,, yyyy")}</p>
+                <p className="text-black font-extrabold text-lg">{formatDate(new Date(post.fields.date), "do MMM, yyyy")}</p>
               </div>
+              {author && (
+                <div className="space-y-1">
+                  <span className="text-[#FF7A59] text-sm font-bold uppercase tracking-wider">Author</span>
+                  <p className="text-black font-extrabold text-lg">{author}</p>
+                </div>
+              )}
             </div>
           </div>
 
           <div className="relative aspect-video rounded-[2.5rem] overflow-hidden bg-gray-100 border-none shadow-none">
-            {featuredImage?.source_url ? (
+            {featuredImage?.fields?.file?.url ? (
               <Image
-                src={featuredImage.source_url}
-                alt={post.title.rendered}
+                src={`https:${featuredImage.fields.file.url}`}
+                alt={post.fields.title}
                 fill
                 className="object-cover"
                 priority
@@ -103,21 +145,21 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 relative">
           {/* Main Content */}
           <div className="lg:col-span-8 space-y-12">
-            <div className="prose prose-lg max-w-none 
+            <div className="prose prose-xl max-w-none 
               prose-headings:text-black prose-headings:font-extrabold 
-              prose-p:text-gray-600 prose-p:leading-relaxed
+              prose-p:text-gray-600 prose-p:leading-relaxed prose-p:text-lg
               prose-strong:text-black prose-strong:font-bold
               prose-a:text-[#FF7A59] prose-a:font-bold prose-a:no-underline hover:prose-a:underline
               prose-img:rounded-[2rem] prose-img:border-none prose-img:shadow-none
             ">
-              {parse(post.content.rendered)}
+              {documentToReactComponents(post.fields.content, richTextOptions)}
             </div>
 
             {/* Article Navigation */}
             <div className="flex items-center justify-between py-12 border-t border-gray-100 mt-16">
               {adjacentPosts.prev ? (
                 <Link 
-                  href={`/blogs/${adjacentPosts.prev.slug}`} 
+                  href={`/blogs/${adjacentPosts.prev.fields.slug}`} 
                   className="inline-flex items-center gap-3 text-base font-bold text-gray-400 hover:text-black transition-colors"
                 >
                   <ArrowLeft className="h-5 w-5" />
@@ -128,7 +170,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               )}
               {adjacentPosts.next ? (
                 <Link 
-                  href={`/blogs/${adjacentPosts.next.slug}`} 
+                  href={`/blogs/${adjacentPosts.next.fields.slug}`} 
                   className="inline-flex items-center gap-3 text-base font-bold text-black hover:gap-4 transition-all"
                 >
                   Next Article
@@ -145,7 +187,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <div className="space-y-4">
               <h4 className="text-[#FF7A59] text-sm font-bold uppercase tracking-wider">Keywords</h4>
               <div className="flex flex-wrap gap-2">
-                {mockKeywords.map((keyword) => (
+                {post.fields.tags ? post.fields.tags.map((keyword) => (
+                  <span 
+                    key={keyword} 
+                    className="px-4 py-1.5 rounded-full border border-gray-200 text-sm font-bold text-gray-600 hover:border-black hover:text-black transition-all cursor-default"
+                  >
+                    {keyword}
+                  </span>
+                )) : mockKeywords.map((keyword) => (
                   <span 
                     key={keyword} 
                     className="px-4 py-1.5 rounded-full border border-gray-200 text-sm font-bold text-gray-600 hover:border-black hover:text-black transition-all cursor-default"

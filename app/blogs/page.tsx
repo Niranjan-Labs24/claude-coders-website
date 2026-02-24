@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { wordpressService } from '@/lib/wordpress';
+import { contentfulService } from '@/lib/contentful';
 import BlogCard from '@/components/blog/BlogCard';
 import Pagination from '@/components/blog/Pagination';
 import PromotionBanner from '@/components/blog/PromotionBanner';
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: 'Latest insights, tutorials, and news from N8N Developers',
 };
 
-export const revalidate = 3600; // Revalidate every hour
+export const revalidate = 3600; 
 
 interface BlogPageProps {
   searchParams: Promise<{
@@ -20,7 +20,7 @@ interface BlogPageProps {
 export default async function BlogPage({ searchParams }: BlogPageProps) {
   const params = await searchParams;
   const currentPage = parseInt(params.page || '1');
-  const { posts, totalPages } = await wordpressService.getAllPosts(currentPage, 9);
+  const { posts, totalPages } = await contentfulService.getAllPosts(currentPage, 9);
 
   return (
     <div className="flex flex-col pt-12">
@@ -40,7 +40,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16 mb-8 md:mb-12">
               {posts.map((post) => (
-                <BlogCard key={post.id} post={post} />
+                <BlogCard key={post.sys.id} post={post} />
               ))}
             </div>
 

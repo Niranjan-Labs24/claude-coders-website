@@ -1,11 +1,11 @@
 import type { MetadataRoute } from 'next'
-import { wordpressService } from '@/lib/wordpress'
+import { contentfulService } from '@/lib/contentful'
 
 const baseUrl = 'https://www.n8ndevelopers.com'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  // Fetch all published blog posts from WordPress
-  const { posts } = await wordpressService.getAllPosts(1, 100)
+  // Fetch all published blog posts from Contentful
+  const { posts } = await contentfulService.getAllPosts(1, 100)
 
   // Static pages
   const staticPages: MetadataRoute.Sitemap = [
@@ -41,10 +41,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ]
 
-  // Dynamic blog post pages — auto-generated from WordPress
+  // Dynamic blog post pages — auto-generated from Contentful
   const blogPages: MetadataRoute.Sitemap = posts.map((post) => ({
-    url: `${baseUrl}/blogs/${post.slug}`,
-    lastModified: new Date(post.date),
+    url: `${baseUrl}/blogs/${post.fields.slug}`,
+    lastModified: new Date(post.fields.date),
     changeFrequency: 'monthly',
     priority: 0.6,
   }))
