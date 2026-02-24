@@ -13,7 +13,7 @@ const GlobalDotAccent: FC = () => {
   ) return null;
 
   return (
-    <div className="fixed inset-0 pointer-events-none overflow-hidden" style={{ zIndex: -1 }}>
+    <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: -1 }}>
       <div 
         className="absolute left-1/2 top-0 -translate-x-1/2 w-full h-[800px] max-w-7xl"
         style={{
