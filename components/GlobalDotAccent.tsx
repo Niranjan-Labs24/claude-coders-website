@@ -9,8 +9,7 @@ const GlobalDotAccent: FC = () => {
   // Show on main listings, but hide on detail pages and pricing
   if (
     pathname === '/pricing' || 
-    pathname.startsWith('/blogs/') || 
-    pathname.startsWith('/casestudies/')
+    pathname.startsWith('/blogs/')
   ) return null;
 
   return (

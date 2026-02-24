@@ -1,4 +1,3 @@
-import axios from 'axios';
 
 const WORDPRESS_API_URL = process.env.WORDPRESS_API_URL || 'http://localhost/myBlog/wp-json/wp/v2';
 
@@ -37,6 +36,7 @@ export interface BlogPost {
   };
 }
 
+
 export class WordPressService {
   private baseURL = WORDPRESS_API_URL;
 
@@ -55,20 +55,30 @@ export class WordPressService {
       url.searchParams.append('_embed', 'true');
       url.searchParams.append('status', status);
 
-      const headers: any = {};
+      const headers: HeadersInit = {};
       if (username && password && status !== 'publish') {
         const token = Buffer.from(`${username}:${password}`).toString('base64');
         headers['Authorization'] = `Basic ${token}`;
       }
 
-      const response = await axios.get(url.toString(), { headers });
+      const response = await fetch(url.toString(), {
+        headers,
+        next: { revalidate: 3600 }
+      });
+
+      if (!response.ok) {
+        throw new Error(`WordPress API error: ${response.status}`);
+      }
+
+      const data = await response.json();
 
       return {
-        posts: response.data,
-        totalPages: parseInt(response.headers['x-wp-totalpages'] || '1'),
-        total: parseInt(response.headers['x-wp-total'] || '0')
+        posts: data,
+        totalPages: parseInt(response.headers.get('x-wp-totalpages') || '1'),
+        total: parseInt(response.headers.get('x-wp-total') || '0')
       };
     } catch (error: any) {
+      console.error('Error fetching WordPress posts:', error);
       return {
         posts: [],
         totalPages: 0,
@@ -95,7 +105,7 @@ export class WordPressService {
 
       const username = process.env.ADMIN_USERNAME;
       const password = process.env.ADMIN_PASSWORD;
-      const headers: any = {};
+      const headers: HeadersInit = {};
 
       if (username && password && status !== 'publish') {
         const token = Buffer.from(`${username}:${password}`).toString('base64');
@@ -103,9 +113,16 @@ export class WordPressService {
       }
 
       try {
-        const response = await axios.get(url.toString(), { headers });
-        if (response.data && response.data.length > 0) {
-          return response.data[0];
+        const response = await fetch(url.toString(), {
+          headers,
+          next: { revalidate: 3600 }
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          if (data && data.length > 0) {
+            return data[0];
+          }
         }
       } catch (e) { }
 
@@ -131,16 +148,52 @@ export class WordPressService {
 
   async getPostsByCategory(categoryId: number): Promise<BlogPost[]> {
     try {
-      const response = await axios.get(`${this.baseURL}/posts`, {
-        params: {
-          categories: categoryId,
-          _embed: true,
-        },
+      const url = new URL(`${this.baseURL}/posts`);
+      url.searchParams.append('categories', categoryId.toString());
+      url.searchParams.append('_embed', 'true');
+
+      const response = await fetch(url.toString(), {
+        next: { revalidate: 3600 }
       });
 
-      return response.data;
+      if (!response.ok) return [];
+      return await response.json();
     } catch (error: any) {
       return [];
+    }
+  }
+
+  async getAdjacentPosts(date: string): Promise<{ prev: BlogPost | null; next: BlogPost | null }> {
+    try {
+      const prevUrl = new URL(`${this.baseURL}/posts`);
+      prevUrl.searchParams.append('before', date);
+      prevUrl.searchParams.append('per_page', '1');
+      prevUrl.searchParams.append('orderby', 'date');
+      prevUrl.searchParams.append('order', 'desc');
+      prevUrl.searchParams.append('_embed', 'true');
+
+      const nextUrl = new URL(`${this.baseURL}/posts`);
+      nextUrl.searchParams.append('after', date);
+      nextUrl.searchParams.append('per_page', '1');
+      nextUrl.searchParams.append('orderby', 'date');
+      nextUrl.searchParams.append('order', 'asc');
+      nextUrl.searchParams.append('_embed', 'true');
+
+      const [prevRes, nextRes] = await Promise.all([
+        fetch(prevUrl.toString()),
+        fetch(nextUrl.toString())
+      ]);
+
+      const prevData = prevRes.ok ? await prevRes.json() : [];
+      const nextData = nextRes.ok ? await nextRes.json() : [];
+
+      return {
+        prev: prevData[0] || null,
+        next: nextData[0] || null,
+      };
+    } catch (error: any) {
+      console.error('Error fetching adjacent posts:', error);
+      return { prev: null, next: null };
     }
   }
 }

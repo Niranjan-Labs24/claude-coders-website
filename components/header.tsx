@@ -32,7 +32,6 @@ export const Header: FC = () => {
   const navLinks = [
     { href: "/pricing", label: "Pricing" },
     { href: "/blogs", label: "Blog" },
-    // { href: "/case-studies", label: "Case studies" },
   ]
 
   return (
