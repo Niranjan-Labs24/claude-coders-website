@@ -7,12 +7,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'blog-admin.n8ndevelopers.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'blog.n8ndevelopers.com',
-        pathname: '/wp-content/uploads/**',
+        hostname: 'images.ctfassets.net',
       },
       {
         protocol: 'https',
@@ -23,14 +18,6 @@ const nextConfig = {
         hostname: 'secure.gravatar.com',
       },
     ],
-  },
-  async rewrites() {
-    return [
-      {
-        source: '/blogs/sitemap.xml',
-        destination: 'https://blog.n8ndevelopers.com/sitemap.xml',
-      },
-    ];
   },
 }
 

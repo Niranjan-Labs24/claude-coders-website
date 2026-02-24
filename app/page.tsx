@@ -10,13 +10,13 @@ const LandingPage: FC = () => {
     <div className="flex flex-col">
       {/* Hero Section */}
       <section className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-4 md:pt-6 pb-12 md:pb-16 overflow-hidden">
-        <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-40 items-start">
+        <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-12 xl:gap-40 items-start">
           {/* Left Content */}
           <div className="space-y-8 md:space-y-12">
             <div className="space-y-4 md:space-y-6">
-              <h1 className="text-4xl md:text-5xl lg:text-[56px] font-semibold tracking-[-0.03em] text-black leading-tight lg:leading-[63px]">
-                <span className="whitespace-nowrap">Stop <span className="text-[#FF7A59]">wrestling workflows.</span></span><br />
-                Let a dedicated n8n<br />
+              <h1 className="text-[28px] xs:text-3xl sm:text-4xl md:text-5xl lg:text-[56px] font-semibold tracking-[-0.03em] text-black leading-tight lg:leading-[63px]">
+                <span className="inline-block sm:whitespace-nowrap">Stop <span className="text-[#FF7A59]">wrestling workflows.</span></span><br className="hidden sm:block" />
+                Let a dedicated n8n<br className="hidden sm:block" />
                 team handle it.
               </h1>
               <p className="text-lg md:text-xl text-gray-500 max-w-xl leading-relaxed">
@@ -43,7 +43,7 @@ const LandingPage: FC = () => {
             </ul>
 
             {/* CTA and Trust Bar */}
-            <div className="flex flex-col sm:flex-row items-center gap-12 pt-4">
+            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-8 sm:gap-6 lg:gap-8 pt-4">
               <div className="space-y-3 flex flex-col items-center sm:items-start w-full sm:w-auto">
                 <Link 
                   href={CADLENLY_URL}
@@ -76,10 +76,10 @@ const LandingPage: FC = () => {
               </div>
 
               {/* Rating Section */}
-              <div className="flex items-center gap-6">
+              <div className="flex flex-col xs:flex-row items-center gap-4 sm:gap-6">
                 <div className="flex -space-x-3">
                   {[1, 2, 3, 4].map((i) => (
-                    <div key={i} className="relative w-12 h-12 rounded-full border-2 border-white overflow-hidden bg-gray-200">
+                    <div key={i} className="relative w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-white overflow-hidden bg-gray-200 flex-shrink-0">
                       <Image
                         src={`/Rating/Frame 214722566${i+3 > 7 ? 4 : i+3}.png`}
                         alt="User avatar"
@@ -89,13 +89,13 @@ const LandingPage: FC = () => {
                     </div>
                   ))}
                 </div>
-                <div className="flex flex-col gap-1 items-start">
-                  <div className="flex text-yellow-400">
+                <div className="flex flex-col gap-1 items-center xs:items-start text-center xs:text-left">
+                  <div className="flex text-yellow-400 justify-center xs:justify-start">
                     {[1, 2, 3, 4, 5].map((s) => (
-                      <Star key={s} className="h-4 w-4 fill-current" />
+                      <Star key={s} className="h-3 w-3 sm:h-4 sm:w-4 fill-current" />
                     ))}
                   </div>
-                  <p className="text-base font-normal text-black whitespace-nowrap leading-tight">Trusted by founders and CXO's</p>
+                  <p className="text-sm sm:text-base font-normal text-black leading-tight sm:whitespace-nowrap">Trusted by founders and CXO's</p>
                 </div>
               </div>
             </div>

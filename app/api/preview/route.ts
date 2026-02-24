@@ -1,32 +1,32 @@
 import { draftMode } from 'next/headers';
 import { redirect } from 'next/navigation';
-import { wordpressService } from '@/lib/wordpress';
+import { contentfulService } from '@/lib/contentful';
 
 export async function GET(request: Request) {
     const { searchParams } = new URL(request.url);
     const secret = searchParams.get('secret');
-    const id = searchParams.get('id');
+    const slug = searchParams.get('slug');
 
-    // 1. Check the secret and ID
-    if (secret !== process.env.WP_PREVIEW_SECRET || !id) {
-        return new Response('Invalid token or missing ID', { status: 401 });
+    // 1. Check the secret
+    if (secret !== process.env.CONTENTFUL_PREVIEW_SECRET) {
+        return new Response('Invalid token', { status: 401 });
     }
 
-    // 2. Fetch the draft post by ID
-    const { posts } = await wordpressService.getAllPosts(1, 100, 'draft');
-    const post = posts.find(p => p.id === parseInt(id));
+    if (!slug) {
+        return new Response('Missing slug', { status: 401 });
+    }
+
+    // 2. Fetch the post by slug in preview mode to verify it exists
+    const post = await contentfulService.getPostBySlug(slug, true);
 
     if (!post) {
         return new Response('Post not found', { status: 404 });
     }
 
-    // 3. Generate a slug from the title (since drafts don't have slugs)
-    const slug = post.slug || post.title.rendered.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
-
-    // 4. Enable Draft Mode
+    // 3. Enable Draft Mode
     const draft = await draftMode();
     draft.enable();
 
-    // 5. Redirect to the blog page with the generated slug
+    // 4. Redirect to the blog page
     redirect(`/blogs/${slug}`);
 }
