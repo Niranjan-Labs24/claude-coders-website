@@ -6,7 +6,7 @@ export const revalidate = 0; // Disable cache for this page
 
 export default async function PreviewDashboard() {
   
-  const { posts } = await contentfulService.getAllPosts(1, 10, true);
+  const { posts } = await contentfulService.getAllPosts(1, 10, undefined, true);
 
   // Debug: Log the actual slugs from Contentful
   console.log('Preview Dashboard - Posts found:', posts.length);

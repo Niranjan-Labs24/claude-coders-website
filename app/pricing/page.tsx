@@ -67,7 +67,7 @@ const PricingPage: FC = () => {
     <div className="flex flex-col pt-4 md:pt-6">
       {/* Page Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center mb-8 md:mb-12">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-black leading-tight mb-6">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-black leading-tight mb-6">
           <span className="text-[#FF7A59]">Pricing</span> that works for <br /> every need
         </h1>
       </div>
@@ -109,8 +109,8 @@ const PricingPage: FC = () => {
           </div>
 
           {/* Volume package */}
-          <div className="bg-white border border-gray-100 rounded-[2.5rem] flex flex-col justify-between shadow-sm hover:shadow-xl transition-all duration-300 relative overflow-hidden">
-            <div className="bg-[#FFFAF8] p-8 md:p-10 pb-4 md:pb-4 space-y-8">
+          <div className="bg-white border border-gray-100 rounded-[2.5rem] flex flex-col shadow-sm hover:shadow-xl transition-all duration-300 relative overflow-hidden">
+            <div className="bg-[#FFFAF8] p-8 md:p-10 space-y-8">
               <div className="space-y-2">
                 <h3 className="text-xl font-bold text-black">Volume package</h3>
                 <div className="flex items-baseline gap-1">
@@ -131,7 +131,7 @@ const PricingPage: FC = () => {
               </Link>
             </div>
 
-            <div className="p-8 md:p-10 pt-6 space-y-5">
+            <div className="p-8 md:p-10 space-y-5">
               <h4 className="text-sm font-bold text-black uppercase tracking-wider">Ideal for</h4>
               <div className="space-y-4">
                 {plus.labels.map((label) => (

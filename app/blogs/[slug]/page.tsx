@@ -35,27 +35,32 @@ const mockKeywords = ["Automation", "Workflow", "Tasks", "Performance", "Evoluti
 const richTextOptions = {
   renderBlock: {
     [BLOCKS.EMBEDDED_ASSET]: (node: any) => {
-      const { file, title } = node.data.target.fields;
+      const { file, title } = node.data.target?.fields || {};
+      if (!file?.url) return null;
+      
+      const imageUrl = file.url.startsWith('//') ? `https:${file.url}` : file.url;
+
       return (
-        <div className="my-8 relative aspect-video rounded-[2rem] overflow-hidden">
+        <div className="my-8 relative aspect-video rounded-[2rem] overflow-hidden bg-gray-50 border border-gray-100">
           <Image
-            src={`https:${file.url}`}
+            src={imageUrl}
             alt={title || 'Blog image'}
             fill
             className="object-cover"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 70vw, 50vw"
           />
         </div>
       );
     },
-    [BLOCKS.HEADING_1]: (node: any, children: any) => <h1 className="text-5xl font-extrabold mb-8 text-black">{children}</h1>,
-    [BLOCKS.HEADING_2]: (node: any, children: any) => <h2 className="text-4xl font-bold mt-16 mb-8 text-black">{children}</h2>,
-    [BLOCKS.HEADING_3]: (node: any, children: any) => <h3 className="text-3xl font-bold mt-12 mb-6 text-black">{children}</h3>,
-    [BLOCKS.PARAGRAPH]: (node: any, children: any) => <p className="mb-8 leading-relaxed text-gray-600 text-lg md:text-xl font-medium">{children}</p>,
-    [BLOCKS.UL_LIST]: (node: any, children: any) => <ul className="list-disc pl-8 mb-8 space-y-4">{children}</ul>,
-    [BLOCKS.OL_LIST]: (node: any, children: any) => <ol className="list-decimal pl-8 mb-8 space-y-4">{children}</ol>,
-    [BLOCKS.LIST_ITEM]: (node: any, children: any) => <li className="text-gray-600 text-lg md:text-xl font-medium">{children}</li>,
+    [BLOCKS.HEADING_1]: (node: any, children: any) => <h1 className="text-3xl font-extrabold mb-6 text-black">{children}</h1>,
+    [BLOCKS.HEADING_2]: (node: any, children: any) => <h2 className="text-2xl font-bold mt-12 mb-6 text-black">{children}</h2>,
+    [BLOCKS.HEADING_3]: (node: any, children: any) => <h3 className="text-xl font-bold mt-10 mb-5 text-black">{children}</h3>,
+    [BLOCKS.PARAGRAPH]: (node: any, children: any) => <p className="mb-6 leading-relaxed text-gray-600 text-base md:text-lg">{children}</p>,
+    [BLOCKS.UL_LIST]: (node: any, children: any) => <ul className="list-disc pl-8 mb-6 space-y-3">{children}</ul>,
+    [BLOCKS.OL_LIST]: (node: any, children: any) => <ol className="list-decimal pl-8 mb-6 space-y-3">{children}</ol>,
+    [BLOCKS.LIST_ITEM]: (node: any, children: any) => <li className="text-gray-600 text-base md:text-lg">{children}</li>,
     [BLOCKS.QUOTE]: (node: any, children: any) => (
-      <blockquote className="border-l-6 border-[#FF7A59] pl-8 py-4 my-10 bg-gray-50 italic text-2xl text-gray-700 rounded-r-2xl font-medium">
+      <blockquote className="border-l-6 border-[#FF7A59] pl-8 py-4 my-8 bg-gray-50 italic text-xl text-gray-700 rounded-r-2xl">
         {children}
       </blockquote>
     ),
@@ -106,8 +111,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
         {/* Hero Section: Title and Image */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-8 md:mb-10 items-start">
-          <div className="space-y-8">
-            <h1 className="text-4xl sm:text-5xl font-extrabold text-black leading-tight">
+          <div className="space-y-6">
+            <h1 className="text-3xl sm:text-4xl font-extrabold text-black leading-tight">
               {post.fields.title}
             </h1>
 
@@ -145,9 +150,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 relative">
           {/* Main Content */}
           <div className="lg:col-span-8 space-y-12">
-            <div className="prose prose-xl max-w-none 
+            <div className="prose prose-lg max-w-none 
               prose-headings:text-black prose-headings:font-extrabold 
-              prose-p:text-gray-600 prose-p:leading-relaxed prose-p:text-lg
+              prose-p:text-gray-600 prose-p:leading-relaxed prose-p:text-base md:prose-p:text-lg
               prose-strong:text-black prose-strong:font-bold
               prose-a:text-[#FF7A59] prose-a:font-bold prose-a:no-underline hover:prose-a:underline
               prose-img:rounded-[2rem] prose-img:border-none prose-img:shadow-none

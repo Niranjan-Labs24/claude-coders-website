@@ -4,6 +4,8 @@ import BlogCard from '@/components/blog/BlogCard';
 import Pagination from '@/components/blog/Pagination';
 import PromotionBanner from '@/components/blog/PromotionBanner';
 
+import BlogFilter from '@/components/blog/BlogFilter';
+
 export const metadata: Metadata = {
   title: 'Blog | N8N Developers',
   description: 'Latest insights, tutorials, and news from N8N Developers',
@@ -14,18 +16,29 @@ export const revalidate = 3600;
 interface BlogPageProps {
   searchParams: Promise<{
     page?: string;
+    type?: string;
   }>;
 }
 
 export default async function BlogPage({ searchParams }: BlogPageProps) {
   const params = await searchParams;
   const currentPage = parseInt(params.page || '1');
-  const { posts, totalPages } = await contentfulService.getAllPosts(currentPage, 9);
+  const currentTag = params.type || 'All';
+  
+  const { posts, totalPages } = await contentfulService.getAllPosts(
+    currentPage, 
+    9, 
+    currentTag
+  );
+
+  const paginationBaseUrl = currentTag === 'All' 
+    ? '/blogs' 
+    : `/blogs?type=${currentTag}`;
 
   return (
     <div className="flex flex-col pt-12">
       {/* Page Header */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center mb-16 md:mb-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center mb-16 md:mb-12">
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-black leading-tight mb-6">
           Latest <span className="text-[#FF7A59]">blog</span> posts
         </h1>
@@ -34,13 +47,21 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
         </p>
       </div>
 
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <BlogFilter currentTag={currentTag} />
+      </div>
+
       {posts.length > 0 ? (
         <>
           {/* Blog Grid */}
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16 mb-8 md:mb-12">
-              {posts.map((post) => (
-                <BlogCard key={post.sys.id} post={post} />
+              {posts.map((post, index) => (
+                <BlogCard 
+                  key={post.sys.id} 
+                  post={post} 
+                  priority={index < 3} 
+                />
               ))}
             </div>
 
@@ -50,7 +71,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                 <Pagination
                   currentPage={currentPage}
                   totalPages={totalPages}
-                  baseUrl="/blogs"
+                  baseUrl={paginationBaseUrl}
                 />
               </div>
             )}

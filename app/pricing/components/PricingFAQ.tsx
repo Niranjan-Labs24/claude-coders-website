@@ -35,7 +35,7 @@ function FAQItem({
         onClick={() => onToggle(index)}
         className="w-full flex items-center justify-between px-8 py-7 text-left group"
       >
-        <span className="text-lg font-bold text-black pr-8 leading-snug group-hover:text-[#FF7A59] transition-colors">
+        <span className="text-base font-bold text-black pr-8 leading-snug group-hover:text-[#FF7A59] transition-colors">
           {faq.question}
         </span>
         <span className="flex-shrink-0 transition-transform duration-300">
@@ -72,7 +72,7 @@ export default function PricingFAQ() {
 
   return (
     <section className="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 className="text-4xl md:text-5xl font-extrabold text-black text-center mb-12 md:mb-16">
+      <h2 className="text-2xl md:text-3xl font-bold text-black text-center mb-12 md:mb-16">
         Frequently asked questions
       </h2>
 

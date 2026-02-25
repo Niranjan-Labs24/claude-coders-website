@@ -3,19 +3,6 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 export function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
-
-  // Check if user is trying to access WordPress admin directly
-  // This prevents direct access to WordPress admin without our authentication
-  const isTryingToAccessWordPressAdmin = 
-    request.nextUrl.href.includes('/wp-admin') && 
-    !request.nextUrl.href.includes('?authenticated=true');
-
-  if (isTryingToAccessWordPressAdmin) {
-    // Redirect to our custom admin login page
-    return NextResponse.redirect(new URL('/admin', request.url));
-  }
-
   return NextResponse.next();
 }
 
