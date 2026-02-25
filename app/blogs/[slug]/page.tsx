@@ -33,20 +33,23 @@ const mockKeywords = ["Automation", "Workflow", "Tasks", "Performance", "Evoluti
 
 // Options for rendering Contentful Rich Text
 const richTextOptions = {
-  renderBlock: {
+  renderNode: {
     [BLOCKS.EMBEDDED_ASSET]: (node: any) => {
       const { file, title } = node.data.target?.fields || {};
       if (!file?.url) return null;
       
       const imageUrl = file.url.startsWith('//') ? `https:${file.url}` : file.url;
+      const width = file.details?.image?.width || 800;
+      const height = file.details?.image?.height || 600;
 
       return (
-        <div className="my-8 relative aspect-video rounded-[2rem] overflow-hidden bg-gray-50 border border-gray-100">
+        <div className="my-8 rounded-xl overflow-hidden bg-gray-50 border border-gray-100">
           <Image
             src={imageUrl}
             alt={title || 'Blog image'}
-            fill
-            className="object-cover"
+            width={width}
+            height={height}
+            className="w-full h-auto"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 70vw, 50vw"
           />
         </div>
@@ -64,18 +67,16 @@ const richTextOptions = {
         {children}
       </blockquote>
     ),
-  },
-  renderMark: {
-    [MARKS.BOLD]: (text: any) => <strong className="font-bold text-black">{text}</strong>,
-    [MARKS.ITALIC]: (text: any) => <em className="italic">{text}</em>,
-    [MARKS.CODE]: (text: any) => <code className="bg-gray-100 rounded px-1.5 py-0.5 font-mono text-sm">{text}</code>,
-  },
-  renderInlines: {
     [INLINES.HYPERLINK]: (node: any, children: any) => (
       <a href={node.data.uri} target="_blank" rel="noopener noreferrer" className="text-[#FF7A59] font-bold hover:underline">
         {children}
       </a>
     ),
+  },
+  renderMark: {
+    [MARKS.BOLD]: (text: any) => <strong className="font-bold text-black">{text}</strong>,
+    [MARKS.ITALIC]: (text: any) => <em className="italic">{text}</em>,
+    [MARKS.CODE]: (text: any) => <code className="bg-gray-100 rounded px-1.5 py-0.5 font-mono text-sm">{text}</code>,
   },
 };
 
@@ -131,7 +132,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             </div>
           </div>
 
-          <div className="relative aspect-video rounded-[2.5rem] overflow-hidden bg-gray-100 border-none shadow-none">
+          <div className="relative aspect-video rounded-xl overflow-hidden bg-gray-100 border-none shadow-none">
             {featuredImage?.fields?.file?.url ? (
               <Image
                 src={`https:${featuredImage.fields.file.url}`}
@@ -155,7 +156,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               prose-p:text-gray-600 prose-p:leading-relaxed prose-p:text-base md:prose-p:text-lg
               prose-strong:text-black prose-strong:font-bold
               prose-a:text-[#FF7A59] prose-a:font-bold prose-a:no-underline hover:prose-a:underline
-              prose-img:rounded-[2rem] prose-img:border-none prose-img:shadow-none
+              prose-img:rounded-xl prose-img:border-none prose-img:shadow-none
             ">
               {documentToReactComponents(post.fields.content, richTextOptions)}
             </div>
