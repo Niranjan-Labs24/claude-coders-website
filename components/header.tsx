@@ -116,7 +116,7 @@ export const Header: FC = () => {
                   <CustomMenuIcon />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="top" className="h-[50vh] flex flex-col p-0 border-none overflow-hidden">
+              <SheetContent side="top" className="flex flex-col p-0 border-none overflow-hidden">
                 <div className="flex-none flex items-center justify-between px-6 py-4 border-b border-gray-50">
                   <Link href="/">
                     <Image 
@@ -145,24 +145,7 @@ export const Header: FC = () => {
                   ))}
                 </div>
 
-                <div className="flex-none px-6 pb-6 pt-2 h-auto flex flex-col items-center">
-                  <SheetClose asChild>
-                    <Link 
-                      href={CADLENLY_URL} 
-                      target="_blank"
-                      className="inline-flex items-center justify-center bg-[#FF7442] hover:bg-[#ff6a42] text-white rounded-xl text-center transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] border-[1px] border-black text-base"
-                      style={{
-                        width: '253px',
-                        height: '60px',
-                        padding: '14px 35px',
-                        gap: '8px',
-                        opacity: 1,
-                      }}
-                    >
-                      Book free automation call
-                    </Link>
-                  </SheetClose>
-                </div>
+
               </SheetContent>
             </Sheet>
           </div>
