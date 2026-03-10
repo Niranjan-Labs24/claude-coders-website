@@ -51,8 +51,8 @@ function FAQItem({
         style={{ height, overflow: 'hidden', transition: 'height 0.3s ease' }}
       >
         <div ref={contentRef} className="px-8 pb-7">
-          <p className="text-gray-600 leading-relaxed text-base italic">
-            "{faq.answer}"
+          <p className="text-gray-600 leading-relaxed text-base">
+            {faq.answer}
           </p>
         </div>
       </div>
@@ -71,7 +71,7 @@ export default function PricingFAQ() {
   const rightColumn = pricingFAQs.filter((_, i) => i % 2 !== 0);
 
   return (
-    <section className="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="pt-16 md:pt-24 pb-0 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <h2 className="text-2xl md:text-3xl font-bold text-black text-center mb-12 md:mb-16">
         Frequently asked questions
       </h2>
