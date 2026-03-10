@@ -101,10 +101,11 @@ export class ContentfulService {
         }
     }
 
-    async getAdjacentPosts(date: string): Promise<{ prev: BlogPost | null; next: BlogPost | null }> {
+    async getAdjacentPosts(date: string, preview = false): Promise<{ prev: BlogPost | null; next: BlogPost | null }> {
         try {
+            const client = this.getClient(preview);
             // Get previous post (older than current date)
-            const prevResponse = await contentfulClient.getEntries<any>({
+            const prevResponse = await client.getEntries<any>({
                 content_type: 'blogPost',
                 'fields.date[lt]': date,
                 order: ['-fields.date'],
@@ -112,7 +113,7 @@ export class ContentfulService {
             });
 
             // Get next post (newer than current date)
-            const nextResponse = await contentfulClient.getEntries<any>({
+            const nextResponse = await client.getEntries<any>({
                 content_type: 'blogPost',
                 'fields.date[gt]': date,
                 order: ['fields.date'],

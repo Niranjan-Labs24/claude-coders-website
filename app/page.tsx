@@ -48,15 +48,20 @@ const LandingPage: FC = () => {
                 <Link 
                   href={CADLENLY_URL}
                   target="_blank"
-                  className="inline-flex items-center justify-center bg-[#FF7442] hover:bg-[#ff6a42] text-white transition-all text-base text-center whitespace-nowrap border-[1px] border-black"
+                  className="inline-flex items-center justify-center bg-[#FF7442] hover:bg-[#ff6a42] text-white transition-all text-center whitespace-nowrap border-[1px] border-black"
                   style={{
                     width: '280px',
                     height: '72px',
-                    borderRadius: '12px',
-                    padding: '20px 52px',
                     gap: '8px',
                     opacity: 1,
-                    boxShadow: '2px 2px 0px 0px rgba(0,0,0,1)',
+                    borderRadius: '12px',
+                    padding: '20px 52px',
+                    boxShadow: '2px 3px 0px 0px #000000',
+                    fontFamily: 'Manrope',
+                    fontWeight: 600,
+                    fontSize: '18px',
+                    lineHeight: '32px',
+                    letterSpacing: '-3%',
                   }}
                 >
                   Book free automation call
@@ -108,14 +113,20 @@ const LandingPage: FC = () => {
         </div>
       </section>
 
-      <section className="bg-[#FFF5F2] w-full border-t border-[#FFE7E0] py-12 md:py-16 min-h-[257px]">
-        <div className="max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-8">
-          <div className="flex flex-col lg:grid lg:grid-cols-4 gap-y-0 lg:gap-8">
+      <section 
+        className="w-full border-t-[1px] border-[#0000000F] overflow-hidden"
+        style={{
+          background: "linear-gradient(93.96deg, #FFFFFF -15.76%, #FFEDE7 141.1%)",
+          minHeight: "257px"
+        }}
+      >
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-[80px] py-[48px]">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[48px] max-w-[1280px] mx-auto">
             {[
               {
                 icon: "/icons/Frame 2147225439.png",
                 title: "Dedicated team with our automation manager",
-                desc: "No freelancers No handoffs",
+                desc: "No freelancers. No handoffs",
               },
               {
                 icon: "/icons/Frame 2147225439 (1).png",
@@ -133,25 +144,37 @@ const LandingPage: FC = () => {
                 desc: "No hidden fees or surprise",
               },
             ].map((feature, index) => (
-              <div key={index} className="flex flex-col w-full">
-                <div className="flex flex-col items-center text-center gap-4 md:gap-6 md:items-start md:text-left">
-                  <div className="p-2 md:p-3 bg-white rounded-xl w-fit shadow-sm border border-gray-100">
-                    <Image
-                      src={feature.icon}
-                      alt={feature.title}
-                      width={24}
-                      height={24}
-                      className="h-5 w-5 md:h-6 md:w-6 object-contain"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <p className="text-xs md:text-xs text-gray-400 font-medium md:font-bold md:uppercase tracking-wider">
-                      {feature.desc}
-                    </p>
-                    <h3 className="text-xl md:text-xl font-bold text-black leading-tight">
-                      {feature.title}
-                    </h3>
-                  </div>
+              <div 
+                key={index} 
+                className="flex flex-col gap-[20px] w-full lg:w-[284px] h-full lg:h-[161px]"
+              >
+                <div 
+                  className="w-[40px] h-[40px] rounded-lg flex items-center justify-center border-[1px] border-[#1313131A] flex-shrink-0"
+                  style={{
+                    background: "linear-gradient(93.96deg, #FFFFFF -15.76%, #FFEDE7 141.1%)"
+                  }}
+                >
+                  <Image
+                    src={feature.icon}
+                    alt={feature.title}
+                    width={28}
+                    height={28}
+                    className="h-7 w-7 object-contain"
+                  />
+                </div>
+                <div className="flex flex-col gap-[4px]">
+                  <p 
+                    className="font-['Gilroy'] font-semibold text-[16px] leading-[27px] tracking-[-2%] align-middle"
+                    style={{ color: "#00000080" }}
+                  >
+                    {feature.desc}
+                  </p>
+                  <h3 
+                    className="font-['Gilroy'] font-semibold text-[24px] leading-[30px] tracking-[-2%] align-middle"
+                    style={{ color: "#000000" }}
+                  >
+                    {feature.title}
+                  </h3>
                 </div>
               </div>
             ))}
