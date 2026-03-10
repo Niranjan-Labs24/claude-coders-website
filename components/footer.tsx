@@ -6,11 +6,11 @@ export const Footer: FC = () => {
   return (
     <footer className="bg-white">
       <div className="border-t border-gray-100 mb-8"></div>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+      <div className="max-w-7xl xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-[64px] 2xl:px-[80px] pb-12">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
           
-          <div className="flex-1 text-left w-full md:w-auto order-last md:order-none pl-0 md:pl-[64px]">
-            <p className="font-manrope font-semibold text-[16px] leading-[20px] tracking-[-2%] text-[#0000004D]">
+          <div className="flex-[2] text-left w-full md:w-auto order-last md:order-none pl-0 md:pl-[64px]">
+            <p className="font-manrope font-semibold text-[16px] xl:text-[18px] 2xl:text-[20px] leading-relaxed tracking-[-2%] text-[#0000004D] md:whitespace-nowrap">
               © {new Date().getFullYear()} n8n developers. All rights reserved. {" "}
               <span>
                 An initiative by{" "}
@@ -21,13 +21,13 @@ export const Footer: FC = () => {
             </p>
           </div>
 
-          <div className="flex md:absolute md:left-[613px] items-center justify-center md:justify-end w-full md:w-[215px]">
-            <Link href="/about" className="font-manrope font-semibold text-[16px] leading-[20px] tracking-[-0.02em] text-black hover:text-gray-600 transition-colors whitespace-nowrap">
+          <div className="flex-1 flex items-center justify-center w-full md:w-auto">
+            <Link href="/about" className="font-manrope font-semibold text-[16px] xl:text-[18px] 2xl:text-[20px] leading-relaxed tracking-[-0.02em] text-black hover:text-gray-600 transition-colors whitespace-nowrap">
               About us
             </Link>
           </div>
 
-          <div className="flex items-center gap-3 justify-end flex-1">
+          <div className="flex items-center gap-3 sm:gap-4 xl:gap-6 justify-end flex-1">
             {[
               { Icon: Linkedin, href: "https://linkedin.com/company/n8n-developers" },
               { Icon: Twitter, href: "https://x.com/n8ndevelopers" },
@@ -37,9 +37,9 @@ export const Footer: FC = () => {
                 key={i} 
                 href={social.href}
                 target="_blank"
-                className="w-[30px] h-[30px] border border-gray-100 rounded-[8px] flex items-center justify-center text-black hover:border-black transition-all transform hover:scale-105 shadow-sm bg-white"
+                className="w-[30px] h-[30px] xl:w-[36px] xl:h-[36px] 2xl:w-[40px] 2xl:h-[40px] border border-gray-100 rounded-[8px] flex items-center justify-center text-black hover:border-black transition-all transform hover:scale-105 shadow-sm bg-white"
               >
-                <social.Icon className="h-4 w-4" />
+                <social.Icon className="h-4 w-4 xl:h-5 xl:w-5" />
               </Link>
             ))}
           </div>
