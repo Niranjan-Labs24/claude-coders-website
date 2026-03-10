@@ -35,8 +35,8 @@ export const Header: FC = () => {
   ]
 
   return (
-    <header className="py-4 md:py-6 px-2 sm:px-4 lg:px-6 border-b border-gray-100 bg-white sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
+    <header className="border-b border-gray-100 bg-white sticky top-0 z-50">
+      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 lg:px-[64px] py-[16px] md:py-[34px]">
         {/* Left: Desktop Logo OR Mobile Logo */}
         <div className="flex-1 flex items-center">
           {/* Desktop Logo */}
@@ -48,7 +48,7 @@ export const Header: FC = () => {
                 width={140} 
                 height={50}
                 unoptimized
-                className="object-contain h-12 w-auto" 
+                className="object-contain h-[50px] w-auto" 
               />
             </Link>
           </div>
@@ -93,13 +93,19 @@ export const Header: FC = () => {
           <div className="hidden md:block">
             <Button
               asChild
-              className="bg-[#FF7442] hover:bg-[#ff6a42] text-white rounded-xl transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] border-[1px] border-black text-lg"
+              className="bg-[#FF7442] hover:bg-[#ff6a42] text-white rounded-xl transition-all border-[1px] border-black"
               style={{
                 width: '253px',
                 height: '60px',
                 padding: '14px 35px',
                 gap: '8px',
                 opacity: 1,
+                fontFamily: 'Manrope',
+                fontWeight: 600,
+                fontSize: '16px',
+                lineHeight: '32px',
+                letterSpacing: '-3%',
+                boxShadow: '2px 3px 0px 0px #000000',
               }}
             >
               <Link href={CADLENLY_URL} target="_blank">
