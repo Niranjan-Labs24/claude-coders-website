@@ -24,9 +24,9 @@ export const metadata: Metadata = {
     canonical: "https://www.n8ndevelopers.com/",
   },
   icons: {
-    icon: "/logo.webp",
-    shortcut: "/logo.webp",
-    apple: "/logo.webp",
+    icon: "/n8n logo.png",
+    shortcut: "/n8n logo.png",
+    apple: "/n8n logo.png",
   },
 }
 
