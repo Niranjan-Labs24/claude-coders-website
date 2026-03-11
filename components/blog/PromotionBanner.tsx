@@ -5,15 +5,15 @@ import { Activity } from 'lucide-react';
 
 export default function PromotionBanner() {
   return (
-    <section className="w-full py-12 md:py-16 px-4 sm:px-6 lg:px-8 bg-white flex justify-center">
+    <section className="w-full py-8 md:py-16 px-4 sm:px-6 lg:px-8 bg-white flex justify-center">
       <div 
-        className="relative overflow-hidden border border-[#0000000F] w-full max-w-[1242px] xl:max-w-[1400px] 2xl:max-w-[1600px] rounded-[24px] lg:h-[427px] xl:h-[500px] 2xl:h-[550px] flex flex-col lg:block"
+        className="relative overflow-hidden border border-[#0000000F] w-full max-w-[353px] lg:max-w-[1242px] xl:max-w-[1400px] 2xl:max-w-[1600px] rounded-[24px] h-[581px] lg:h-[427px] xl:h-[500px] 2xl:h-[550px] flex flex-col lg:block"
         style={{
           background: 'linear-gradient(93.7deg, #FFFFFF -11.3%, #FFEDE7 118.49%)',
         }}
       >
         {/* Content Container - Vertically Centered */}
-        <div className="flex flex-col justify-center px-6 sm:px-12 md:px-16 lg:px-24 py-12 lg:py-0 relative z-10 h-full lg:items-start items-center text-center lg:text-left">
+        <div className="flex flex-col justify-center px-6 sm:px-12 md:px-16 lg:px-24 py-6 lg:py-0 relative z-10 h-[325px] lg:h-full lg:items-start items-center text-center lg:text-left flex-shrink-0">
           <div className="flex flex-col gap-[17px] max-w-full lg:w-[473px] xl:w-[600px]">
             <h3 className="font-sans font-semibold text-[32px] sm:text-[40px] xl:text-[48px] 2xl:text-[56px] leading-tight tracking-[-3%] text-black m-0">
               You know what's the <br className="hidden sm:block" />
@@ -50,7 +50,7 @@ export default function PromotionBanner() {
         </div>
 
         {/* Team Photo Container */}
-        <div className="relative lg:absolute lg:right-0 lg:bottom-0 h-[300px] sm:h-[400px] lg:h-full w-full lg:w-[631px] xl:w-[750px] 2xl:w-[850px] mt-4 lg:mt-0 z-5">
+        <div className="relative lg:absolute lg:right-0 lg:bottom-0 h-[256px] lg:h-full w-full lg:w-[631px] xl:w-[750px] 2xl:w-[850px] mt-0 lg:mt-0 z-5">
           <Image
             src="/team-photo.webp"
             alt="n8n Developers Team"

@@ -9,8 +9,8 @@ export const Footer: FC = () => {
       <div className="max-w-7xl xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-[64px] 2xl:px-[80px] pb-12">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
           
-          <div className="flex-[2] text-left w-full md:w-auto order-last md:order-none pl-0 md:pl-[64px]">
-            <p className="font-manrope font-semibold text-[16px] xl:text-[18px] 2xl:text-[20px] leading-relaxed tracking-[-2%] text-[#0000004D] md:whitespace-nowrap">
+          <div className="flex-[2] text-left w-full md:w-auto order-last md:order-none pl-0">
+            <p className="font-manrope font-semibold text-[10px] xs:text-[12px] md:text-[16px] xl:text-[18px] 2xl:text-[20px] leading-relaxed tracking-[-2%] text-[#0000004D] whitespace-nowrap text-center md:text-left">
               © {new Date().getFullYear()} n8n developers. All rights reserved. {" "}
               <span>
                 An initiative by{" "}

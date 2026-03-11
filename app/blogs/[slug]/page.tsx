@@ -164,7 +164,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </div>
 
         {/* Content Section */}
-        <div className="max-w-[1440px] xl:max-w-[1600px] 2xl:max-w-[1800px] mx-auto px-6 sm:px-12 md:px-[80px] mt-12 sm:mt-24">
+        <div className="max-w-[1440px] xl:max-w-[1600px] 2xl:max-w-[1800px] mx-auto px-6 sm:px-12 md:px-[80px] mt-8 sm:mt-24">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-0 relative">
             
             {/* Main Content Column */}
@@ -180,7 +180,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 </div>
 
                 {/* Mobile View: Sidebar content moved here */}
-                <div className="flex flex-col gap-16 lg:hidden pt-12 border-t border-gray-100">
+                <div className="flex flex-col gap-10 lg:hidden pt-12 border-t border-gray-100">
                   <div className="flex flex-col gap-6">
                     <h4 className="font-gilroy font-semibold text-[18px] text-[#FF7A59] uppercase tracking-wider">Keywords</h4>
                     <div className="flex flex-wrap gap-2">
@@ -212,14 +212,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 </div>
 
                 {/* Article Navigation: Reordered to be below keywords/share on mobile */}
-                <div className="w-full flex flex-col sm:flex-row items-center justify-between py-12 border-t border-gray-100 mt-16 gap-6 sm:gap-0">
+                <div className="w-full flex flex-row items-center justify-between py-12 border-t border-gray-100 mt-10 gap-2 sm:gap-0">
                   {adjacentPosts.prev ? (
                     <Link 
                       href={`/blogs/${adjacentPosts.prev.fields.slug}`} 
-                      className="inline-flex items-center gap-[16px] font-manrope font-semibold text-[18px] leading-[30px] tracking-[-1%] text-black hover:opacity-70 transition-opacity w-full sm:w-auto"
+                      className="inline-flex items-center gap-[8px] sm:gap-[16px] font-manrope font-semibold text-[14px] xs:text-[16px] sm:text-[18px] leading-[30px] tracking-[-1%] text-black hover:opacity-70 transition-opacity"
                     >
-                      <div className="w-[48px] h-[48px] border border-gray-200 rounded-[12px] flex items-center justify-center flex-shrink-0">
-                        <ArrowLeft className="h-5 w-5 text-black" />
+                      <div className="w-[36px] h-[36px] items-center justify-center flex-shrink-0 border border-gray-200 rounded-[12px] flex">
+                        <ArrowLeft className="h-4 w-4 sm:h-5 sm:w-5 text-black" />
                       </div>
                       <span className="whitespace-nowrap">Previous Article</span>
                     </Link>
@@ -228,11 +228,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   {adjacentPosts.next ? (
                     <Link 
                       href={`/blogs/${adjacentPosts.next.fields.slug}`} 
-                      className="inline-flex items-center justify-end gap-[16px] font-manrope font-semibold text-[18px] leading-[30px] tracking-[-1%] text-black hover:opacity-70 transition-opacity w-full sm:w-auto"
+                      className="inline-flex items-center justify-end gap-[8px] sm:gap-[16px] font-manrope font-semibold text-[14px] xs:text-[16px] sm:text-[18px] leading-[30px] tracking-[-1%] text-black hover:opacity-70 transition-opacity"
                     >
                       <span className="whitespace-nowrap">Next Article</span>
-                      <div className="w-[48px] h-[48px] border border-gray-200 rounded-[12px] flex items-center justify-center flex-shrink-0">
-                        <ArrowRight className="h-5 w-5 text-black" />
+                      <div className="w-[36px] h-[36px] items-center justify-center flex-shrink-0 border border-gray-200 rounded-[12px] flex">
+                        <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 text-black" />
                       </div>
                     </Link>
                   ) : <div className="hidden sm:block" />}
@@ -242,7 +242,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
             {/* Desktop Sidebar: Visible only on lg+ screens */}
             <div className="hidden lg:col-span-4 lg:flex justify-end">
-              <aside className="w-[252px] xl:w-[300px] flex flex-col gap-[107px] sticky top-32 h-fit">
+              <aside className="w-[252px] xl:w-[300px] flex flex-col gap-[107px]">
                 <div className="flex flex-col gap-4">
                   <h4 className="font-gilroy font-semibold text-[18px] leading-[20px] tracking-[-2%] text-[#FF7A59]">Keywords</h4>
                   <div className="grid grid-cols-2 gap-2">
