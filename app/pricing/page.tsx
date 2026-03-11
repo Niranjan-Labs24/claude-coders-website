@@ -76,11 +76,11 @@ const PricingPage: FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12 items-start justify-items-center">
           {/* Hourly Model */}
-          <div className="flex flex-col w-[394px]">
+          <div className="flex flex-col w-full max-w-[353px] md:max-w-[394px]">
             {/* Top Box: Pricing Details */}
             <div 
-              className="bg-white border border-[#E5E7EB] rounded-t-[32px] flex flex-col justify-between"
-              style={{ width: '394px', height: '310px', paddingTop: '36px', paddingRight: '33px', paddingBottom: '32px', paddingLeft: '33px' }}
+              className="bg-white border-[0.5px] md:border border-[#E5E7EB] rounded-t-[32px] flex flex-col justify-between"
+              style={{ paddingTop: '36px', paddingRight: '33px', paddingBottom: '32px', paddingLeft: '33px' }}
             >
               <div className="flex flex-col gap-[32px]">
                 <div className="space-y-4">
@@ -101,8 +101,8 @@ const PricingPage: FC = () => {
                 <Link 
                   href={CADLENLY_URL}
                   target="_blank"
-                  className="flex items-center justify-center bg-white border border-black font-manrope font-semibold text-[16px] leading-[32px] tracking-[-3%] text-black hover:bg-gray-50 transition-colors shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:scale-95 mx-auto"
-                  style={{ width: '328px', height: '52px', borderRadius: '10px', paddingLeft: '35px', paddingRight: '35px', paddingTop: '10px', paddingBottom: '10px', gap: '8px' }}
+                  className="flex items-center justify-center bg-white border-[0.5px] md:border border-black font-manrope font-semibold text-[16px] leading-[32px] tracking-[-3%] text-black hover:bg-gray-50 transition-colors shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:scale-95 mx-auto w-full md:w-[328px]"
+                  style={{ height: '52px', borderRadius: '10px', paddingLeft: '35px', paddingRight: '35px', paddingTop: '10px', paddingBottom: '10px', gap: '8px' }}
                 >
                   Get started
                 </Link>
@@ -111,10 +111,10 @@ const PricingPage: FC = () => {
 
             {/* Bottom Box: Ideal for */}
             <div 
-              className="bg-white border border-t-0 border-[#F3F4F6] rounded-b-[32px]"
-              style={{ width: '394px', height: '732px', paddingTop: '32px', paddingRight: '33px', paddingBottom: '422px', paddingLeft: '33px' }}
+              className="bg-white border-[0.5px] md:border border-t-0 border-[#F3F4F6] rounded-b-[32px] h-auto min-h-[248px] md:h-[732px]"
+              style={{ paddingTop: '32px', paddingRight: '33px', paddingBottom: '32px', paddingLeft: '33px' }}
             >
-              <div className="flex flex-col gap-[36px]">
+              <div className="flex flex-col gap-[16px] md:gap-[36px]">
                 <h4 className="text-sm font-bold text-black tracking-wider m-0">Ideal for</h4>
                 <div className="space-y-4">
                   {starter.labels.map((label) => (
@@ -126,11 +126,11 @@ const PricingPage: FC = () => {
           </div>
 
           {/* Volume package */}
-          <div className="flex flex-col w-[394px]">
+          <div className="flex flex-col w-full max-w-[353px] md:max-w-[394px]">
             {/* Top Box: Pricing Details */}
             <div 
-              className="bg-[#FFFAF8] border border-[#E5E7EB] rounded-t-[32px] flex flex-col justify-between"
-              style={{ width: '394px', height: '310px', paddingTop: '36px', paddingRight: '33px', paddingBottom: '32px', paddingLeft: '33px' }}
+              className="bg-[#FFFAF8] border-[0.5px] md:border border-[#E5E7EB] rounded-t-[32px] flex flex-col justify-between"
+              style={{ paddingTop: '36px', paddingRight: '33px', paddingBottom: '32px', paddingLeft: '33px' }}
             >
               <div className="flex flex-col gap-[32px]">
                 <div className="space-y-4">
@@ -151,8 +151,8 @@ const PricingPage: FC = () => {
                 <Link 
                   href={CADLENLY_URL}
                   target="_blank"
-                  className="flex items-center justify-center bg-[#FF7A59] border border-black font-manrope font-semibold text-[16px] leading-[32px] tracking-[-3%] text-white hover:bg-[#ff6a42] transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:scale-95 mx-auto"
-                  style={{ width: '328px', height: '52px', borderRadius: '10px', paddingLeft: '35px', paddingRight: '35px', paddingTop: '10px', paddingBottom: '10px', gap: '8px' }}
+                  className="flex items-center justify-center bg-[#FF7A59] border-[0.5px] md:border border-black font-manrope font-semibold text-[16px] leading-[32px] tracking-[-3%] text-white hover:bg-[#ff6a42] transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:scale-95 mx-auto w-full md:w-[328px]"
+                  style={{ height: '52px', borderRadius: '10px', paddingLeft: '35px', paddingRight: '35px', paddingTop: '10px', paddingBottom: '10px', gap: '8px' }}
                 >
                   Get started
                 </Link>
@@ -161,10 +161,10 @@ const PricingPage: FC = () => {
 
             {/* Bottom Box: Ideal for */}
             <div 
-              className="bg-white border border-t-0 border-[#F3F4F6] rounded-b-[32px]"
-              style={{ width: '394px', height: '732px', paddingTop: '32px', paddingRight: '33px', paddingBottom: '422px', paddingLeft: '33px' }}
+              className="bg-white border-[0.5px] md:border border-t-0 border-[#F3F4F6] rounded-b-[32px] h-auto min-h-[351px] md:h-[732px]"
+              style={{ paddingTop: '32px', paddingRight: '33px', paddingBottom: '32px', paddingLeft: '33px' }}
             >
-              <div className="flex flex-col gap-[36px]">
+              <div className="flex flex-col gap-[16px] md:gap-[36px]">
                 <h4 className="text-sm font-bold text-black tracking-wider m-0">Ideal for</h4>
                 <div className="space-y-4">
                   {plus.labels.map((label) => (
@@ -176,11 +176,11 @@ const PricingPage: FC = () => {
           </div>
 
           {/* Monthly Retainer */}
-          <div className="flex flex-col w-[394px]">
+          <div className="flex flex-col w-full max-w-[353px] md:max-w-[394px]">
             {/* Top Box: Pricing Details */}
             <div 
-              className="bg-white border border-[#E5E7EB] rounded-t-[32px] flex flex-col justify-between"
-              style={{ width: '394px', height: '310px', paddingTop: '36px', paddingRight: '33px', paddingBottom: '32px', paddingLeft: '33px' }}
+              className="bg-white border-[0.5px] md:border border-[#E5E7EB] rounded-t-[32px] flex flex-col justify-between"
+              style={{ paddingTop: '36px', paddingRight: '33px', paddingBottom: '32px', paddingLeft: '33px' }}
             >
               <div className="flex flex-col gap-[32px]">
                 <div className="space-y-4">
@@ -201,8 +201,8 @@ const PricingPage: FC = () => {
                 <Link 
                   href={CADLENLY_URL}
                   target="_blank"
-                  className="flex items-center justify-center bg-white border border-black font-manrope font-semibold text-[16px] leading-[32px] tracking-[-3%] text-black hover:bg-gray-50 transition-colors shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:scale-95 mx-auto"
-                  style={{ width: '328px', height: '52px', borderRadius: '10px', paddingLeft: '35px', paddingRight: '35px', paddingTop: '10px', paddingBottom: '10px', gap: '8px' }}
+                  className="flex items-center justify-center bg-white border-[0.5px] md:border border-black font-manrope font-semibold text-[16px] leading-[32px] tracking-[-3%] text-black hover:bg-gray-50 transition-colors shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:scale-95 mx-auto w-full md:w-[328px]"
+                  style={{ height: '52px', borderRadius: '10px', paddingLeft: '35px', paddingRight: '35px', paddingTop: '10px', paddingBottom: '10px', gap: '8px' }}
                 >
                   Get started
                 </Link>
@@ -211,10 +211,10 @@ const PricingPage: FC = () => {
 
             {/* Bottom Box: Ideal for */}
             <div 
-              className="bg-white border border-t-0 border-[#F3F4F6] rounded-b-[32px]"
-              style={{ width: '394px', height: '732px', paddingTop: '32px', paddingRight: '33px', paddingBottom: '422px', paddingLeft: '33px' }}
+              className="bg-white border-[0.5px] md:border border-t-0 border-[#F3F4F6] rounded-b-[32px] h-auto min-h-[530px] md:h-[732px]"
+              style={{ paddingTop: '32px', paddingRight: '33px', paddingBottom: '32px', paddingLeft: '33px' }}
             >
-              <div className="flex flex-col gap-[36px]">
+              <div className="flex flex-col gap-[16px] md:gap-[36px]">
                 <h4 className="text-sm font-bold text-black tracking-wider m-0">Ideal for</h4>
                 <div className="space-y-4">
                   {pro.labels.map((label) => (
