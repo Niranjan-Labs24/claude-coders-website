@@ -13,7 +13,7 @@ export default function BlogCardImage({ src, alt, priority = false }: BlogCardIm
   const [imageError, setImageError] = useState(false);
 
   // Add Contentful Image API parameters for better optimization
-  const optimizedSrc = src ? `${src}?w=800&q=75&fm=webp` : null;
+  const optimizedSrc = src ? `${src}?w=600&q=75&fm=webp` : null;
 
   if (!optimizedSrc || imageError) {
     return (

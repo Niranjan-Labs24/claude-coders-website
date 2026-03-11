@@ -5,7 +5,7 @@ import { contentfulService } from '@/lib/contentful';
 import { formatDate } from 'date-fns';
 import PromotionBanner from '@/components/blog/PromotionBanner';
 import { draftMode } from 'next/headers';
-import { ArrowLeft, ArrowRight, Instagram, Linkedin, Twitter, Facebook } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Instagram, Linkedin, Facebook } from 'lucide-react';
 import Image from 'next/image';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { BLOCKS, INLINES, MARKS } from '@contentful/rich-text-types';
@@ -58,10 +58,10 @@ const richTextOptions = {
     [BLOCKS.HEADING_1]: (node: any, children: any) => <h1 className="text-3xl font-extrabold mb-6 text-black">{children}</h1>,
     [BLOCKS.HEADING_2]: (node: any, children: any) => <h2 className="text-2xl font-bold mt-12 mb-6 text-black">{children}</h2>,
     [BLOCKS.HEADING_3]: (node: any, children: any) => <h3 className="text-xl font-bold mt-10 mb-5 text-black">{children}</h3>,
-    [BLOCKS.PARAGRAPH]: (node: any, children: any) => <p className="mb-8 font-gilroy font-medium text-[20px] leading-[34px] text-black">{children}</p>,
+    [BLOCKS.PARAGRAPH]: (node: any, children: any) => <p className="mb-8 font-gilroy font-medium text-[20px] leading-[34px] text-black text-justify">{children}</p>,
     [BLOCKS.UL_LIST]: (node: any, children: any) => <ul className="list-disc pl-8 mb-8 space-y-4">{children}</ul>,
     [BLOCKS.OL_LIST]: (node: any, children: any) => <ol className="list-decimal pl-8 mb-8 space-y-4">{children}</ol>,
-    [BLOCKS.LIST_ITEM]: (node: any, children: any) => <li className="font-gilroy font-medium text-[20px] leading-[34px] text-black">{children}</li>,
+    [BLOCKS.LIST_ITEM]: (node: any, children: any) => <li className="font-gilroy font-medium text-[20px] leading-[34px] text-black text-justify">{children}</li>,
     [BLOCKS.QUOTE]: (node: any, children: any) => (
       <blockquote className="border-l-6 border-[#FF7A59] pl-8 py-4 my-8 bg-gray-50 italic text-xl text-gray-700 rounded-r-2xl">
         {children}
@@ -79,6 +79,20 @@ const richTextOptions = {
     [MARKS.CODE]: (text: any) => <code className="bg-gray-100 rounded px-1.5 py-0.5 font-mono text-sm">{text}</code>,
   },
 };
+
+const SocialXIcon = ({ className }: { className?: string }) => (
+  <svg 
+    viewBox="0 0 1200 1227" 
+    fill="none" 
+    xmlns="http://www.w3.org/2000/svg" 
+    className={className}
+  >
+    <path 
+      d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z" 
+      fill="currentColor"
+    />
+  </svg>
+);
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const resolvedParams = await params;
@@ -170,7 +184,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             {/* Main Content Column */}
             <div className="lg:col-span-8 lg:pl-[103px] xl:pl-[150px] max-w-full">
               <div className="w-full lg:max-w-[722px] xl:max-w-[850px] space-y-12">
-                <div className="prose prose-xl sm:prose-2xl xl:prose-3xl max-w-none 
+                <div className="prose prose-xl sm:prose-2xl xl:prose-3xl max-w-none text-justify
                   prose-headings:text-black prose-headings:font-extrabold 
                   prose-strong:text-black prose-strong:font-bold
                   prose-a:text-[#FF7A59] prose-a:font-bold prose-a:no-underline hover:prose-a:underline
@@ -197,14 +211,30 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
                   <div className="flex flex-col gap-6">
                     <h4 className="font-manrope font-semibold text-[18px] text-black">Share this article</h4>
-                    <div className="flex items-center gap-4">
-                      {[Instagram, Linkedin, Twitter, Facebook].map((Icon, i) => (
+                    <div className="flex items-center gap-5">
+                      {[
+                        { Icon: Instagram, href: "https://www.instagram.com/n8ndevelopers_offl?igsh=MWNzOXFrczV2Y2twdQ%3D%3D&utm_source=qr" },
+                        { 
+                          Icon: Linkedin, 
+                          href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://www.n8ndevelopers.com/blogs/${resolvedParams.slug}`)}`
+                        },
+                        { 
+                          Icon: SocialXIcon, 
+                          href: `https://twitter.com/intent/tweet?text=${encodeURIComponent("I found this article from n8n developers very helpful! You can refer to it here:")}&url=${encodeURIComponent(`https://www.n8ndevelopers.com/blogs/${resolvedParams.slug}`)}`
+                        },
+                        { 
+                          Icon: Facebook, 
+                          href: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`https://www.n8ndevelopers.com/blogs/${resolvedParams.slug}`)}`
+                        }
+                      ].map((social, i) => (
                         <Link 
                           key={i} 
-                          href="#" 
+                          href={social.href} 
+                          target="_blank"
+                          rel="noopener noreferrer"
                           className="w-[48px] h-[48px] border border-gray-100 rounded-xl flex items-center justify-center text-black hover:border-black transition-all shadow-sm bg-white"
                         >
-                          <Icon className="h-5 w-5" />
+                          <social.Icon className="h-6 w-6" />
                         </Link>
                       ))}
                     </div>
@@ -259,14 +289,30 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
                 <div className="flex flex-col gap-4">
                   <h4 className="font-manrope font-semibold text-[16px] leading-[20px] tracking-[-2%] text-black whitespace-nowrap">Share this article</h4>
-                  <div className="flex items-center gap-[12px]">
-                    {[Instagram, Linkedin, Twitter, Facebook].map((Icon, i) => (
+                  <div className="flex items-center gap-[20px]">
+                    {[
+                      { Icon: Instagram, href: "https://www.instagram.com/n8ndevelopers_offl?igsh=MWNzOXFrczV2Y2twdQ%3D%3D&utm_source=qr" },
+                      { 
+                        Icon: Linkedin, 
+                        href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://www.n8ndevelopers.com/blogs/${resolvedParams.slug}`)}`
+                      },
+                      { 
+                        Icon: SocialXIcon, 
+                        href: `https://twitter.com/intent/tweet?text=${encodeURIComponent("I found this article from n8n developers very helpful! You can refer to it here:")}&url=${encodeURIComponent(`https://www.n8ndevelopers.com/blogs/${resolvedParams.slug}`)}`
+                      },
+                      { 
+                        Icon: Facebook, 
+                        href: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`https://www.n8ndevelopers.com/blogs/${resolvedParams.slug}`)}`
+                      }
+                    ].map((social, i) => (
                       <Link 
                         key={i} 
-                        href="#" 
-                        className="w-[30px] h-[30px] border border-gray-100 rounded-[8px] flex items-center justify-center text-black hover:border-black transition-all transform hover:scale-105 shadow-sm bg-white"
+                        href={social.href} 
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-[44px] h-[44px] border border-gray-100 rounded-[12px] flex items-center justify-center text-black hover:border-black transition-all transform hover:scale-105 shadow-sm bg-white"
                       >
-                        <Icon className="h-4 w-4" />
+                        <social.Icon className="h-6 w-6" />
                       </Link>
                     ))}
                   </div>
