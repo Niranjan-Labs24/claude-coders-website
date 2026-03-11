@@ -28,7 +28,21 @@ export default function PromotionBanner() {
             <Link 
               href={CADLENLY_URL}
               target="_blank"
-              className="inline-flex items-center justify-center bg-[#FF7442] hover:bg-[#ff6a42] text-white transition-all text-base sm:text-[18px] xl:text-[20px] 2xl:text-[22px] font-semibold text-center whitespace-nowrap border border-black rounded-[16px] shadow-[0px_4px_0px_0px_#000000] w-full max-w-[280px] h-[64px] xl:h-[72px] 2xl:h-[80px]"
+              className="inline-flex items-center justify-center bg-[#FF7442] hover:bg-[#ff6a42] text-white transition-all text-center whitespace-nowrap border-[1px] border-black"
+              style={{
+                width: '280px',
+                height: '72px',
+                gap: '8px',
+                opacity: 1,
+                borderRadius: '12px',
+                padding: '20px 52px',
+                boxShadow: '2px 3px 0px 0px #000000',
+                fontFamily: 'Manrope',
+                fontWeight: 600,
+                fontSize: '18px',
+                lineHeight: '32px',
+                letterSpacing: '-3%',
+              }}
             >
               Book free automation call
             </Link>

@@ -1,12 +1,26 @@
 import Link from "next/link"
 import type { FC } from "react"
-import { /*Instagram,*/ Linkedin, Twitter, Facebook } from "lucide-react"
+import { Instagram, Linkedin, Facebook } from "lucide-react"
+
+const SocialXIcon = ({ className }: { className?: string }) => (
+  <svg 
+    viewBox="0 0 1200 1227" 
+    fill="none" 
+    xmlns="http://www.w3.org/2000/svg" 
+    className={className}
+  >
+    <path 
+      d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z" 
+      fill="currentColor"
+    />
+  </svg>
+)
 
 export const Footer: FC = () => {
   return (
     <footer className="bg-white">
       <div className="border-t border-gray-100 mb-8"></div>
-      <div className="max-w-7xl xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-[64px] 2xl:px-[80px] pb-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
           
           <div className="flex-[2] text-left w-full md:w-auto order-last md:order-none pl-0">
@@ -30,7 +44,8 @@ export const Footer: FC = () => {
           <div className="flex items-center gap-3 sm:gap-4 xl:gap-6 justify-end flex-1">
             {[
               { Icon: Linkedin, href: "https://linkedin.com/company/n8n-developers" },
-              { Icon: Twitter, href: "https://x.com/n8ndevelopers" },
+              { Icon: SocialXIcon, href: "https://x.com/n8ndevelopers" },
+              { Icon: Instagram, href: "https://www.instagram.com/n8ndevelopers_offl?igsh=MWNzOXFrczV2Y2twdQ%3D%3D&utm_source=qr" },
               { Icon: Facebook, href: "https://facebook.com" }
             ].map((social, i) => (
               <Link 
