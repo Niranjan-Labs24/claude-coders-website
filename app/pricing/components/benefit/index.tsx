@@ -14,7 +14,6 @@ const Benefit = ({label}: {label: string}) => {
       </div>
       <span 
         className="font-sans font-medium text-[16px] leading-[32px] tracking-[-2%] text-black" 
-        style={{ width: '292px' }}
       >
         {label}
       </span>

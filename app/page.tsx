@@ -9,7 +9,7 @@ const LandingPage: FC = () => {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-4 md:pt-6 pb-12 md:pb-16 overflow-hidden">
+      <section className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-4 md:pt-6 pb-6 md:pb-16 overflow-hidden">
         <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-12 xl:gap-40 items-start">
           {/* Left Content */}
           <div className="space-y-8 md:space-y-12">
@@ -120,8 +120,8 @@ const LandingPage: FC = () => {
           minHeight: "257px"
         }}
       >
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-[80px] py-[48px]">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[48px] max-w-[1280px] mx-auto">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-[80px] py-8 lg:py-[48px]">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-[48px] max-w-[1280px] mx-auto">
             {[
               {
                 icon: "/icons/Frame 2147225439.png",
@@ -146,7 +146,7 @@ const LandingPage: FC = () => {
             ].map((feature, index) => (
               <div 
                 key={index} 
-                className="flex flex-col gap-[20px] w-full lg:w-[284px] h-full lg:h-[161px]"
+                className="flex flex-col items-center text-center lg:items-start lg:text-left gap-[20px] w-full lg:w-[284px] h-full lg:h-[161px]"
               >
                 <div 
                   className="w-[40px] h-[40px] rounded-lg flex items-center justify-center border-[1px] border-[#1313131A] flex-shrink-0"

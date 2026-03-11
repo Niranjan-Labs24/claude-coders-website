@@ -27,13 +27,14 @@ function FAQItem({
 
   return (
     <div
-      className={`border border-gray-100 rounded-[2rem] transition-all duration-300 bg-white ${
+      className={`h-full border border-gray-100 rounded-[2rem] transition-all duration-300 bg-white ${
         isOpen ? 'shadow-sm' : 'hover:shadow-md'
       }`}
     >
       <button
         onClick={() => onToggle(index)}
-        className="w-full flex items-center justify-between px-8 py-7 text-left group"
+        className="w-full h-full flex items-center justify-between px-8 py-7 text-left group"
+        style={isOpen ? { height: 'auto' } : {}}
       >
         <span className="text-base font-bold text-black pr-8 leading-snug group-hover:text-[#FF7A59] transition-colors">
           {faq.question}
@@ -67,41 +68,23 @@ export default function PricingFAQ() {
     setOpenIndex(prev => (prev === index ? null : index));
   };
 
-  const leftColumn = pricingFAQs.filter((_, i) => i % 2 === 0);
-  const rightColumn = pricingFAQs.filter((_, i) => i % 2 !== 0);
-
   return (
     <section className="pt-16 md:pt-24 pb-0 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <h2 className="text-2xl md:text-3xl font-bold text-black text-center mb-12 md:mb-16">
         Frequently asked questions
       </h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
-        {/* Left Column */}
-        <div className="space-y-6">
-          {leftColumn.map((faq, index) => (
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+        {pricingFAQs.map((faq, index) => (
+          <div key={index}>
             <FAQItem
-              key={`left-${index}`}
               faq={faq}
-              index={index * 2}
+              index={index}
               openIndex={openIndex}
               onToggle={toggle}
             />
-          ))}
-        </div>
-
-        {/* Right Column */}
-        <div className="space-y-6">
-          {rightColumn.map((faq, index) => (
-            <FAQItem
-              key={`right-${index}`}
-              faq={faq}
-              index={index * 2 + 1}
-              openIndex={openIndex}
-              onToggle={toggle}
-            />
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </section>
   );

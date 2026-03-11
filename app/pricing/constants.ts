@@ -46,20 +46,28 @@ export interface FAQItem {
 
 export const pricingFAQs: FAQItem[] = [
   {
-    question: "Is N8N more flexible than Zapier and Make?",
-    answer: "Yes, N8N allows full code-level control, custom logic, and self-hosting options, making it significantly more flexible for complex workflows."
+    question: "What is the minimum commitment for the Hourly model?",
+    answer: "The Hourly model is billed in 10-hour blocks, making it the lowest entry point at $500 total. It’s perfect if you have a one-off workflow or want to test our capabilities before committing to a larger package."
   },
   {
-    question: "Do N8N developers help reduce automation costs?",
-    answer: "Yes, using N8N can cut recurring subscription fees because it's open-source or self-hosted, and our developers optimize workflows to minimize resource usage."
+    question: "How does the Volume Package save me money compared to the Hourly model?",
+    answer: "The Volume Package is billed at $40/hour in 50-hour blocks — that’s a $500 saving compared to the Hourly rate for the same hours. You also get a dedicated project manager and priority support, making it ideal for teams running multiple workflows or API integrations."
   },
   {
-    question: "Can N8N handle complex enterprise workflows better?",
-    answer: "Absolutely. N8N supports advanced integrations, direct database connections, and large-scale automations that traditional no-code tools often struggle with."
+    question: "Which plan is right for me if I’m just starting with automation?",
+    answer: "If you’re exploring automation for the first time, the Hourly model (10-hour block) is a great starting point — low commitment, direct developer access, and up to 2 revision rounds per workflow. Once you see results, many clients move to the Volume Package or Monthly Retainer."
   },
   {
-    question: "Is hiring an N8N developer good for long-term automation growth?",
-    answer: "Yes, N8N developers build workflows that are easy to expand, maintain, and adapt as your business grows, ensuring your automation stack remains robust."
+    question: "Do all plans include documentation for the workflows built?",
+    answer: "Yes. All plans include documentation. The Hourly model comes with standard documentation, the Volume Package includes a comprehensive documentation package, and the Monthly Retainer covers full enterprise-grade documentation as part of your dedicated team engagement."
+  },
+  {
+    question: "How do I get started or discuss which plan fits my needs?",
+    answer: "Book a free 15-minute discovery call with Sasha and the team. We’ll understand your workflows, recommend the right plan, and get you started without any pressure."
+  },
+  {
+    question: "Can unused hours roll over to the next month on the Monthly Retainer?",
+    answer: "Yes! Unused hours from your Monthly Retainer roll over to the next billing cycle, so you never lose the time you’ve paid for. Your investment is always protected."
   }
 ];
 
