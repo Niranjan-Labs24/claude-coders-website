@@ -43,7 +43,7 @@ const LandingPage: FC = () => {
             </ul>
 
             {/* CTA and Trust Bar */}
-            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-8 sm:gap-6 lg:gap-8 pt-4">
+            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-8 sm:gap-4 lg:gap-4 pt-4">
               <div className="space-y-3 flex flex-col items-center sm:items-start w-full sm:w-auto">
                 <Link 
                   href={CADLENLY_URL}
@@ -81,7 +81,7 @@ const LandingPage: FC = () => {
               </div>
 
               {/* Rating Section */}
-              <div className="flex flex-col xs:flex-row items-center gap-4 sm:gap-6">
+              <div className="flex flex-col xs:flex-row items-center gap-4 sm:gap-6 sm:mt-3">
                 <div className="flex -space-x-3">
                   {[1, 2, 3, 4].map((i) => (
                     <div key={i} className="relative w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-white overflow-hidden bg-gray-200 flex-shrink-0">
