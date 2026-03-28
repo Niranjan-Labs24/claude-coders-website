@@ -2,7 +2,6 @@
 
 import { Button } from "@/components/ui/button"
 import { Menu } from "lucide-react"
-import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import type { FC } from "react"
@@ -13,8 +12,6 @@ import {
   SheetClose,
 } from "@/components/ui/sheet"
 import { CADLENLY_URL } from "@/app/constants"
-
-const logo = "/logo.webp"
 
 const CustomMenuIcon = () => (
   <svg width="60" height="60" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -31,7 +28,8 @@ export const Header: FC = () => {
 
   const navLinks = [
     { href: "/pricing", label: "Pricing" },
-    { href: "/blogs", label: "Blog" },
+    // { href: "/blogs", label: "Blog" },
+    { href: "/tempblog", label: "Blog" },
   ]
 
   return (
@@ -41,29 +39,21 @@ export const Header: FC = () => {
         <div className="flex-1 flex items-center">
           {/* Desktop Logo */}
           <div className="hidden md:block">
-            <Link href="/">
-              <Image 
-                src={logo}
-                alt="n8n developers logo" 
-                width={140} 
-                height={50}
-                unoptimized
-                className="object-contain h-[50px] w-auto" 
-              />
+            <Link href="/" className="flex items-center h-[50px]">
+              <div className="font-manrope text-3xl tracking-tight whitespace-nowrap">
+                <span className="text-[#FF7442] font-extrabold">Claude</span>
+                <span className="text-black font-medium"> Coder</span>
+              </div>
             </Link>
           </div>
 
           {/* Mobile Logo */}
           <div className="md:hidden">
-            <Link href="/">
-              <Image 
-                src={logo}
-                alt="n8n developers logo" 
-                width={120} 
-                height={40}
-                unoptimized
-                className="object-contain h-8 w-auto" 
-              />
+            <Link href="/" className="flex items-center h-8">
+              <div className="font-manrope text-2xl tracking-tight whitespace-nowrap">
+                <span className="text-[#FF7442] font-extrabold">Claude</span>
+                <span className="text-black font-medium"> Coder</span>
+              </div>
             </Link>
           </div>
         </div>
@@ -109,7 +99,7 @@ export const Header: FC = () => {
               }}
             >
               <Link href={CADLENLY_URL} target="_blank">
-                Book free automation call
+                Book free Claude Code call
               </Link>
             </Button>
           </div>
@@ -124,15 +114,11 @@ export const Header: FC = () => {
               </SheetTrigger>
               <SheetContent side="top" className="flex flex-col p-0 border-none overflow-hidden">
                 <div className="flex-none flex items-center justify-between px-6 py-4 border-b border-gray-50">
-                  <Link href="/">
-                    <Image 
-                      src={logo}
-                      alt="n8n developers logo" 
-                      width={120} 
-                      height={40}
-                      unoptimized
-                      className="object-contain h-8 w-auto" 
-                    />
+                  <Link href="/" className="flex items-center h-8">
+                    <div className="font-manrope text-2xl tracking-tight whitespace-nowrap">
+                      <span className="text-[#FF7442] font-extrabold">Claude</span>
+                      <span className="text-black font-medium"> Coder</span>
+                    </div>
                   </Link>
                 </div>
                 
