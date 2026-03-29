@@ -20,7 +20,7 @@ export default function PromotionBanner() {
               smartest move?
             </h3>
             <p className="font-sans font-medium text-[16px] sm:text-[18px] xl:text-[20px] 2xl:text-[22px] leading-relaxed tracking-[-1%] text-[#00000099] m-0 max-w-[426px] xl:max-w-[550px]">
-              Hire n8n experts at n8ndevelopers to build, manage and scale your automation pipeline.
+              Hire Claude Code experts at claudecoders.io to build, manage and scale your automation pipeline.
             </p>
           </div>
           
@@ -44,7 +44,7 @@ export default function PromotionBanner() {
                 letterSpacing: '-3%',
               }}
             >
-              Book free automation call
+              Book free Claude Code call
             </Link>
             <div className="flex items-center gap-2 lg:ml-4">
                <div className="w-[18px] h-[18px] flex items-center justify-center">
@@ -67,7 +67,7 @@ export default function PromotionBanner() {
         <div className="relative lg:absolute lg:right-0 lg:bottom-0 h-[256px] lg:h-full w-full lg:w-[631px] xl:w-[750px] 2xl:w-[850px] mt-0 lg:mt-0 z-5">
           <Image
             src="/team-photo.webp"
-            alt="n8n Developers Team"
+            alt="Claude Coder Team"
             fill
             className="object-contain object-bottom"
             priority

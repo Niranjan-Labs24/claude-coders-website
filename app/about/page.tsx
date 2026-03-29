@@ -7,20 +7,20 @@ import PromotionBanner from "@/components/blog/PromotionBanner"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "About | n8n Developers",
-  description: "Learn about n8n Developers — a global network of n8n experts making workflow automation accessible to every business.",
+  title: "About | Claude Coder",
+  description: "Learn about Claude Coder — a global network of Claude Code experts making workflow automation accessible to every business.",
 }
 
 const pillars = [
   {
     tag: "Purpose",
     title: "Democratizing Automation",
-    body: "We believe automation should not be a luxury reserved for Fortune 500 companies with million-dollar IT budgets. n8nDevelopers.com exists to make powerful automation accessible to everyone — from early-stage founders and scrappy teams to scale-ups and non-technical decision-makers.",
+    body: "We believe automation should not be a luxury reserved for Fortune 500 companies with million-dollar IT budgets. claudecoders.io exists to make powerful automation accessible to everyone — from early-stage founders and scrappy teams to scale-ups and non-technical decision-makers.",
   },
   {
     tag: "Solution",
     title: "Removing Every Barrier",
-    body: "By building a global network of n8n experts and offering flexible, affordable engagement models, we remove the barriers to automation adoption.",
+    body: "By building a global network of Claude Code experts and offering flexible, affordable engagement models, we remove the barriers to automation adoption.",
     bullets: [
       "No need for in-house developers",
       "No long-term contracts",
@@ -37,7 +37,7 @@ const pillars = [
 const stats = [
   { value: "200+", label: "Workflows Delivered" },
   { value: "50+", label: "Clients Worldwide" },
-  { value: "15+", label: "n8n Certified Experts" },
+  { value: "15+", label: "Claude Code Certified Experts" },
   { value: "98%", label: "Client Satisfaction" },
 ]
 
@@ -57,7 +57,7 @@ const AboutPage: FC = () => {
               One Workflow at a Time
             </h1>
             <p className="text-lg text-gray-600 leading-relaxed max-w-lg">
-              We are an independent global network of n8n experts — not affiliated with n8n GmbH — dedicated to making powerful workflow automation accessible to every business.
+              We are an independent global network of Claude Code experts dedicated to making powerful workflow automation accessible to every business.
             </p>
           </div>
 
@@ -131,8 +131,7 @@ const AboutPage: FC = () => {
         <div className="bg-gray-50 border border-gray-100 rounded-2xl px-8 py-6 flex items-start gap-4">
           <span className="text-2xl">ℹ️</span>
           <p className="text-sm text-gray-600 leading-relaxed">
-            <strong className="text-black">Disclaimer:</strong> We are not part of n8n GmbH, the creators of the n8n workflow automation tool.
-            n8nDevelopers.com is an independent network of expert developers who specialize in building with n8n.
+            <strong className="text-black">Disclaimer:</strong> claudecoders.io is an independent agency. We are not affiliated with, endorsed by, or sponsored by Anthropic PBC. Claude is a trademark of Anthropic PBC.
           </p>
         </div>
       </section>

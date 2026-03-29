@@ -15,23 +15,23 @@ const LandingPage: FC = () => {
           <div className="space-y-8 md:space-y-12">
             <div className="space-y-4 md:space-y-6">
               <h1 className="text-[28px] xs:text-3xl sm:text-4xl md:text-5xl lg:text-[56px] font-semibold tracking-[-0.03em] text-black leading-tight lg:leading-[63px]">
-                <span className="inline-block sm:whitespace-nowrap">Stop <span className="text-[#FF7A59]">wrestling workflows.</span></span><br className="hidden sm:block" />
-                Let a dedicated n8n<br className="hidden sm:block" />
+                <span className="inline-block sm:whitespace-nowrap">Stop <span className="text-[#FF7A59]">wrestling codebases.</span></span><br className="hidden sm:block" />
+                Let a dedicated  Claude Code<br className="hidden sm:block" />
                 team handle it.
               </h1>
               <p className="text-lg md:text-xl text-gray-500 max-w-xl leading-relaxed">
-                We design, run, and maintain complex production-ready n8n automations for growing teams.
+                We design, build, and maintain complex production-ready Claude Code agents for growing teams.
               </p>
             </div>
 
             {/* Benefits List */}
             <ul className="space-y-4 md:space-y-5">
               {[
-                "Automation consultation to define the right workflows",
-                "Production-ready n8n workflows, end to end",
-                "Seamless integrations across your SaaS stack",
-                "Fewer manual steps, fewer operational errors",
-                "Clear ownership of critical automations",
+                "Automation consultation to define the right Claude Code workflows",
+                "Production-ready Claude Code builds, end to end",
+                "Seamless MCP integrations across your SaaS stack",
+                "Fewer manual steps, fewer development errors, faster shipping",
+                "Clear ownership of your Claude Code agents and automation pipelines",
               ].map((benefit, index) => (
                 <li key={index} className="flex items-start gap-4">
                   <div className="mt-1 bg-green-500 rounded-full p-0.5 flex-shrink-0">
@@ -64,7 +64,7 @@ const LandingPage: FC = () => {
                     letterSpacing: '-3%',
                   }}
                 >
-                  Book free automation call
+                  Book free Claude Code call
                 </Link>
                 <div className="w-full max-w-[280px] flex justify-center">
                   <p className="text-sm text-gray-500 font-bold flex items-center gap-2">
@@ -109,6 +109,7 @@ const LandingPage: FC = () => {
           {/* Right: Booking Widget */}
           <div className="w-full flex lg:justify-end">
             <Cadlenly />
+            
           </div>
         </div>
       </section>
@@ -125,23 +126,23 @@ const LandingPage: FC = () => {
             {[
               {
                 icon: "/icons/Frame 2147225439.png",
-                title: "Dedicated team with our automation manager",
+                title: "Dedicated Claude Code team with a named project lead on every engagement.",
                 desc: "No freelancers. No handoffs",
               },
               {
                 icon: "/icons/Frame 2147225439 (1).png",
-                title: "Ongoing monitoring - Optional",
+                title: "Ongoing monitoring and agent updates — optional add-on after every delivery.",
                 desc: "We maintain what we build",
               },
               {
                 icon: "/icons/Frame 2147225439 (2).png",
-                title: "Flexible engagement for Quick growth",
+                title: "Flexible engagement model built for quick growth. No lock-ins.",
                 desc: "Scale up or pause anytime",
               },
               {
                 icon: "/icons/Frame 2147225439 (3).png",
-                title: "We work on Hourly blocks. Starts at $30 Per hour",
-                desc: "No hidden fees or surprise",
+                title: "No hidden fees or surprises.",
+                desc: "We work on hourly blocks. Starts at $30 per hour. Transparent from day one",
               },
             ].map((feature, index) => (
               <div 

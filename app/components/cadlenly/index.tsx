@@ -40,7 +40,7 @@ const Cadlenly = () => {
                 height: '16px',
               }}
             >
-              Get all your questions answered by our experts.
+             Get all your questions answered by our Claude Code experts.
             </p>
           </div>
           <div className="flex-grow w-full h-full pt-4">

@@ -66,6 +66,14 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        brand: {
+          light: "hsl(var(--brand-gradient-start))",
+          DEFAULT: "hsl(var(--accent))",
+          dark: "hsl(var(--brand-gradient-end))",
+        },
+      },
+      backgroundImage: {
+        'brand-gradient': "linear-gradient(93.96deg, hsl(var(--brand-gradient-start)) -15.76%, hsl(var(--brand-gradient-end)) 141.1%)",
       },
       borderRadius: {
         lg: "var(--radius)",

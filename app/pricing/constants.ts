@@ -7,7 +7,7 @@ export interface BenefitItem {
 export const benefitItems: BenefitItem[] = [
   {
     package: 'STARTER',
-    labels: ['Direct access to n8n certified developers', 'Basic workflow creation and modification', 'Standard documentation', 'Email support (48-hour response time)', 'Up to 2 revision rounds per workflow']
+    labels: ['Direct access to Claude Coder certified developers', 'Basic workflow creation and modification', 'Standard documentation', 'Email support (48-hour response time)', 'Up to 2 revision rounds per workflow']
   },
   {
     package: 'PLUS',

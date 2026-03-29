@@ -25,7 +25,7 @@ export const Footer: FC = () => {
           
           <div className="flex-[2] text-left w-full md:w-auto order-last md:order-none pl-0">
             <p className="font-manrope font-semibold text-[10px] xs:text-[12px] md:text-[16px] xl:text-[18px] 2xl:text-[20px] leading-relaxed tracking-[-2%] text-[#0000004D] whitespace-nowrap text-center md:text-left">
-              © {new Date().getFullYear()} n8n developers. All rights reserved. {" "}
+              © {new Date().getFullYear()} claudecoders.io All rights reserved. {" "}
               <span>
                 An initiative by{" "}
                 <Link href="https://labs24.co" target="_blank" className="hover:text-black transition-colors">
